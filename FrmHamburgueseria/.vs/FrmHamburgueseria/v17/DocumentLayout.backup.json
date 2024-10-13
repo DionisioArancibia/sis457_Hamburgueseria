@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Dionix\\Desktop\\sis457_Hamburgueseria\\FrmHamburgueseria\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6E2D8023-0EDE-4635-B038-C7A20EF2A0F7}|FrmHamburgueseria\\FrmHamburgueseria.csproj|c:\\users\\dionix\\desktop\\sis457_hamburgueseria\\frmhamburgueseria\\frmhamburgueseria\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6E2D8023-0EDE-4635-B038-C7A20EF2A0F7}|FrmHamburgueseria\\FrmHamburgueseria.csproj|solutionrelative:frmhamburgueseria\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Dionix\\Desktop\\sis457_Hamburgueseria\\FrmHamburgueseria\\FrmHamburgueseria\\Form1.cs",
+              "RelativeDocumentMoniker": "FrmHamburgueseria\\Form1.cs",
+              "ToolTip": "C:\\Users\\Dionix\\Desktop\\sis457_Hamburgueseria\\FrmHamburgueseria\\FrmHamburgueseria\\Form1.cs [Design]",
+              "RelativeToolTip": "FrmHamburgueseria\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T00:58:40.168Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
