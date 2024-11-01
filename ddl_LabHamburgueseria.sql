@@ -17,14 +17,14 @@ GO
 
 -- Eliminación de tablas si existen
 DROP TABLE DetallePedido;
-DROP TABLE Pedidos;
-DROP TABLE Productos;
-DROP TABLE Clientes;
-DROP TABLE Usuarios;
+DROP TABLE Pedido;
+DROP TABLE Producto;
+DROP TABLE Cliente;
+DROP TABLE Usuario;
 GO
 
 -- Tabla Usuarios
-CREATE TABLE Usuarios (
+CREATE TABLE Usuario (
     id INT PRIMARY KEY IDENTITY(1,1),
     nombreUsuario NVARCHAR(50) NOT NULL,
     password NVARCHAR(100) NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE Usuarios (
 GO
 
 -- Tabla Clientes
-CREATE TABLE Clientes (
+CREATE TABLE Cliente (
     id INT PRIMARY KEY IDENTITY(1,1),
     nombre NVARCHAR(100) NOT NULL,
     telefono NVARCHAR(15) NULL,
@@ -48,7 +48,7 @@ CREATE TABLE Clientes (
 GO
 
 -- Tabla Productos
-CREATE TABLE Productos (
+CREATE TABLE Producto (
     id INT PRIMARY KEY IDENTITY(1,1),
     codigo NVARCHAR(20) NOT NULL,
     descripcion NVARCHAR(250) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE Productos (
 GO
 
 -- Tabla Pedidos
-CREATE TABLE Pedidos (
+CREATE TABLE Pedido (
     id INT PRIMARY KEY IDENTITY(1,1),
     idCliente INT NOT NULL,
     fecha DATETIME NOT NULL DEFAULT GETDATE(),
@@ -70,7 +70,7 @@ CREATE TABLE Pedidos (
     estado SMALLINT DEFAULT 1, -- -1: Eliminado, 0: Inactivo, 1: Activo
     usuarioRegistro NVARCHAR(50) NOT NULL DEFAULT SUSER_NAME(),
     fechaRegistro DATETIME NOT NULL DEFAULT GETDATE(),
-    CONSTRAINT fk_Pedido_Cliente FOREIGN KEY (idCliente) REFERENCES Clientes(id)
+    CONSTRAINT fk_Pedido_Cliente FOREIGN KEY (idCliente) REFERENCES Cliente(id)
 );
 GO
 
@@ -85,17 +85,16 @@ CREATE TABLE DetallePedido (
     estado SMALLINT DEFAULT 1, -- -1: Eliminado, 0: Inactivo, 1: Activo
     usuarioRegistro NVARCHAR(50) NOT NULL DEFAULT SUSER_NAME(),
     fechaRegistro DATETIME NOT NULL DEFAULT GETDATE(),
-    CONSTRAINT fk_DetallePedido_Pedido FOREIGN KEY (idPedido) REFERENCES Pedidos(id),
-    CONSTRAINT fk_DetallePedido_Producto FOREIGN KEY (idProducto) REFERENCES Productos(id)
+    CONSTRAINT fk_DetallePedido_Pedido FOREIGN KEY (idPedido) REFERENCES Pedido(id),
+    CONSTRAINT fk_DetallePedido_Producto FOREIGN KEY (idProducto) REFERENCES Producto(id)
 );
 GO
-
 
 -- Procedimientos almacenados para listar activos por búsqueda
 CREATE PROCEDURE paProductoListar @parametro NVARCHAR(100)
 AS
 BEGIN
-    SELECT * FROM Productos
+    SELECT * FROM Producto
     WHERE estado <> -1 AND descripcion LIKE '%' + @parametro + '%'
     ORDER BY descripcion;
 END;
@@ -104,20 +103,20 @@ GO
 CREATE PROCEDURE paClienteListar @parametro NVARCHAR(100)
 AS
 BEGIN
-    SELECT * FROM Clientes
+    SELECT * FROM Cliente
     WHERE estado <> -1 AND nombre LIKE '%' + @parametro + '%'
     ORDER BY nombre;
 END;
 GO
 
 -- DML de ejemplo
-INSERT INTO Productos (codigo, descripcion, unidadMedida, saldo, precioVenta)
+INSERT INTO Producto (codigo, descripcion, unidadMedida, saldo, precioVenta)
 VALUES ('HBC123', 'Hamburguesa de Res', 'Unidad', 50, 35.00);
 
-INSERT INTO Productos (codigo, descripcion, unidadMedida, saldo, precioVenta)
+INSERT INTO Producto (codigo, descripcion, unidadMedida, saldo, precioVenta)
 VALUES ('DRK001', 'Coca-Cola Lata', 'Unidad', 100, 10.00);
 
-INSERT INTO Clientes (nombre, telefono, direccion)
+INSERT INTO Cliente (nombre, telefono, direccion)
 VALUES ('Ana Gomez', '78451234', 'Calle Arce #123');
 
 

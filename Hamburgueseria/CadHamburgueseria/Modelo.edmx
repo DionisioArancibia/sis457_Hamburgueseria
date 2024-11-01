@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="LabHamburgueseriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Clientes">
+        <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -31,7 +31,7 @@
           <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="Pedidos">
+        <EntityType Name="Pedido">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -43,7 +43,7 @@
           <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="Productos">
+        <EntityType Name="Producto">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -57,7 +57,7 @@
           <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="Usuarios">
+        <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -70,10 +70,10 @@
           <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="fk_DetallePedido_Pedido">
-          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
           <End Role="DetallePedido" Type="Self.DetallePedido" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Pedidos">
+            <Principal Role="Pedido">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="DetallePedido">
@@ -82,10 +82,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_DetallePedido_Producto">
-          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
           <End Role="DetallePedido" Type="Self.DetallePedido" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Productos">
+            <Principal Role="Producto">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="DetallePedido">
@@ -94,13 +94,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Pedido_Cliente">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
-          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="*" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Clientes">
+            <Principal Role="Cliente">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Pedidos">
+            <Dependent Role="Pedido">
               <PropertyRef Name="idCliente" />
             </Dependent>
           </ReferentialConstraint>
@@ -112,22 +112,22 @@
           <Parameter Name="parametro" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="LabHamburgueseriaModelStoreContainer">
-          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetallePedido" EntityType="Self.DetallePedido" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Pedidos" EntityType="Self.Pedidos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_DetallePedido_Pedido" Association="Self.fk_DetallePedido_Pedido">
-            <End Role="Pedidos" EntitySet="Pedidos" />
+            <End Role="Pedido" EntitySet="Pedido" />
             <End Role="DetallePedido" EntitySet="DetallePedido" />
           </AssociationSet>
           <AssociationSet Name="fk_DetallePedido_Producto" Association="Self.fk_DetallePedido_Producto">
-            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Producto" EntitySet="Producto" />
             <End Role="DetallePedido" EntitySet="DetallePedido" />
           </AssociationSet>
           <AssociationSet Name="fk_Pedido_Cliente" Association="Self.fk_Pedido_Cliente">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Pedidos" EntitySet="Pedidos" />
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -135,7 +135,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LabHamburgueseriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Clientes">
+        <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -146,7 +146,7 @@
           <Property Name="estado" Type="Int16" />
           <Property Name="usuarioRegistro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Pedidos" Relationship="Self.fk_Pedido_Cliente" FromRole="Clientes" ToRole="Pedidos" />
+          <NavigationProperty Name="Pedidoes" Relationship="Self.fk_Pedido_Cliente" FromRole="Cliente" ToRole="Pedido" />
         </EntityType>
         <EntityType Name="DetallePedido">
           <Key>
@@ -161,10 +161,10 @@
           <Property Name="estado" Type="Int16" />
           <Property Name="usuarioRegistro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Pedidos" Relationship="Self.fk_DetallePedido_Pedido" FromRole="DetallePedido" ToRole="Pedidos" />
-          <NavigationProperty Name="Productos" Relationship="Self.fk_DetallePedido_Producto" FromRole="DetallePedido" ToRole="Productos" />
+          <NavigationProperty Name="Pedido" Relationship="Self.fk_DetallePedido_Pedido" FromRole="DetallePedido" ToRole="Pedido" />
+          <NavigationProperty Name="Producto" Relationship="Self.fk_DetallePedido_Producto" FromRole="DetallePedido" ToRole="Producto" />
         </EntityType>
-        <EntityType Name="Pedidos">
+        <EntityType Name="Pedido">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -175,10 +175,10 @@
           <Property Name="estado" Type="Int16" />
           <Property Name="usuarioRegistro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Clientes" Relationship="Self.fk_Pedido_Cliente" FromRole="Pedidos" ToRole="Clientes" />
-          <NavigationProperty Name="DetallePedido" Relationship="Self.fk_DetallePedido_Pedido" FromRole="Pedidos" ToRole="DetallePedido" />
+          <NavigationProperty Name="Cliente" Relationship="Self.fk_Pedido_Cliente" FromRole="Pedido" ToRole="Cliente" />
+          <NavigationProperty Name="DetallePedidoes" Relationship="Self.fk_DetallePedido_Pedido" FromRole="Pedido" ToRole="DetallePedido" />
         </EntityType>
-        <EntityType Name="Productos">
+        <EntityType Name="Producto">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -191,9 +191,9 @@
           <Property Name="estado" Type="Int16" />
           <Property Name="usuarioRegistro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="DetallePedido" Relationship="Self.fk_DetallePedido_Producto" FromRole="Productos" ToRole="DetallePedido" />
+          <NavigationProperty Name="DetallePedidoes" Relationship="Self.fk_DetallePedido_Producto" FromRole="Producto" ToRole="DetallePedido" />
         </EntityType>
-        <EntityType Name="Usuarios">
+        <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -206,22 +206,22 @@
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="fk_Pedido_Cliente">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
-          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="*" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Clientes">
+            <Principal Role="Cliente">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Pedidos">
+            <Dependent Role="Pedido">
               <PropertyRef Name="idCliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_DetallePedido_Pedido">
-          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
           <End Role="DetallePedido" Type="Self.DetallePedido" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Pedidos">
+            <Principal Role="Pedido">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="DetallePedido">
@@ -230,10 +230,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_DetallePedido_Producto">
-          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
           <End Role="DetallePedido" Type="Self.DetallePedido" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Productos">
+            <Principal Role="Producto">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="DetallePedido">
@@ -241,23 +241,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
-          <EntitySet Name="DetallePedido" EntityType="Self.DetallePedido" />
-          <EntitySet Name="Pedidos" EntityType="Self.Pedidos" />
-          <EntitySet Name="Productos" EntityType="Self.Productos" />
-          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+        <EntityContainer Name="HamburgueseriaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="DetallePedidoes" EntityType="Self.DetallePedido" />
+          <EntitySet Name="Pedidoes" EntityType="Self.Pedido" />
+          <EntitySet Name="Productoes" EntityType="Self.Producto" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
           <AssociationSet Name="fk_Pedido_Cliente" Association="Self.fk_Pedido_Cliente">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Pedidos" EntitySet="Pedidos" />
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="Pedido" EntitySet="Pedidoes" />
           </AssociationSet>
           <AssociationSet Name="fk_DetallePedido_Pedido" Association="Self.fk_DetallePedido_Pedido">
-            <End Role="Pedidos" EntitySet="Pedidos" />
-            <End Role="DetallePedido" EntitySet="DetallePedido" />
+            <End Role="Pedido" EntitySet="Pedidoes" />
+            <End Role="DetallePedido" EntitySet="DetallePedidoes" />
           </AssociationSet>
           <AssociationSet Name="fk_DetallePedido_Producto" Association="Self.fk_DetallePedido_Producto">
-            <End Role="Productos" EntitySet="Productos" />
-            <End Role="DetallePedido" EntitySet="DetallePedido" />
+            <End Role="Producto" EntitySet="Productoes" />
+            <End Role="DetallePedido" EntitySet="DetallePedidoes" />
           </AssociationSet>
           <FunctionImport Name="paClienteListar" ReturnType="Collection(LabHamburgueseriaModel.paClienteListar_Result)">
             <Parameter Name="parametro" Mode="In" Type="String" />
@@ -291,10 +291,10 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LabHamburgueseriaModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="LabHamburgueseriaModelStoreContainer" CdmEntityContainer="HamburgueseriaEntities">
           <EntitySetMapping Name="Clientes">
-            <EntityTypeMapping TypeName="LabHamburgueseriaModel.Clientes">
-              <MappingFragment StoreEntitySet="Clientes">
+            <EntityTypeMapping TypeName="LabHamburgueseriaModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
@@ -305,7 +305,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DetallePedido">
+          <EntitySetMapping Name="DetallePedidoes">
             <EntityTypeMapping TypeName="LabHamburgueseriaModel.DetallePedido">
               <MappingFragment StoreEntitySet="DetallePedido">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -320,9 +320,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Pedidos">
-            <EntityTypeMapping TypeName="LabHamburgueseriaModel.Pedidos">
-              <MappingFragment StoreEntitySet="Pedidos">
+          <EntitySetMapping Name="Pedidoes">
+            <EntityTypeMapping TypeName="LabHamburgueseriaModel.Pedido">
+              <MappingFragment StoreEntitySet="Pedido">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idCliente" ColumnName="idCliente" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
@@ -333,9 +333,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Productos">
-            <EntityTypeMapping TypeName="LabHamburgueseriaModel.Productos">
-              <MappingFragment StoreEntitySet="Productos">
+          <EntitySetMapping Name="Productoes">
+            <EntityTypeMapping TypeName="LabHamburgueseriaModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -349,8 +349,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="LabHamburgueseriaModel.Usuarios">
-              <MappingFragment StoreEntitySet="Usuarios">
+            <EntityTypeMapping TypeName="LabHamburgueseriaModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -403,7 +403,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />

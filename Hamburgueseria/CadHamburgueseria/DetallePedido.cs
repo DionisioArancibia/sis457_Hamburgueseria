@@ -24,7 +24,7 @@ namespace CadHamburgueseria
         public string usuarioRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }
     
-        public virtual Pedidos Pedidos { get; set; }
-        public virtual Productos Productos { get; set; }
+        public virtual Pedido Pedido { get; set; }
+        public virtual Producto Producto { get; set; }
     }
 }

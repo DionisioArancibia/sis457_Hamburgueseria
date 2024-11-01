@@ -15,10 +15,10 @@ namespace CadHamburgueseria
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities : DbContext
+    public partial class HamburgueseriaEntities : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public HamburgueseriaEntities()
+            : base("name=HamburgueseriaEntities")
         {
         }
     
@@ -27,11 +27,11 @@ namespace CadHamburgueseria
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Clientes> Clientes { get; set; }
+        public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<DetallePedido> DetallePedido { get; set; }
-        public virtual DbSet<Pedidos> Pedidos { get; set; }
-        public virtual DbSet<Productos> Productos { get; set; }
-        public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Pedido> Pedido { get; set; }
+        public virtual DbSet<Producto> Producto { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     
         public virtual ObjectResult<paClienteListar_Result> paClienteListar(string parametro)
         {
