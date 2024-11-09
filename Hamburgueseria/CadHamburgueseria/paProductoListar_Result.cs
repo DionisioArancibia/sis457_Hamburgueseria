@@ -16,9 +16,9 @@ namespace CadHamburgueseria
         public int id { get; set; }
         public string codigo { get; set; }
         public string descripcion { get; set; }
-        public string unidadMedida { get; set; }
-        public decimal saldo { get; set; }
+        public string categoria { get; set; }
         public decimal precioVenta { get; set; }
+        public int stock { get; set; }
         public Nullable<short> estado { get; set; }
         public string usuarioRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }

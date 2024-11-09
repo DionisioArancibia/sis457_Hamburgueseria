@@ -11,7 +11,7 @@ namespace ClnHamburgueseria
     {
         public static int insertar(Cliente cliente)
         {
-            using (var context = new HamburgueseriaEntities())
+            using (var context = new LabHamburgueseriaEntities())
             {
                 context.Cliente.Add(cliente);
                 context.SaveChanges();
@@ -21,7 +21,7 @@ namespace ClnHamburgueseria
 
         public static int actualizar(Cliente cliente)
         {
-            using (var context = new HamburgueseriaEntities())
+            using (var context = new LabHamburgueseriaEntities())
             {
                 var existente = context.Cliente.Find(cliente.id);
                 if (existente != null)
@@ -29,6 +29,7 @@ namespace ClnHamburgueseria
                     existente.nombre = cliente.nombre;
                     existente.telefono = cliente.telefono;
                     existente.direccion = cliente.direccion;
+                    existente.estado = cliente.estado; // Actualizar estado si es necesario
                     existente.usuarioRegistro = cliente.usuarioRegistro;
                     return context.SaveChanges();
                 }
@@ -38,7 +39,7 @@ namespace ClnHamburgueseria
 
         public static int eliminar(int id, string usuario)
         {
-            using (var context = new HamburgueseriaEntities())
+            using (var context = new LabHamburgueseriaEntities())
             {
                 var cliente = context.Cliente.Find(id);
                 if (cliente != null)
@@ -53,7 +54,7 @@ namespace ClnHamburgueseria
 
         public static Cliente obtenerUno(int id)
         {
-            using (var context = new HamburgueseriaEntities())
+            using (var context = new LabHamburgueseriaEntities())
             {
                 return context.Cliente.Find(id);
             }
@@ -61,7 +62,7 @@ namespace ClnHamburgueseria
 
         public static List<Cliente> listar()
         {
-            using (var context = new HamburgueseriaEntities())
+            using (var context = new LabHamburgueseriaEntities())
             {
                 return context.Cliente.Where(x => x.estado != -1).ToList();
             }
@@ -69,7 +70,7 @@ namespace ClnHamburgueseria
 
         public static List<paClienteListar_Result> listarPa(string parametro)
         {
-            using (var context = new HamburgueseriaEntities())
+            using (var context = new LabHamburgueseriaEntities())
             {
                 return context.paClienteListar(parametro).ToList();
             }

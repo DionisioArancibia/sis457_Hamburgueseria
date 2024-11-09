@@ -1,35 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\Hamburgueseria\\",
+  "WorkspaceRootPath": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0F501B44-621F-4A14-B6CB-B178BA0B0A6D}|ClnHamburgueseria\\ClnHamburgueseria.csproj|c:\\users\\hp victus\\desktop\\proyecto sis457\\sis457_hamburgueseria\\hamburgueseria\\clnhamburgueseria\\productocln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{41A86D35-83E3-4CB2-9E8E-A50C77CFB61D}|CpHamburgueseria\\CpHamburgueseria.csproj|c:\\users\\dionix\\desktop\\sis457 proyetco\\sis457_hamburgueseria\\hamburgueseria\\cphamburgueseria\\frmproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{41A86D35-83E3-4CB2-9E8E-A50C77CFB61D}|CpHamburgueseria\\CpHamburgueseria.csproj|solutionrelative:cphamburgueseria\\frmproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F501B44-621F-4A14-B6CB-B178BA0B0A6D}|ClnHamburgueseria\\ClnHamburgueseria.csproj|C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\clnhamburgueseria\\ventacln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F501B44-621F-4A14-B6CB-B178BA0B0A6D}|ClnHamburgueseria\\ClnHamburgueseria.csproj|solutionrelative:clnhamburgueseria\\ventacln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F501B44-621F-4A14-B6CB-B178BA0B0A6D}|ClnHamburgueseria\\ClnHamburgueseria.csproj|C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\clnhamburgueseria\\productocln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0F501B44-621F-4A14-B6CB-B178BA0B0A6D}|ClnHamburgueseria\\ClnHamburgueseria.csproj|solutionrelative:clnhamburgueseria\\productocln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41A86D35-83E3-4CB2-9E8E-A50C77CFB61D}|CpHamburgueseria\\CpHamburgueseria.csproj|c:\\users\\hp victus\\desktop\\proyecto sis457\\sis457_hamburgueseria\\hamburgueseria\\cphamburgueseria\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{41A86D35-83E3-4CB2-9E8E-A50C77CFB61D}|CpHamburgueseria\\CpHamburgueseria.csproj|solutionrelative:cphamburgueseria\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\ddl_LabHamburgueseria.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F501B44-621F-4A14-B6CB-B178BA0B0A6D}|ClnHamburgueseria\\ClnHamburgueseria.csproj|c:\\users\\hp victus\\desktop\\proyecto sis457\\sis457_hamburgueseria\\hamburgueseria\\clnhamburgueseria\\clientecln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0F501B44-621F-4A14-B6CB-B178BA0B0A6D}|ClnHamburgueseria\\ClnHamburgueseria.csproj|C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\clnhamburgueseria\\clientecln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0F501B44-621F-4A14-B6CB-B178BA0B0A6D}|ClnHamburgueseria\\ClnHamburgueseria.csproj|solutionrelative:clnhamburgueseria\\clientecln.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31FF9178-F5A3-440C-A7B7-0202C0EFDCE5}|CadHamburgueseria\\CadHamburgueseria.csproj|c:\\users\\hp victus\\desktop\\proyecto sis457\\sis457_hamburgueseria\\hamburgueseria\\cadhamburgueseria\\modelo.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31FF9178-F5A3-440C-A7B7-0202C0EFDCE5}|CadHamburgueseria\\CadHamburgueseria.csproj|solutionrelative:cadhamburgueseria\\modelo.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\ddl_LabHamburgueseria.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31FF9178-F5A3-440C-A7B7-0202C0EFDCE5}|CadHamburgueseria\\CadHamburgueseria.csproj|c:\\users\\hp victus\\desktop\\proyecto sis457\\sis457_hamburgueseria\\hamburgueseria\\cadhamburgueseria\\modelo.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "AbsoluteMoniker": "D:0:0:{31FF9178-F5A3-440C-A7B7-0202C0EFDCE5}|CadHamburgueseria\\CadHamburgueseria.csproj|C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\cadhamburgueseria\\modelo.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
       "RelativeMoniker": "D:0:0:{31FF9178-F5A3-440C-A7B7-0202C0EFDCE5}|CadHamburgueseria\\CadHamburgueseria.csproj|solutionrelative:cadhamburgueseria\\modelo.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\ddl_LabHamburgueseria.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\ddl_LabHamburgueseria.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
+      "AbsoluteMoniker": "D:0:0:{31FF9178-F5A3-440C-A7B7-0202C0EFDCE5}|CadHamburgueseria\\CadHamburgueseria.csproj|C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\cadhamburgueseria\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{31FF9178-F5A3-440C-A7B7-0202C0EFDCE5}|CadHamburgueseria\\CadHamburgueseria.csproj|solutionrelative:cadhamburgueseria\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,80 +37,88 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Modelo.Context.cs",
-              "DocumentMoniker": "C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\Hamburgueseria\\CadHamburgueseria\\Modelo.Context.cs",
-              "RelativeDocumentMoniker": "CadHamburgueseria\\Modelo.Context.cs",
-              "ToolTip": "C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\Hamburgueseria\\CadHamburgueseria\\Modelo.Context.cs",
-              "RelativeToolTip": "CadHamburgueseria\\Modelo.Context.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACEAAAAuAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "VentaCln.cs",
+              "DocumentMoniker": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\ClnHamburgueseria\\VentaCln.cs",
+              "RelativeDocumentMoniker": "ClnHamburgueseria\\VentaCln.cs",
+              "ToolTip": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\ClnHamburgueseria\\VentaCln.cs",
+              "RelativeToolTip": "ClnHamburgueseria\\VentaCln.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAA3wEEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T01:36:59.623Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-08T23:41:42.766Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Modelo.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\Hamburgueseria\\CadHamburgueseria\\Modelo.edmx",
-              "RelativeDocumentMoniker": "CadHamburgueseria\\Modelo.edmx",
-              "ToolTip": "C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\Hamburgueseria\\CadHamburgueseria\\Modelo.edmx [Diagram1]",
-              "RelativeToolTip": "CadHamburgueseria\\Modelo.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-11-01T01:35:24.991Z",
-              "EditorCaption": " [Diagram1]"
+              "DocumentIndex": 2,
+              "Title": "ProductoCln.cs",
+              "DocumentMoniker": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\ClnHamburgueseria\\ProductoCln.cs",
+              "RelativeDocumentMoniker": "ClnHamburgueseria\\ProductoCln.cs",
+              "ToolTip": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\ClnHamburgueseria\\ProductoCln.cs",
+              "RelativeToolTip": "ClnHamburgueseria\\ProductoCln.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwBsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T16:10:44.127Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "ClienteCln.cs",
-              "DocumentMoniker": "C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\Hamburgueseria\\ClnHamburgueseria\\ClienteCln.cs",
+              "DocumentMoniker": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\ClnHamburgueseria\\ClienteCln.cs",
               "RelativeDocumentMoniker": "ClnHamburgueseria\\ClienteCln.cs",
-              "ToolTip": "C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\Hamburgueseria\\ClnHamburgueseria\\ClienteCln.cs",
+              "ToolTip": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\ClnHamburgueseria\\ClienteCln.cs",
               "RelativeToolTip": "ClnHamburgueseria\\ClienteCln.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAA1wB4AAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAgwDcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T00:51:13.648Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-08T16:07:24.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Modelo.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\CadHamburgueseria\\Modelo.edmx",
+              "RelativeDocumentMoniker": "CadHamburgueseria\\Modelo.edmx",
+              "ToolTip": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\CadHamburgueseria\\Modelo.edmx [Diagram1]",
+              "RelativeToolTip": "CadHamburgueseria\\Modelo.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2024-11-08T15:55:33.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ddl_LabHamburgueseria.sql",
+              "DocumentMoniker": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\ddl_LabHamburgueseria.sql",
+              "RelativeDocumentMoniker": "..\\ddl_LabHamburgueseria.sql",
+              "ToolTip": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\ddl_LabHamburgueseria.sql",
+              "RelativeToolTip": "..\\ddl_LabHamburgueseria.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-11-08T15:13:21.555Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "App.Config",
+              "DocumentMoniker": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\CadHamburgueseria\\App.Config",
+              "RelativeDocumentMoniker": "CadHamburgueseria\\App.Config",
+              "ToolTip": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\CadHamburgueseria\\App.Config",
+              "RelativeToolTip": "CadHamburgueseria\\App.Config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-11-08T15:11:49.083Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductoCln.cs",
-              "DocumentMoniker": "C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\Hamburgueseria\\ClnHamburgueseria\\ProductoCln.cs",
-              "RelativeDocumentMoniker": "ClnHamburgueseria\\ProductoCln.cs",
-              "ToolTip": "C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\Hamburgueseria\\ClnHamburgueseria\\ProductoCln.cs",
-              "RelativeToolTip": "ClnHamburgueseria\\ProductoCln.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAgwEEAAAA+AAAAAAAAAA==",
+              "Title": "FrmProducto.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\CpHamburgueseria\\FrmProducto.cs",
+              "RelativeDocumentMoniker": "CpHamburgueseria\\FrmProducto.cs",
+              "ToolTip": "C:\\Users\\Dionix\\Desktop\\sis457 proyetco\\sis457_Hamburgueseria\\Hamburgueseria\\CpHamburgueseria\\FrmProducto.cs [Dise\u00F1o]",
+              "RelativeToolTip": "CpHamburgueseria\\FrmProducto.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T00:31:37.114Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ddl_LabHamburgueseria.sql ",
-              "DocumentMoniker": "C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\ddl_LabHamburgueseria.sql",
-              "RelativeDocumentMoniker": "..\\ddl_LabHamburgueseria.sql",
-              "ToolTip": "ddl_LabHamburgueseria.sql ",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-11-01T00:09:15.66Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\Hamburgueseria\\CpHamburgueseria\\Form1.cs",
-              "RelativeDocumentMoniker": "CpHamburgueseria\\Form1.cs",
-              "ToolTip": "C:\\Users\\hp victus\\Desktop\\Proyecto sis457\\sis457_Hamburgueseria\\Hamburgueseria\\CpHamburgueseria\\Form1.cs [Dise\u00F1o]",
-              "RelativeToolTip": "CpHamburgueseria\\Form1.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T23:45:32.654Z",
+              "WhenOpened": "2024-11-06T22:57:45.644Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]

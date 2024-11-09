@@ -17,12 +17,12 @@ namespace CadHamburgueseria
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pedido()
         {
-            this.DetallePedidoes = new HashSet<DetallePedido>();
+            this.DetallePedido = new HashSet<DetallePedido>();
         }
     
         public int id { get; set; }
         public int idCliente { get; set; }
-        public System.DateTime fecha { get; set; }
+        public System.DateTime fechaPedido { get; set; }
         public decimal total { get; set; }
         public Nullable<short> estado { get; set; }
         public string usuarioRegistro { get; set; }
@@ -30,6 +30,6 @@ namespace CadHamburgueseria
     
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetallePedido> DetallePedidoes { get; set; }
+        public virtual ICollection<DetallePedido> DetallePedido { get; set; }
     }
 }

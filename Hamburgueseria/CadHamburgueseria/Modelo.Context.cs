@@ -15,10 +15,10 @@ namespace CadHamburgueseria
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class HamburgueseriaEntities : DbContext
+    public partial class LabHamburgueseriaEntities : DbContext
     {
-        public HamburgueseriaEntities()
-            : base("name=HamburgueseriaEntities")
+        public LabHamburgueseriaEntities()
+            : base("name=LabHamburgueseriaEntities")
         {
         }
     
@@ -29,9 +29,11 @@ namespace CadHamburgueseria
     
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<DetallePedido> DetallePedido { get; set; }
+        public virtual DbSet<DetalleVenta> DetalleVenta { get; set; }
         public virtual DbSet<Pedido> Pedido { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Venta> Venta { get; set; }
     
         public virtual ObjectResult<paClienteListar_Result> paClienteListar(string parametro)
         {
@@ -42,6 +44,11 @@ namespace CadHamburgueseria
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<paClienteListar_Result>("paClienteListar", parametroParameter);
         }
     
+        public virtual ObjectResult<paPedidoListar_Result> paPedidoListar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<paPedidoListar_Result>("paPedidoListar");
+        }
+    
         public virtual ObjectResult<paProductoListar_Result> paProductoListar(string parametro)
         {
             var parametroParameter = parametro != null ?
@@ -49,6 +56,11 @@ namespace CadHamburgueseria
                 new ObjectParameter("parametro", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<paProductoListar_Result>("paProductoListar", parametroParameter);
+        }
+    
+        public virtual ObjectResult<paVentaListar_Result> paVentaListar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<paVentaListar_Result>("paVentaListar");
         }
     }
 }

@@ -1,0 +1,12 @@
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\CpHamburgueseria.exe.config
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\CpHamburgueseria.exe
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\CpHamburgueseria.pdb
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.csproj.AssemblyReference.cache
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.Properties.Resources.resources
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.csproj.GenerateResource.cache
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.csproj.CoreCompileInputs.cache
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.exe
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.pdb
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\FiveCodMaterialDesign.dll
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmProducto.resources
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHambur.0DD9DCD4.Up2Date

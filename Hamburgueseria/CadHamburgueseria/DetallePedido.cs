@@ -17,7 +17,7 @@ namespace CadHamburgueseria
         public int id { get; set; }
         public int idPedido { get; set; }
         public int idProducto { get; set; }
-        public decimal cantidad { get; set; }
+        public int cantidad { get; set; }
         public decimal precioUnitario { get; set; }
         public Nullable<decimal> total { get; set; }
         public Nullable<short> estado { get; set; }
