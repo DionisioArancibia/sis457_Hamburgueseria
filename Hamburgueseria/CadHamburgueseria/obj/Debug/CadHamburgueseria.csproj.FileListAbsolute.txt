@@ -1,0 +1,14 @@
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\CadHamburgueseria.dll.config
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\CadHamburgueseria.dll
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\CadHamburgueseria.pdb
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\EntityFramework.dll
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\EntityFramework.xml
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHamburgueseria.csproj.AssemblyReference.cache
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHamburgueseria.csproj.CoreCompileInputs.cache
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHambu.EAFF5910.Up2Date
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHamburgueseria.dll
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHamburgueseria.pdb
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\System.Data.SqlClient.dll
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\System.Data.SqlClient.xml

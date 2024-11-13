@@ -15,7 +15,7 @@ namespace ClnHamburgueseria
             {
                 context.Venta.Add(venta);
                 context.SaveChanges();
-                return venta.id;
+                return venta.IdVenta;
             }
         }
 
@@ -23,16 +23,17 @@ namespace ClnHamburgueseria
         {
             using (var context = new LabHamburgueseriaEntities())
             {
-                var existente = context.Venta.Find(venta.id);
+                var existente = context.Venta.Find(venta.IdVenta);
                 if (existente != null)
                 {
-                    existente.idCliente = venta.idCliente;
-                    existente.idUsuario = venta.idUsuario;
-                    existente.fechaVenta = venta.fechaVenta;
-                    existente.total = venta.total;
-                    existente.metodoPago = venta.metodoPago; // Actualizar método de pago si es necesario
-                    existente.estado = venta.estado; // Actualizar estado si es necesario
-                    existente.usuarioRegistro = venta.usuarioRegistro;
+                    existente.IdUsuario = venta.IdUsuario;
+                    existente.TipoDocumento = venta.TipoDocumento;
+                    existente.NumeroDocumento = venta.NumeroDocumento;
+                    existente.DocumentoCliente = venta.DocumentoCliente;
+                    existente.NombreCliente = venta.NombreCliente;
+                    existente.MontoPago = venta.MontoPago;
+                    existente.MontoCambio = venta.MontoCambio;
+                    existente.MontoTotal = venta.MontoTotal;
                     return context.SaveChanges();
                 }
                 return 0; // Manejar caso donde no se encuentra la venta
@@ -46,8 +47,7 @@ namespace ClnHamburgueseria
                 var venta = context.Venta.Find(id);
                 if (venta != null)
                 {
-                    venta.estado = -1; // Marcar como eliminado
-                    venta.usuarioRegistro = usuario;
+                    venta.estado = -1; // Cambia el estado para indicar eliminación lógica
                     return context.SaveChanges();
                 }
                 return 0; // Manejar caso donde no se encuentra la venta

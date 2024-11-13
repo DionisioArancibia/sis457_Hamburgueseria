@@ -13,12 +13,13 @@ namespace CadHamburgueseria
     
     public partial class paClienteListar_Result
     {
-        public int id { get; set; }
-        public string nombre { get; set; }
-        public string telefono { get; set; }
-        public string direccion { get; set; }
-        public Nullable<short> estado { get; set; }
-        public string usuarioRegistro { get; set; }
+        public int IdCliente { get; set; }
+        public string Documento { get; set; }
+        public string NombreCompleto { get; set; }
+        public string Correo { get; set; }
+        public string Telefono { get; set; }
+        public string UsuarioRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }
+        public short estado { get; set; }
     }
 }

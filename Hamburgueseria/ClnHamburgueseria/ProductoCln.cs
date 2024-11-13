@@ -15,7 +15,7 @@ namespace ClnHamburgueseria
             {
                 context.Producto.Add(producto);
                 context.SaveChanges();
-                return producto.id;
+                return producto.IdProducto;
             }
         }
 
@@ -23,16 +23,17 @@ namespace ClnHamburgueseria
         {
             using (var context = new LabHamburgueseriaEntities())
             {
-                var existente = context.Producto.Find(producto.id);
+                var existente = context.Producto.Find(producto.IdProducto);
                 if (existente != null)
                 {
-                    existente.codigo = producto.codigo;
-                    existente.descripcion = producto.descripcion;
-                    existente.categoria = producto.categoria;
-                    existente.precioVenta = producto.precioVenta;
-                    existente.stock = producto.stock;
-                    existente.estado = producto.estado; // Si es necesario actualizar el estado
-                    existente.usuarioRegistro = producto.usuarioRegistro;
+                    
+                    existente.Codigo = producto.Codigo;
+                    existente.Nombre = producto.Nombre;
+                    existente.Descripcion = producto.Descripcion;
+                    existente.IdCategoria = producto.IdCategoria;
+                    existente.Stock = producto.Stock;
+                    existente.PrecioCompra = producto.PrecioCompra;
+                    existente.PrecioVenta = producto.PrecioVenta;
                     return context.SaveChanges();
                 }
                 return 0; // O manejar el caso donde no se encuentra el producto
@@ -47,8 +48,7 @@ namespace ClnHamburgueseria
                 var producto = context.Producto.Find(id);
                 if (producto != null)
                 {
-                    producto.estado = -1; // Marcar como eliminado
-                    producto.usuarioRegistro = usuario;
+                    producto.estado = -1; // Eliminación lógica
                     return context.SaveChanges();
                 }
                 return 0; // Manejar caso donde no se encuentra el producto

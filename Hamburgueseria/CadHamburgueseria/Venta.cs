@@ -17,22 +17,24 @@ namespace CadHamburgueseria
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Venta()
         {
-            this.DetalleVenta = new HashSet<DetalleVenta>();
+            this.VentaDetalle = new HashSet<VentaDetalle>();
         }
     
-        public int id { get; set; }
-        public int idCliente { get; set; }
-        public int idUsuario { get; set; }
-        public System.DateTime fechaVenta { get; set; }
-        public decimal total { get; set; }
-        public string metodoPago { get; set; }
-        public Nullable<short> estado { get; set; }
-        public string usuarioRegistro { get; set; }
+        public int IdVenta { get; set; }
+        public int IdUsuario { get; set; }
+        public string TipoDocumento { get; set; }
+        public string NumeroDocumento { get; set; }
+        public string DocumentoCliente { get; set; }
+        public string NombreCliente { get; set; }
+        public decimal MontoPago { get; set; }
+        public decimal MontoCambio { get; set; }
+        public decimal MontoTotal { get; set; }
+        public string UsuarioRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }
+        public short estado { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetalleVenta> DetalleVenta { get; set; }
         public virtual Usuario Usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VentaDetalle> VentaDetalle { get; set; }
     }
 }

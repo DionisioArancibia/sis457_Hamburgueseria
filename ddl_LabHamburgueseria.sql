@@ -15,199 +15,283 @@ GO
 ALTER ROLE [db_owner] ADD MEMBER [usrhambu];
 GO
 
--- Eliminación de tablas si existen
-DROP TABLE DetalleVenta;
+DROP TABLE VentaDetalle;
 DROP TABLE Venta;
-DROP TABLE DetallePedido;
-DROP TABLE Pedido;
+DROP TABLE CompraDetalle;
+DROP TABLE Compra;
 DROP TABLE Producto;
-DROP TABLE Cliente;
+DROP TABLE Categoria;
 DROP TABLE Usuario;
-GO
+DROP TABLE Cliente;
+DROP TABLE Proveedor;
 
--- Tabla Usuarios
-CREATE TABLE Usuario (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    nombreUsuario NVARCHAR(15) NOT NULL,
-    clave NVARCHAR(150) NOT NULL,
-    estado SMALLINT DEFAULT 1, -- -1: Eliminado, 0: Inactivo, 1: Activo
-    usuarioRegistro NVARCHAR(50) NOT NULL DEFAULT SUSER_NAME(),
-    fechaRegistro DATETIME NOT NULL DEFAULT GETDATE()
+-- Crear tablas
+CREATE TABLE Proveedor (
+    IdProveedor INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    Documento VARCHAR(20) NOT NULL,
+    RazonSocial VARCHAR(100) NOT NULL,
+    Correo VARCHAR(100) NULL,
+    Telefono VARCHAR(15) NULL
 );
-GO
 
--- Tabla Clientes
 CREATE TABLE Cliente (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    nombre NVARCHAR(100) NOT NULL,
-    telefono NVARCHAR(15) NULL,
-    direccion NVARCHAR(200) NULL,
-    estado SMALLINT DEFAULT 1, -- -1: Eliminado, 0: Inactivo, 1: Activo
-    usuarioRegistro NVARCHAR(50) NOT NULL DEFAULT SUSER_NAME(),
-    fechaRegistro DATETIME NOT NULL DEFAULT GETDATE()
+    IdCliente INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    Documento VARCHAR(20) NOT NULL,
+    NombreCompleto VARCHAR(100) NOT NULL,
+    Correo VARCHAR(100) NULL,
+    Telefono VARCHAR(15) NULL
 );
-GO
 
--- Tabla Productos
+CREATE TABLE Usuario (
+    IdUsuario INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    Documento VARCHAR(20) NOT NULL,
+    NombreCompleto VARCHAR(100) NOT NULL,
+    Correo VARCHAR(100) NULL,
+    Clave VARCHAR(250) NOT NULL
+);
+
+CREATE TABLE Categoria (
+    IdCategoria INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    Descripcion VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE Producto (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    codigo NVARCHAR(20) NOT NULL UNIQUE,
-    descripcion NVARCHAR(250) NOT NULL, -- Ej: Hamburguesa de res, papas fritas
-    categoria NVARCHAR(50) NOT NULL, -- Ej: Hamburguesa, Bebida, Complemento
-    precioVenta DECIMAL(10,2) NOT NULL CHECK (precioVenta > 0),
-    stock INT NOT NULL DEFAULT 0, -- Cantidad disponible
-    estado SMALLINT DEFAULT 1, -- -1: Eliminado, 0: Inactivo, 1: Activo
-    usuarioRegistro NVARCHAR(50) NOT NULL DEFAULT SUSER_NAME(),
-    fechaRegistro DATETIME NOT NULL DEFAULT GETDATE()
+    IdProducto INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    Codigo VARCHAR(20) NOT NULL,
+    Nombre VARCHAR(100) NOT NULL,
+    Descripcion VARCHAR(250) NULL,
+    IdCategoria INT NOT NULL,
+    Stock DECIMAL NOT NULL DEFAULT 0,
+    PrecioCompra DECIMAL(18, 2) NOT NULL CHECK (PrecioCompra > 0),
+    PrecioVenta DECIMAL(18, 2) NOT NULL CHECK (PrecioVenta > 0),
+    FOREIGN KEY (IdCategoria) REFERENCES Categoria(IdCategoria)
 );
-GO
 
--- Tabla Pedidos
-CREATE TABLE Pedido (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    idCliente INT NOT NULL,
-    fechaPedido DATETIME NOT NULL DEFAULT GETDATE(),
-    total DECIMAL(10,2) NOT NULL,
-    estado SMALLINT DEFAULT 1, -- -1: Cancelado, 0: Pendiente, 1: Completado
-    usuarioRegistro NVARCHAR(50) NOT NULL DEFAULT SUSER_NAME(),
-    fechaRegistro DATETIME NOT NULL DEFAULT GETDATE(),
-    CONSTRAINT fk_Pedido_Cliente FOREIGN KEY (idCliente) REFERENCES Cliente(id)
+CREATE TABLE Compra (
+    IdCompra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    IdUsuario INT NOT NULL,
+    IdProveedor INT NOT NULL,
+    TipoDocumento VARCHAR(20) NOT NULL,
+    NumeroDocumento VARCHAR(50) NOT NULL,
+    MontoTotal DECIMAL(18, 2) NOT NULL CHECK (MontoTotal > 0),
+    FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
+    FOREIGN KEY (IdProveedor) REFERENCES Proveedor(IdProveedor)
 );
-GO
 
--- Tabla DetallePedido
-CREATE TABLE DetallePedido (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    idPedido INT NOT NULL,
-    idProducto INT NOT NULL,
-    cantidad INT NOT NULL CHECK (cantidad > 0),
-    precioUnitario DECIMAL(10,2) NOT NULL CHECK (precioUnitario > 0),
-    total AS (cantidad * precioUnitario) PERSISTED,
-    estado SMALLINT DEFAULT 1, -- -1: Cancelado, 1: Activo
-    usuarioRegistro NVARCHAR(50) NOT NULL DEFAULT SUSER_NAME(),
-    fechaRegistro DATETIME NOT NULL DEFAULT GETDATE(),
-    CONSTRAINT fk_DetallePedido_Pedido FOREIGN KEY (idPedido) REFERENCES Pedido(id),
-    CONSTRAINT fk_DetallePedido_Producto FOREIGN KEY (idProducto) REFERENCES Producto(id)
+CREATE TABLE CompraDetalle (
+    IdDetalleCompra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    IdCompra INT NOT NULL,
+    IdProducto INT NOT NULL,
+    PrecioCompra DECIMAL(18, 2) NOT NULL CHECK (PrecioCompra > 0),
+    PrecioVenta DECIMAL(18, 2) NOT NULL CHECK (PrecioVenta > 0),
+    Cantidad DECIMAL NOT NULL CHECK (Cantidad > 0),
+    MontoTotal DECIMAL(18, 2) NOT NULL CHECK (MontoTotal > 0),
+    FOREIGN KEY (IdCompra) REFERENCES Compra(IdCompra),
+    FOREIGN KEY (IdProducto) REFERENCES Producto(IdProducto)
 );
-GO
 
--- Tabla Ventas
 CREATE TABLE Venta (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    idCliente INT NOT NULL,
-    idUsuario INT NOT NULL,
-    fechaVenta DATETIME NOT NULL DEFAULT GETDATE(),
-    total DECIMAL(10,2) NOT NULL,
-    metodoPago NVARCHAR(20) NOT NULL, -- Ej: Efectivo, Tarjeta
-    estado SMALLINT DEFAULT 1, -- -1: Cancelada, 0: Pendiente, 1: Completada
-    usuarioRegistro NVARCHAR(50) NOT NULL DEFAULT SUSER_NAME(),
-    fechaRegistro DATETIME NOT NULL DEFAULT GETDATE(),
-    CONSTRAINT fk_Venta_Cliente FOREIGN KEY (idCliente) REFERENCES Cliente(id),
-    CONSTRAINT fk_Venta_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuario(id)
+    IdVenta INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    IdUsuario INT NOT NULL,
+    TipoDocumento VARCHAR(20) NOT NULL,
+    NumeroDocumento VARCHAR(50) NOT NULL,
+    DocumentoCliente VARCHAR(20) NOT NULL,
+    NombreCliente VARCHAR(100) NOT NULL,
+    MontoPago DECIMAL(18, 2) NOT NULL CHECK (MontoPago >= 0),
+    MontoCambio DECIMAL(18, 2) NOT NULL CHECK (MontoCambio >= 0),
+    MontoTotal DECIMAL(18, 2) NOT NULL CHECK (MontoTotal > 0),
+    FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
 );
+
+CREATE TABLE VentaDetalle (
+    IdDetalleVenta INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    IdVenta INT NOT NULL,
+    IdProducto INT NOT NULL,
+    PrecioVenta DECIMAL(18, 2) NOT NULL CHECK (PrecioVenta > 0),
+    Cantidad DECIMAL NOT NULL CHECK (Cantidad > 0),
+    SubTotal DECIMAL(18, 2) NOT NULL CHECK (SubTotal > 0),
+    FOREIGN KEY (IdVenta) REFERENCES Venta(IdVenta),
+    FOREIGN KEY (IdProducto) REFERENCES Producto(IdProducto)
+);
+
+-- Agregar campos de auditoría y estado a las tablas principales
+ALTER TABLE Proveedor ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE Proveedor ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
+ALTER TABLE Proveedor ADD estado SMALLINT NOT NULL DEFAULT 1; -- -1: Eliminado, 0: Inactivo, 1: Activo
+
+ALTER TABLE Cliente ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE Cliente ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
+ALTER TABLE Cliente ADD estado SMALLINT NOT NULL DEFAULT 1;
+
+ALTER TABLE Usuario ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE Usuario ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
+ALTER TABLE Usuario ADD estado SMALLINT NOT NULL DEFAULT 1;
+
+
+ALTER TABLE Categoria ADD estado SMALLINT NOT NULL DEFAULT 1;
+
+ALTER TABLE Producto ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE Producto ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
+ALTER TABLE Producto ADD estado SMALLINT NOT NULL DEFAULT 1;
+
+ALTER TABLE Compra ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE Compra ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
+ALTER TABLE Compra ADD estado SMALLINT NOT NULL DEFAULT 1;
+
+ALTER TABLE Venta ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE Venta ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
+ALTER TABLE Venta ADD estado SMALLINT NOT NULL DEFAULT 1;
+
+ALTER TABLE CompraDetalle ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE CompraDetalle ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
+ALTER TABLE CompraDetalle ADD estado SMALLINT NOT NULL DEFAULT 1; -- -1: Eliminado, 0: Inactivo, 1: Activo
+
+ALTER TABLE VentaDetalle ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE VentaDetalle ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
+ALTER TABLE VentaDetalle ADD estado SMALLINT NOT NULL DEFAULT 1; -- -1: Eliminado, 0: Inactivo, 1: Activo
 GO
 
--- Tabla DetalleVenta
-CREATE TABLE DetalleVenta (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    idVenta INT NOT NULL,
-    idProducto INT NOT NULL,
-    cantidad INT NOT NULL CHECK (cantidad > 0),
-    precioUnitario DECIMAL(10,2) NOT NULL CHECK (precioUnitario > 0),
-    total AS (cantidad * precioUnitario) PERSISTED,
-    estado SMALLINT DEFAULT 1, -- -1: Cancelado, 1: Activo
-    usuarioRegistro NVARCHAR(50) NOT NULL DEFAULT SUSER_NAME(),
-    fechaRegistro DATETIME NOT NULL DEFAULT GETDATE(),
-    CONSTRAINT fk_DetalleVenta_Venta FOREIGN KEY (idVenta) REFERENCES Venta(id),
-    CONSTRAINT fk_DetalleVenta_Producto FOREIGN KEY (idProducto) REFERENCES Producto(id)
-);
-GO
-
--- Procedimientos almacenados para listar registros activos
-
--- Listar productos activos
-CREATE PROCEDURE paProductoListar @parametro NVARCHAR(100)
+-- Procedimientos almacenados para listar Productos 
+CREATE PROC paProductoListar @parametro VARCHAR(100)
 AS
-BEGIN
     SELECT * FROM Producto
-    WHERE estado <> -1 AND descripcion LIKE '%' + @parametro + '%'
+    WHERE estado <> -1 AND descripcion LIKE '%' + REPLACE(@parametro, ' ', '%') + '%'
     ORDER BY descripcion;
-END;
 GO
 
--- Listar clientes activos
-CREATE PROCEDURE paClienteListar @parametro NVARCHAR(100)
+ --PROCEDIMIENTO LISTAR CATEGORIA
+CREATE PROC paCategoriaListar @parametro VARCHAR(100)
+AS
+  SELECT * FROM Categoria
+  WHERE estado<>-1 AND descripcion LIKE '%'+REPLACE(@parametro, ' ', '%')+'%'
+GO
+
+--PROCEDIMIENTO LISTAR CLIENTES
+CREATE PROC paClienteListar
+    @parametro VARCHAR(100)
 AS
 BEGIN
+    SET NOCOUNT ON;
+
     SELECT * FROM Cliente
-    WHERE estado <> -1 AND nombre LIKE '%' + @parametro + '%'
-    ORDER BY nombre;
-END;
+    WHERE estado <> -1 AND (
+        documento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' OR
+        nombreCompleto LIKE '%' + REPLACE(@parametro, ' ', '%') + '%'
+    );
+END
 GO
 
--- Listar pedidos activos
-CREATE PROCEDURE paPedidoListar
+CREATE PROC paProveedorListar @parametro VARCHAR(100)
 AS
 BEGIN
-    SELECT * FROM Pedido
-    WHERE estado <> -1
-    ORDER BY fechaPedido DESC;
-END;
+    SELECT * FROM Proveedor
+    WHERE Estado <> -1 AND (Documento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' OR 
+                            RazonSocial LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
+    ORDER BY RazonSocial;
+END
 GO
 
--- Listar ventas activas
-CREATE PROCEDURE paVentaListar
+CREATE PROC paCompraListar @parametro VARCHAR(100)
 AS
 BEGIN
-    SELECT * FROM Venta
-    WHERE estado <> -1
-    ORDER BY fechaVenta DESC;
-END;
+    SELECT c.IdCompra, c.NumeroDocumento,
+           ISNULL(u.NombreCompleto, '') AS Usuario,
+           ISNULL(p.RazonSocial, '') AS Proveedor,
+           c.MontoTotal,
+           c.fechaRegistro 
+    FROM Compra c
+    LEFT JOIN Usuario u ON c.IdUsuario = u.IdUsuario
+    LEFT JOIN Proveedor p ON c.IdProveedor = p.IdProveedor
+    WHERE c.Estado <> -1 AND (c.NumeroDocumento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' OR 
+                              p.RazonSocial LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
+    ORDER BY c.fechaRegistro DESC;
+END
 GO
 
--- Insertar datos de prueba
-INSERT INTO Producto (codigo, descripcion, categoria, precioVenta, stock)
-VALUES ('HBG001', 'Hamburguesa Clásica', 'Hamburguesa', 35.00, 100);
-
-INSERT INTO Producto (codigo, descripcion, categoria, precioVenta, stock)
-VALUES ('FRI001', 'Papas Fritas', 'Complemento', 10.00, 200);
-
-INSERT INTO Producto (codigo, descripcion, categoria, precioVenta, stock)
-VALUES ('BEB001', 'Refresco', 'Bebida', 8.00, 300);
-
-INSERT INTO Cliente (nombre, telefono, direccion)
-VALUES ('Juan Perez', '78912345', 'Calle Falsa #123');
-
-INSERT INTO Cliente (nombre, telefono, direccion)
-VALUES ('Maria Gomez', '67894512', 'Av. Siempre Viva #456');
-GO
-INSERT INTO Producto (codigo, descripcion, categoria, precioVenta, stock)
-VALUES 
-('HBG002', 'Hamburguesa BBQ', 'Hamburguesa', 40.00, 80),
-('HBG003', 'Hamburguesa Vegana', 'Hamburguesa', 38.00, 70),
-('BEB002', 'Agua Mineral', 'Bebida', 5.00, 250),
-('FRI002', 'Aros de Cebolla', 'Complemento', 12.00, 150);
+CREATE PROC paVentaListar @parametro VARCHAR(100)
+AS
+BEGIN
+    SELECT v.IdVenta,
+           v.NumeroDocumento,
+           v.NombreCliente,
+           v.MontoTotal,
+           v.fechaRegistro 
+    FROM Venta v
+    WHERE v.Estado <> -1 AND (v.NumeroDocumento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' OR 
+                              v.NombreCliente LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
+    ORDER BY v.fechaRegistro DESC;
+END
 GO
 
-INSERT INTO Cliente (nombre, telefono, direccion)
-VALUES 
-('Carlos López', '72123456', 'Av. Los Pinos #789'),
-('Lucía Fernández', '76123456', 'Calle Las Rosas #101'),
-('Miguel Ortega', '75123456', 'Av. Los Olivos #102'),
-('Ana Rojas', '70123456', 'Calle Los Jazmines #202');
-GO
 
-INSERT INTO Pedido (idCliente, total, estado)
-VALUES 
-(1, 58.00, 1), -- Pedido completado
-(2, 45.00, 1), -- Pedido completado
-(3, 26.00, 0), -- Pedido pendiente
-(4, 18.00, 1); -- Pedido completado
-GO
+-- Insertar datos en la tabla Categoria
+INSERT INTO Categoria (Descripcion) VALUES
+('Bebidas'),
+('Hamburguesas'),
+('Postres'),
+('Snacks');
 
--- Consultas de prueba
-EXEC paProductoListar 'Hamburguesa';
-EXEC paClienteListar 'Juan';
-EXEC paPedidoListar;
-EXEC paVentaListar;
-GO
+-- Insertar datos en la tabla Proveedor
+INSERT INTO Proveedor (Documento, RazonSocial, Correo, Telefono) VALUES
+('10001', 'Distribuidora de Bebidas S.A.', 'contacto@bebidas.com', '78912345'),
+('10002', 'Alimentos Gourmet SRL', 'info@alimentosgourmet.com', '65432198'),
+('10003', 'Postres y Dulces SRL', 'ventas@postresydulces.com', '76891234');
+
+-- Insertar datos en la tabla Cliente
+INSERT INTO Cliente (Documento, NombreCompleto, Correo, Telefono) VALUES
+('20001', 'Juan Perez', 'juan.perez@example.com', '71234567'),
+('20002', 'Maria Lopez', 'maria.lopez@example.com', '72345678'),
+('20003', 'Carlos Gomez', 'carlos.gomez@example.com', '73456789');
+
+-- Insertar datos en la tabla Usuario
+INSERT INTO Usuario (Documento, NombreCompleto, Correo, Clave) VALUES
+('30001', 'Admin User', 'admin@example.com', 'admin123'),
+('30002', 'Vendedor1', 'vendedor1@example.com', 'password123'),
+('30003', 'Vendedor2', 'vendedor2@example.com', 'password123');
+
+-- Insertar datos en la tabla Producto
+INSERT INTO Producto (Codigo, Nombre, Descripcion, IdCategoria, Stock, PrecioCompra, PrecioVenta) VALUES
+('P001', 'Coca-Cola 500ml', 'Bebida gaseosa', 1, 50, 5.00, 7.50),
+('P002', 'Hamburguesa Clásica', 'Hamburguesa con queso y vegetales', 2, 30, 15.00, 25.00),
+('P003', 'Brownie de Chocolate', 'Postre de chocolate', 3, 20, 8.00, 12.00),
+('P004', 'Papas Fritas', 'Papas fritas crocantes', 4, 40, 3.00, 5.00);
+
+-- Insertar datos en la tabla Compra
+INSERT INTO Compra (IdUsuario, IdProveedor, TipoDocumento, NumeroDocumento, MontoTotal) VALUES
+(1, 1, 'Factura', 'F001', 1000.00),
+(2, 2, 'Factura', 'F002', 500.00),
+(3, 3, 'Factura', 'F003', 750.00);
+
+-- Insertar datos en la tabla CompraDetalle
+INSERT INTO CompraDetalle (IdCompra, IdProducto, PrecioCompra, PrecioVenta, Cantidad, MontoTotal) VALUES
+(1, 1, 5.00, 7.50, 50, 250.00),
+(1, 2, 15.00, 25.00, 30, 450.00),
+(2, 3, 8.00, 12.00, 20, 160.00),
+(3, 4, 3.00, 5.00, 40, 120.00);
+
+-- Insertar datos en la tabla Venta
+INSERT INTO VENTA (IdUsuario, TipoDocumento, NumeroDocumento, DocumentoCliente, NombreCliente, MontoPago, MontoCambio, MontoTotal) VALUES
+(1, 'Boleta', 'B001', '20001', 'Juan Perez', 100.00, 10.00, 90.00),
+(2, 'Boleta', 'B002', '20002', 'Maria Lopez', 150.00, 20.00, 130.00),
+(3, 'Boleta', 'B003', '20003', 'Carlos Gomez', 80.00, 5.00, 75.00);
+
+-- Insertar datos en la tabla VentaDetalle
+INSERT INTO VentaDetalle (IdVenta, IdProducto, PrecioVenta, Cantidad, SubTotal) VALUES
+(1, 1, 7.50, 10, 75.00),
+(1, 2, 25.00, 1, 25.00),
+(2, 3, 12.00, 5, 60.00),
+(3, 4, 5.00, 3, 15.00);
+
+-- Confirmar datos insertados
+SELECT * FROM Categoria;
+SELECT * FROM Proveedor;
+SELECT * FROM Cliente;
+SELECT * FROM Usuario;
+SELECT * FROM Producto;
+SELECT * FROM Compra;
+SELECT * FROM CompraDetalle;
+SELECT * FROM Venta;
+SELECT * FROM VentaDetalle;
+
+EXEC paCategoriaListar 'Bebidas';
+EXEC paVentaListar 'juan';

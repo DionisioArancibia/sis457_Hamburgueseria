@@ -10,3 +10,25 @@ C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpH
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\FiveCodMaterialDesign.dll
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmProducto.resources
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHambur.0DD9DCD4.Up2Date
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\CpHamburgueseria.exe.config
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\CpHamburgueseria.exe
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\CpHamburgueseria.pdb
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\FiveCodMaterialDesign.dll
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.csproj.AssemblyReference.cache
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmProducto.resources
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.Properties.Resources.resources
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.csproj.GenerateResource.cache
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.csproj.CoreCompileInputs.cache
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHambur.0DD9DCD4.Up2Date
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.exe
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.pdb
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\CadHamburgueseria.dll
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\ClnHamburgueseria.dll
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\EntityFramework.dll
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\CadHamburgueseria.pdb
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\CadHamburgueseria.dll.config
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\ClnHamburgueseria.pdb
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\ClnHamburgueseria.dll.config
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\EntityFramework.xml
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\System.Data.SqlClient.dll
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\System.Data.SqlClient.xml

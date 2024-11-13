@@ -13,14 +13,16 @@ namespace CadHamburgueseria
     
     public partial class paProductoListar_Result
     {
-        public int id { get; set; }
-        public string codigo { get; set; }
-        public string descripcion { get; set; }
-        public string categoria { get; set; }
-        public decimal precioVenta { get; set; }
-        public int stock { get; set; }
-        public Nullable<short> estado { get; set; }
-        public string usuarioRegistro { get; set; }
+        public int IdProducto { get; set; }
+        public string Codigo { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public int IdCategoria { get; set; }
+        public decimal Stock { get; set; }
+        public decimal PrecioCompra { get; set; }
+        public decimal PrecioVenta { get; set; }
+        public string UsuarioRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }
+        public short estado { get; set; }
     }
 }
