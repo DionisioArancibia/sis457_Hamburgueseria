@@ -15,7 +15,7 @@ namespace ClnHamburgueseria
             {
                 context.Cliente.Add(cliente);
                 context.SaveChanges();
-                return cliente.IdCliente;
+                return cliente.id;
             }
         }
 
@@ -23,13 +23,13 @@ namespace ClnHamburgueseria
         {
             using (var context = new LabHamburgueseriaEntities())
             {
-                var existente = context.Cliente.Find(cliente.IdCliente);
+                var existente = context.Cliente.Find(cliente.id);
                 if (existente != null)
                 {
-                    existente.Documento = cliente.Documento;
-                    existente.NombreCompleto = cliente.NombreCompleto;
-                    existente.Correo = cliente.Correo;
-                    existente.Telefono = cliente.Telefono; 
+                    existente.documento = cliente.documento;
+                    existente.nombreCompleto = cliente.nombreCompleto;
+                    existente.correo = cliente.correo;
+                    existente.telefono = cliente.telefono; 
                     existente.UsuarioRegistro = cliente.UsuarioRegistro;
                     return context.SaveChanges();
                 }

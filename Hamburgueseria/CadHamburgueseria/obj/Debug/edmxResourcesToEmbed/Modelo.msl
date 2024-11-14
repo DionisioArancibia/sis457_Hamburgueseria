@@ -5,7 +5,9 @@
       <EntityTypeMapping TypeName="LabHamburgueseriaModel.Categoria">
         <MappingFragment StoreEntitySet="Categoria">
           <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
           <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -13,11 +15,11 @@
     <EntitySetMapping Name="Cliente">
       <EntityTypeMapping TypeName="LabHamburgueseriaModel.Cliente">
         <MappingFragment StoreEntitySet="Cliente">
-          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-          <ScalarProperty Name="Documento" ColumnName="Documento" />
-          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
-          <ScalarProperty Name="Correo" ColumnName="Correo" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
           <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
           <ScalarProperty Name="estado" ColumnName="estado" />
@@ -27,12 +29,12 @@
     <EntitySetMapping Name="Compra">
       <EntityTypeMapping TypeName="LabHamburgueseriaModel.Compra">
         <MappingFragment StoreEntitySet="Compra">
-          <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
-          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
-          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
-          <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+          <ScalarProperty Name="idCompra" ColumnName="idCompra" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+          <ScalarProperty Name="tipoDocumento" ColumnName="tipoDocumento" />
+          <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
+          <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
           <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
           <ScalarProperty Name="estado" ColumnName="estado" />
@@ -49,6 +51,23 @@
           <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
           <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
           <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+          <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="LabHamburgueseriaModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="cedulaIdentidad" ColumnName="cedulaIdentidad" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="cargo" ColumnName="cargo" />
           <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
           <ScalarProperty Name="estado" ColumnName="estado" />
@@ -75,11 +94,11 @@
     <EntitySetMapping Name="Proveedor">
       <EntityTypeMapping TypeName="LabHamburgueseriaModel.Proveedor">
         <MappingFragment StoreEntitySet="Proveedor">
-          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-          <ScalarProperty Name="Documento" ColumnName="Documento" />
-          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
-          <ScalarProperty Name="Correo" ColumnName="Correo" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="razonSocial" ColumnName="razonSocial" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
           <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
           <ScalarProperty Name="estado" ColumnName="estado" />
@@ -90,10 +109,9 @@
       <EntityTypeMapping TypeName="LabHamburgueseriaModel.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-          <ScalarProperty Name="Documento" ColumnName="Documento" />
-          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
-          <ScalarProperty Name="Correo" ColumnName="Correo" />
-          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="usuario1" ColumnName="usuario" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
           <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
           <ScalarProperty Name="estado" ColumnName="estado" />
@@ -137,7 +155,9 @@
       <ResultMapping>
         <ComplexTypeMapping TypeName="LabHamburgueseriaModel.paCategoriaListar_Result">
           <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
           <ScalarProperty Name="estado" ColumnName="estado" />
         </ComplexTypeMapping>
       </ResultMapping>
@@ -145,11 +165,11 @@
     <FunctionImportMapping FunctionImportName="paClienteListar" FunctionName="LabHamburgueseriaModel.Store.paClienteListar">
       <ResultMapping>
         <ComplexTypeMapping TypeName="LabHamburgueseriaModel.paClienteListar_Result">
-          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-          <ScalarProperty Name="Documento" ColumnName="Documento" />
-          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
-          <ScalarProperty Name="Correo" ColumnName="Correo" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
           <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
           <ScalarProperty Name="estado" ColumnName="estado" />
@@ -159,11 +179,11 @@
     <FunctionImportMapping FunctionImportName="paCompraListar" FunctionName="LabHamburgueseriaModel.Store.paCompraListar">
       <ResultMapping>
         <ComplexTypeMapping TypeName="LabHamburgueseriaModel.paCompraListar_Result">
-          <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
-          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="idCompra" ColumnName="idCompra" />
+          <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
           <ScalarProperty Name="Usuario" ColumnName="Usuario" />
           <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
-          <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+          <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
         </ComplexTypeMapping>
       </ResultMapping>
@@ -188,11 +208,11 @@
     <FunctionImportMapping FunctionImportName="paProveedorListar" FunctionName="LabHamburgueseriaModel.Store.paProveedorListar">
       <ResultMapping>
         <ComplexTypeMapping TypeName="LabHamburgueseriaModel.paProveedorListar_Result">
-          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-          <ScalarProperty Name="Documento" ColumnName="Documento" />
-          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
-          <ScalarProperty Name="Correo" ColumnName="Correo" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="razonSocial" ColumnName="razonSocial" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
           <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
           <ScalarProperty Name="estado" ColumnName="estado" />
@@ -202,10 +222,10 @@
     <FunctionImportMapping FunctionImportName="paVentaListar" FunctionName="LabHamburgueseriaModel.Store.paVentaListar">
       <ResultMapping>
         <ComplexTypeMapping TypeName="LabHamburgueseriaModel.paVentaListar_Result">
-          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
-          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
-          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
-          <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+          <ScalarProperty Name="idVenta" ColumnName="idVenta" />
+          <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
+          <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+          <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
         </ComplexTypeMapping>
       </ResultMapping>

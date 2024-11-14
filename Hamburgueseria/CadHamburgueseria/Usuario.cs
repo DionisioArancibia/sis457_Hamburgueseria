@@ -22,16 +22,16 @@ namespace CadHamburgueseria
         }
     
         public int IdUsuario { get; set; }
-        public string Documento { get; set; }
-        public string NombreCompleto { get; set; }
-        public string Correo { get; set; }
-        public string Clave { get; set; }
+        public int idEmpleado { get; set; }
+        public string usuario1 { get; set; }
+        public string clave { get; set; }
         public string UsuarioRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }
         public short estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compra { get; set; }
+        public virtual Empleado Empleado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venta> Venta { get; set; }
     }

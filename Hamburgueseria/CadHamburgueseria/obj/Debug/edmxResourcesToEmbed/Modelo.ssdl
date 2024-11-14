@@ -5,32 +5,34 @@
       <PropertyRef Name="IdCategoria" />
     </Key>
     <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UsuarioRegistro" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
     <Property Name="estado" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="Cliente">
     <Key>
-      <PropertyRef Name="IdCliente" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Documento" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="NombreCompleto" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Correo" Type="varchar" MaxLength="100" />
-    <Property Name="Telefono" Type="varchar" MaxLength="15" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documento" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="nombreCompleto" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="correo" Type="varchar" MaxLength="100" />
+    <Property Name="telefono" Type="varchar" MaxLength="15" />
     <Property Name="UsuarioRegistro" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
     <Property Name="estado" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="Compra">
     <Key>
-      <PropertyRef Name="IdCompra" />
+      <PropertyRef Name="idCompra" />
     </Key>
-    <Property Name="IdCompra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdUsuario" Type="int" Nullable="false" />
-    <Property Name="IdProveedor" Type="int" Nullable="false" />
-    <Property Name="TipoDocumento" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="NumeroDocumento" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="MontoTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="idCompra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUsuario" Type="int" Nullable="false" />
+    <Property Name="idProveedor" Type="int" Nullable="false" />
+    <Property Name="tipoDocumento" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="numeroDocumento" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="montoTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="UsuarioRegistro" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
     <Property Name="estado" Type="smallint" Nullable="false" />
@@ -50,6 +52,22 @@
     <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
     <Property Name="estado" Type="smallint" Nullable="false" />
   </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="idEmpleado" />
+    </Key>
+    <Property Name="idEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cedulaIdentidad" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="nombres" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="primerApellido" Type="varchar" MaxLength="30" />
+    <Property Name="segundoApellido" Type="varchar" MaxLength="30" />
+    <Property Name="direccion" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="celular" Type="bigint" Nullable="false" />
+    <Property Name="cargo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UsuarioRegistro" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="smallint" Nullable="false" />
+  </EntityType>
   <EntityType Name="Producto">
     <Key>
       <PropertyRef Name="IdProducto" />
@@ -60,21 +78,21 @@
     <Property Name="Descripcion" Type="varchar" MaxLength="250" />
     <Property Name="IdCategoria" Type="int" Nullable="false" />
     <Property Name="Stock" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="PrecioCompra" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="PrecioVenta" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PrecioCompra" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="PrecioVenta" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="UsuarioRegistro" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
     <Property Name="estado" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="Proveedor">
     <Key>
-      <PropertyRef Name="IdProveedor" />
+      <PropertyRef Name="idProveedor" />
     </Key>
-    <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Documento" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="RazonSocial" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Correo" Type="varchar" MaxLength="100" />
-    <Property Name="Telefono" Type="varchar" MaxLength="15" />
+    <Property Name="idProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documento" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="razonSocial" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="correo" Type="varchar" MaxLength="100" />
+    <Property Name="telefono" Type="varchar" MaxLength="15" />
     <Property Name="UsuarioRegistro" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
     <Property Name="estado" Type="smallint" Nullable="false" />
@@ -84,10 +102,9 @@
       <PropertyRef Name="IdUsuario" />
     </Key>
     <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Documento" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="NombreCompleto" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Correo" Type="varchar" MaxLength="100" />
-    <Property Name="Clave" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="idEmpleado" Type="int" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="clave" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="UsuarioRegistro" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
     <Property Name="estado" Type="smallint" Nullable="false" />
@@ -123,19 +140,19 @@
     <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
     <Property Name="estado" Type="smallint" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Compra__IdProvee__45F365D3">
+  <Association Name="FK__Compra__idProvee__36B12243">
     <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
     <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Proveedor">
-        <PropertyRef Name="IdProveedor" />
+        <PropertyRef Name="idProveedor" />
       </Principal>
       <Dependent Role="Compra">
-        <PropertyRef Name="IdProveedor" />
+        <PropertyRef Name="idProveedor" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Compra__IdUsuari__44FF419A">
+  <Association Name="FK__Compra__idUsuari__35BCFE0A">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
     <ReferentialConstraint>
@@ -143,23 +160,23 @@
         <PropertyRef Name="IdUsuario" />
       </Principal>
       <Dependent Role="Compra">
-        <PropertyRef Name="IdUsuario" />
+        <PropertyRef Name="idUsuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CompraDet__IdCom__4CA06362">
+  <Association Name="FK__CompraDet__IdCom__3D5E1FD2">
     <End Role="Compra" Type="Self.Compra" Multiplicity="1" />
     <End Role="CompraDetalle" Type="Self.CompraDetalle" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Compra">
-        <PropertyRef Name="IdCompra" />
+        <PropertyRef Name="idCompra" />
       </Principal>
       <Dependent Role="CompraDetalle">
         <PropertyRef Name="IdCompra" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CompraDet__IdPro__4D94879B">
+  <Association Name="FK__CompraDet__IdPro__3E52440B">
     <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
     <End Role="CompraDetalle" Type="Self.CompraDetalle" Multiplicity="*" />
     <ReferentialConstraint>
@@ -171,7 +188,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Producto__IdCate__412EB0B6">
+  <Association Name="FK__Producto__IdCate__31EC6D26">
     <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
     <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
     <ReferentialConstraint>
@@ -183,7 +200,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Venta__IdUsuario__534D60F1">
+  <Association Name="FK__Usuario__idEmple__2A4B4B5E">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Venta__IdUsuario__440B1D61">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
     <ReferentialConstraint>
@@ -195,7 +224,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__VentaDeta__IdPro__59FA5E80">
+  <Association Name="FK__VentaDeta__IdPro__4AB81AF0">
     <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
     <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
     <ReferentialConstraint>
@@ -207,7 +236,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__VentaDeta__IdVen__59063A47">
+  <Association Name="FK__VentaDeta__IdVen__49C3F6B7">
     <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
     <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
     <ReferentialConstraint>
@@ -242,40 +271,45 @@
     <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CompraDetalle" EntityType="Self.CompraDetalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Venta" EntityType="Self.Venta" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VentaDetalle" EntityType="Self.VentaDetalle" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Compra__IdProvee__45F365D3" Association="Self.FK__Compra__IdProvee__45F365D3">
+    <AssociationSet Name="FK__Compra__idProvee__36B12243" Association="Self.FK__Compra__idProvee__36B12243">
       <End Role="Proveedor" EntitySet="Proveedor" />
       <End Role="Compra" EntitySet="Compra" />
     </AssociationSet>
-    <AssociationSet Name="FK__Compra__IdUsuari__44FF419A" Association="Self.FK__Compra__IdUsuari__44FF419A">
+    <AssociationSet Name="FK__Compra__idUsuari__35BCFE0A" Association="Self.FK__Compra__idUsuari__35BCFE0A">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Compra" EntitySet="Compra" />
     </AssociationSet>
-    <AssociationSet Name="FK__CompraDet__IdCom__4CA06362" Association="Self.FK__CompraDet__IdCom__4CA06362">
+    <AssociationSet Name="FK__CompraDet__IdCom__3D5E1FD2" Association="Self.FK__CompraDet__IdCom__3D5E1FD2">
       <End Role="Compra" EntitySet="Compra" />
       <End Role="CompraDetalle" EntitySet="CompraDetalle" />
     </AssociationSet>
-    <AssociationSet Name="FK__CompraDet__IdPro__4D94879B" Association="Self.FK__CompraDet__IdPro__4D94879B">
+    <AssociationSet Name="FK__CompraDet__IdPro__3E52440B" Association="Self.FK__CompraDet__IdPro__3E52440B">
       <End Role="Producto" EntitySet="Producto" />
       <End Role="CompraDetalle" EntitySet="CompraDetalle" />
     </AssociationSet>
-    <AssociationSet Name="FK__Producto__IdCate__412EB0B6" Association="Self.FK__Producto__IdCate__412EB0B6">
+    <AssociationSet Name="FK__Producto__IdCate__31EC6D26" Association="Self.FK__Producto__IdCate__31EC6D26">
       <End Role="Categoria" EntitySet="Categoria" />
       <End Role="Producto" EntitySet="Producto" />
     </AssociationSet>
-    <AssociationSet Name="FK__Venta__IdUsuario__534D60F1" Association="Self.FK__Venta__IdUsuario__534D60F1">
+    <AssociationSet Name="FK__Usuario__idEmple__2A4B4B5E" Association="Self.FK__Usuario__idEmple__2A4B4B5E">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Venta__IdUsuario__440B1D61" Association="Self.FK__Venta__IdUsuario__440B1D61">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Venta" EntitySet="Venta" />
     </AssociationSet>
-    <AssociationSet Name="FK__VentaDeta__IdPro__59FA5E80" Association="Self.FK__VentaDeta__IdPro__59FA5E80">
+    <AssociationSet Name="FK__VentaDeta__IdPro__4AB81AF0" Association="Self.FK__VentaDeta__IdPro__4AB81AF0">
       <End Role="Producto" EntitySet="Producto" />
       <End Role="VentaDetalle" EntitySet="VentaDetalle" />
     </AssociationSet>
-    <AssociationSet Name="FK__VentaDeta__IdVen__59063A47" Association="Self.FK__VentaDeta__IdVen__59063A47">
+    <AssociationSet Name="FK__VentaDeta__IdVen__49C3F6B7" Association="Self.FK__VentaDeta__IdVen__49C3F6B7">
       <End Role="Venta" EntitySet="Venta" />
       <End Role="VentaDetalle" EntitySet="VentaDetalle" />
     </AssociationSet>

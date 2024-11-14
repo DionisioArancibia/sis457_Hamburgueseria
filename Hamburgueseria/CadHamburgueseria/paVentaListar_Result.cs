@@ -13,10 +13,10 @@ namespace CadHamburgueseria
     
     public partial class paVentaListar_Result
     {
-        public int IdVenta { get; set; }
-        public string NumeroDocumento { get; set; }
-        public string NombreCliente { get; set; }
-        public decimal MontoTotal { get; set; }
+        public int idVenta { get; set; }
+        public string numeroDocumento { get; set; }
+        public string nombreCliente { get; set; }
+        public decimal montoTotal { get; set; }
         public System.DateTime fechaRegistro { get; set; }
     }
 }

@@ -13,11 +13,11 @@ namespace CadHamburgueseria
     
     public partial class paProveedorListar_Result
     {
-        public int IdProveedor { get; set; }
-        public string Documento { get; set; }
-        public string RazonSocial { get; set; }
-        public string Correo { get; set; }
-        public string Telefono { get; set; }
+        public int idProveedor { get; set; }
+        public string documento { get; set; }
+        public string razonSocial { get; set; }
+        public string correo { get; set; }
+        public string telefono { get; set; }
         public string UsuarioRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }
         public short estado { get; set; }

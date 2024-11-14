@@ -11,22 +11,21 @@ namespace ClnHamburgueseria
     {
         public static int insertar(Producto producto)
         {
+
             using (var context = new LabHamburgueseriaEntities())
             {
                 context.Producto.Add(producto);
                 context.SaveChanges();
                 return producto.IdProducto;
             }
-        }
 
-        public static int actualizar(Producto producto)
+        }
+            public static int actualizar(Producto producto)
         {
             using (var context = new LabHamburgueseriaEntities())
             {
-                var existente = context.Producto.Find(producto.IdProducto);
-                if (existente != null)
-                {
-                    
+                            
+                    var existente = context.Producto.Find(producto.IdProducto);
                     existente.Codigo = producto.Codigo;
                     existente.Nombre = producto.Nombre;
                     existente.Descripcion = producto.Descripcion;
@@ -35,9 +34,8 @@ namespace ClnHamburgueseria
                     existente.PrecioCompra = producto.PrecioCompra;
                     existente.PrecioVenta = producto.PrecioVenta;
                     return context.SaveChanges();
-                }
-                return 0; // O manejar el caso donde no se encuentra el producto
-            }
+               
+              }
         }
 
 
@@ -46,12 +44,11 @@ namespace ClnHamburgueseria
             using (var context = new LabHamburgueseriaEntities())
             {
                 var producto = context.Producto.Find(id);
-                if (producto != null)
-                {
+                
                     producto.estado = -1; // Eliminación lógica
                     return context.SaveChanges();
-                }
-                return 0; // Manejar caso donde no se encuentra el producto
+               
+               
             }
         }
 

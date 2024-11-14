@@ -20,12 +20,12 @@ namespace CadHamburgueseria
             this.CompraDetalle = new HashSet<CompraDetalle>();
         }
     
-        public int IdCompra { get; set; }
-        public int IdUsuario { get; set; }
-        public int IdProveedor { get; set; }
-        public string TipoDocumento { get; set; }
-        public string NumeroDocumento { get; set; }
-        public decimal MontoTotal { get; set; }
+        public int idCompra { get; set; }
+        public int idUsuario { get; set; }
+        public int idProveedor { get; set; }
+        public string tipoDocumento { get; set; }
+        public string numeroDocumento { get; set; }
+        public decimal montoTotal { get; set; }
         public string UsuarioRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }
         public short estado { get; set; }

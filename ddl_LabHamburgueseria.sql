@@ -21,38 +21,50 @@ DROP TABLE CompraDetalle;
 DROP TABLE Compra;
 DROP TABLE Producto;
 DROP TABLE Categoria;
+DROP TABLE Empleado;
 DROP TABLE Usuario;
 DROP TABLE Cliente;
 DROP TABLE Proveedor;
 
 -- Crear tablas
 CREATE TABLE Proveedor (
-    IdProveedor INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    Documento VARCHAR(20) NOT NULL,
-    RazonSocial VARCHAR(100) NOT NULL,
-    Correo VARCHAR(100) NULL,
-    Telefono VARCHAR(15) NULL
+    idProveedor INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    documento VARCHAR(20) NOT NULL,
+    razonSocial VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) NULL,
+    telefono VARCHAR(15) NULL
 );
 
 CREATE TABLE Cliente (
-    IdCliente INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    Documento VARCHAR(20) NOT NULL,
-    NombreCompleto VARCHAR(100) NOT NULL,
-    Correo VARCHAR(100) NULL,
-    Telefono VARCHAR(15) NULL
+    id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    documento VARCHAR(20) NOT NULL,
+    nombreCompleto VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) NULL,
+    telefono VARCHAR(15) NULL
+);
+
+CREATE TABLE Empleado (
+  idEmpleado INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+  cedulaIdentidad VARCHAR(12) NOT NULL,
+  nombres VARCHAR(30) NOT NULL,
+  primerApellido VARCHAR(30) NULL,
+  segundoApellido VARCHAR(30) NULL,
+  direccion VARCHAR(250) NOT NULL,
+  celular BIGINT NOT NULL,
+  cargo VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Usuario (
-    IdUsuario INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    Documento VARCHAR(20) NOT NULL,
-    NombreCompleto VARCHAR(100) NOT NULL,
-    Correo VARCHAR(100) NULL,
-    Clave VARCHAR(250) NOT NULL
-);
+  IdUsuario INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+  idEmpleado INT NOT NULL,
+  usuario VARCHAR(15) NOT NULL,
+  clave VARCHAR(250) NOT NULL,
+  FOREIGN KEY (idEmpleado) REFERENCES Empleado(idEmpleado) -- Corregido aquí
+); 
 
 CREATE TABLE Categoria (
     IdCategoria INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    Descripcion VARCHAR(100) NOT NULL
+    descripcion VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE Producto (
@@ -62,20 +74,20 @@ CREATE TABLE Producto (
     Descripcion VARCHAR(250) NULL,
     IdCategoria INT NOT NULL,
     Stock DECIMAL NOT NULL DEFAULT 0,
-    PrecioCompra DECIMAL(18, 2) NOT NULL CHECK (PrecioCompra > 0),
-    PrecioVenta DECIMAL(18, 2) NOT NULL CHECK (PrecioVenta > 0),
+    PrecioCompra DECIMAL NOT NULL CHECK (PrecioCompra > 0),
+    PrecioVenta DECIMAL NOT NULL CHECK (PrecioVenta > 0),
     FOREIGN KEY (IdCategoria) REFERENCES Categoria(IdCategoria)
 );
 
 CREATE TABLE Compra (
-    IdCompra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    IdUsuario INT NOT NULL,
-    IdProveedor INT NOT NULL,
-    TipoDocumento VARCHAR(20) NOT NULL,
-    NumeroDocumento VARCHAR(50) NOT NULL,
-    MontoTotal DECIMAL(18, 2) NOT NULL CHECK (MontoTotal > 0),
-    FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
-    FOREIGN KEY (IdProveedor) REFERENCES Proveedor(IdProveedor)
+    idCompra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    idUsuario INT NOT NULL,
+    idProveedor INT NOT NULL,
+    tipoDocumento VARCHAR(20) NOT NULL,
+    numeroDocumento VARCHAR(50) NOT NULL,
+    montoTotal DECIMAL(18, 2) NOT NULL CHECK (montoTotal > 0),
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(IdUsuario),
+    FOREIGN KEY (idProveedor) REFERENCES Proveedor(idProveedor)
 );
 
 CREATE TABLE CompraDetalle (
@@ -86,7 +98,7 @@ CREATE TABLE CompraDetalle (
     PrecioVenta DECIMAL(18, 2) NOT NULL CHECK (PrecioVenta > 0),
     Cantidad DECIMAL NOT NULL CHECK (Cantidad > 0),
     MontoTotal DECIMAL(18, 2) NOT NULL CHECK (MontoTotal > 0),
-    FOREIGN KEY (IdCompra) REFERENCES Compra(IdCompra),
+    FOREIGN KEY (IdCompra) REFERENCES Compra(idCompra),
     FOREIGN KEY (IdProducto) REFERENCES Producto(IdProducto)
 );
 
@@ -127,7 +139,12 @@ ALTER TABLE Usuario ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME(
 ALTER TABLE Usuario ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
 ALTER TABLE Usuario ADD estado SMALLINT NOT NULL DEFAULT 1;
 
+ALTER TABLE Empleado ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE Empleado ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
+ALTER TABLE Empleado ADD estado SMALLINT NOT NULL DEFAULT 1;
 
+ALTER TABLE Categoria ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE Categoria ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
 ALTER TABLE Categoria ADD estado SMALLINT NOT NULL DEFAULT 1;
 
 ALTER TABLE Producto ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
@@ -144,84 +161,110 @@ ALTER TABLE Venta ADD estado SMALLINT NOT NULL DEFAULT 1;
 
 ALTER TABLE CompraDetalle ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
 ALTER TABLE CompraDetalle ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
-ALTER TABLE CompraDetalle ADD estado SMALLINT NOT NULL DEFAULT 1; -- -1: Eliminado, 0: Inactivo, 1: Activo
+ALTER TABLE CompraDetalle ADD estado SMALLINT NOT NULL DEFAULT 1;
 
 ALTER TABLE VentaDetalle ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
 ALTER TABLE VentaDetalle ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
-ALTER TABLE VentaDetalle ADD estado SMALLINT NOT NULL DEFAULT 1; -- -1: Eliminado, 0: Inactivo, 1: Activo
+ALTER TABLE VentaDetalle ADD estado SMALLINT NOT NULL DEFAULT 1;
 GO
 
--- Procedimientos almacenados para listar Productos 
-CREATE PROC paProductoListar @parametro VARCHAR(100)
-AS
-    SELECT * FROM Producto
-    WHERE estado <> -1 AND descripcion LIKE '%' + REPLACE(@parametro, ' ', '%') + '%'
-    ORDER BY descripcion;
-GO
-
- --PROCEDIMIENTO LISTAR CATEGORIA
+-- PROCEDIMIENTO LISTAR CATEGORIA
 CREATE PROC paCategoriaListar @parametro VARCHAR(100)
 AS
-  SELECT * FROM Categoria
-  WHERE estado<>-1 AND descripcion LIKE '%'+REPLACE(@parametro, ' ', '%')+'%'
+BEGIN
+    SELECT * 
+    FROM Categoria
+    WHERE estado <> -1 
+      AND descripcion LIKE '%' + REPLACE(@parametro, ' ', '%') + '%';
+END
 GO
 
---PROCEDIMIENTO LISTAR CLIENTES
+EXEC paCategoriaListar 'Poll';
+GO
+
+-- PROCEDIMIENTO LISTAR PRODUCTOS
+CREATE PROC paProductoListar 
+    @parametro VARCHAR(100)
+AS
+BEGIN
+    SELECT * 
+    FROM Producto
+    WHERE estado <> -1 
+      AND Nombre LIKE '%' + REPLACE(@parametro, ' ', '%') + '%';
+END
+GO
+
+EXEC paProductoListar 'soda';
+GO
+
+-- PROCEDIMIENTO LISTAR CLIENTES
 CREATE PROC paClienteListar
     @parametro VARCHAR(100)
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    SELECT * FROM Cliente
-    WHERE estado <> -1 AND (
-        documento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' OR
-        nombreCompleto LIKE '%' + REPLACE(@parametro, ' ', '%') + '%'
-    );
+    SELECT * 
+    FROM Cliente
+    WHERE estado <> -1 
+      AND (documento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' 
+           OR nombreCompleto LIKE '%' + REPLACE(@parametro, ' ', '%') + '%');
 END
 GO
 
-CREATE PROC paProveedorListar @parametro VARCHAR(100)
+-- PROCEDIMIENTO LISTAR PROVEEDORES
+CREATE PROC paProveedorListar 
+    @parametro VARCHAR(100)
 AS
 BEGIN
-    SELECT * FROM Proveedor
-    WHERE Estado <> -1 AND (Documento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' OR 
-                            RazonSocial LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
-    ORDER BY RazonSocial;
+    SELECT * 
+    FROM Proveedor
+    WHERE estado <> -1 
+      AND (documento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' 
+           OR razonSocial LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
+    ORDER BY razonSocial;
 END
 GO
 
-CREATE PROC paCompraListar @parametro VARCHAR(100)
+-- PROCEDIMIENTO LISTAR COMPRAS
+CREATE PROC paCompraListar 
+    @parametro VARCHAR(100)
 AS
 BEGIN
-    SELECT c.IdCompra, c.NumeroDocumento,
-           ISNULL(u.NombreCompleto, '') AS Usuario,
-           ISNULL(p.RazonSocial, '') AS Proveedor,
-           c.MontoTotal,
+    SELECT c.idCompra, 
+           c.numeroDocumento,
+           ISNULL(u.usuario, '') AS Usuario,
+           ISNULL(p.razonSocial, '') AS Proveedor,
+           c.montoTotal,
            c.fechaRegistro 
     FROM Compra c
-    LEFT JOIN Usuario u ON c.IdUsuario = u.IdUsuario
-    LEFT JOIN Proveedor p ON c.IdProveedor = p.IdProveedor
-    WHERE c.Estado <> -1 AND (c.NumeroDocumento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' OR 
-                              p.RazonSocial LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
+    LEFT JOIN Usuario u ON c.idUsuario = u.IdUsuario
+    LEFT JOIN Proveedor p ON c.idProveedor = p.idProveedor
+    WHERE c.estado <> -1 
+      AND (c.numeroDocumento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' 
+           OR p.razonSocial LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
     ORDER BY c.fechaRegistro DESC;
 END
 GO
 
-CREATE PROC paVentaListar @parametro VARCHAR(100)
+-- PROCEDIMIENTO LISTAR VENTAS
+CREATE PROC paVentaListar 
+    @parametro VARCHAR(100)
 AS
 BEGIN
-    SELECT v.IdVenta,
-           v.NumeroDocumento,
-           v.NombreCliente,
-           v.MontoTotal,
+    SELECT v.idVenta,
+           v.numeroDocumento,
+           v.nombreCliente,
+           v.montoTotal,
            v.fechaRegistro 
     FROM Venta v
-    WHERE v.Estado <> -1 AND (v.NumeroDocumento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' OR 
-                              v.NombreCliente LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
+    WHERE v.estado <> -1 
+      AND (v.numeroDocumento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' 
+           OR v.nombreCliente LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
     ORDER BY v.fechaRegistro DESC;
 END
 GO
+
 
 
 -- Insertar datos en la tabla Categoria
@@ -243,11 +286,13 @@ INSERT INTO Cliente (Documento, NombreCompleto, Correo, Telefono) VALUES
 ('20002', 'Maria Lopez', 'maria.lopez@example.com', '72345678'),
 ('20003', 'Carlos Gomez', 'carlos.gomez@example.com', '73456789');
 
--- Insertar datos en la tabla Usuario
-INSERT INTO Usuario (Documento, NombreCompleto, Correo, Clave) VALUES
-('30001', 'Admin User', 'admin@example.com', 'admin123'),
-('30002', 'Vendedor1', 'vendedor1@example.com', 'password123'),
-('30003', 'Vendedor2', 'vendedor2@example.com', 'password123');
+--DATOS EMPLEADO
+INSERT INTO Empleado(cedulaIdentidad, nombres, primerApellido, segundoApellido, direccion, celular, cargo)
+VALUES('7246542','Sebastian ','Palacios', 'Cueca', 'Calle oruro', 77364656, 'cajero');
+
+--DATOS USUARIO
+INSERT INTO Usuario(idEmpleado, usuario, clave)
+VALUES(1, 'Dioni', 'i0hcoO/nssY6WOs9pOp5Xw==');
 
 -- Insertar datos en la tabla Producto
 INSERT INTO Producto (Codigo, Nombre, Descripcion, IdCategoria, Stock, PrecioCompra, PrecioVenta) VALUES
@@ -271,16 +316,27 @@ INSERT INTO CompraDetalle (IdCompra, IdProducto, PrecioCompra, PrecioVenta, Cant
 
 -- Insertar datos en la tabla Venta
 INSERT INTO VENTA (IdUsuario, TipoDocumento, NumeroDocumento, DocumentoCliente, NombreCliente, MontoPago, MontoCambio, MontoTotal) VALUES
-(1, 'Boleta', 'B001', '20001', 'Juan Perez', 100.00, 10.00, 90.00),
-(2, 'Boleta', 'B002', '20002', 'Maria Lopez', 150.00, 20.00, 130.00),
-(3, 'Boleta', 'B003', '20003', 'Carlos Gomez', 80.00, 5.00, 75.00);
+(1, 'Boleta', 'B001', '20001', 'Juan Perez', 100.00, 10.00, 90.00);
+
 
 -- Insertar datos en la tabla VentaDetalle
-INSERT INTO VentaDetalle (IdVenta, IdProducto, PrecioVenta, Cantidad, SubTotal) VALUES
-(1, 1, 7.50, 10, 75.00),
-(1, 2, 25.00, 1, 25.00),
-(2, 3, 12.00, 5, 60.00),
-(3, 4, 5.00, 3, 15.00);
+INSERT INTO CompraDetalle (IdCompra, IdProducto, PrecioCompra, PrecioVenta, Cantidad, MontoTotal) VALUES
+-- Ejemplo para la compra con IdCompra = 1
+(1, 1, 5.00, 7.50, 10, 50.00),      -- Compra de 10 unidades del producto con IdProducto 1 a $5 cada una
+(1, 2, 8.00, 12.00, 15, 120.00),    -- Compra de 15 unidades del producto con IdProducto 2 a $8 cada una
+
+-- Ejemplo para la compra con IdCompra = 2
+(2, 1, 5.00, 7.50, 20, 100.00),     -- Compra de 20 unidades del producto con IdProducto 1 a $5 cada una
+(2, 3, 6.50, 10.00, 25, 162.50),    -- Compra de 25 unidades del producto con IdProducto 3 a $6.50 cada una
+
+-- Ejemplo para la compra con IdCompra = 3
+(3, 2, 8.00, 12.00, 10, 80.00),     -- Compra de 10 unidades del producto con IdProducto 2 a $8 cada una
+(3, 4, 10.00, 15.00, 5, 50.00),     -- Compra de 5 unidades del producto con IdProducto 4 a $10 cada una
+
+-- Ejemplo para la compra con IdCompra = 4
+(4, 3, 6.50, 10.00, 12, 78.00),     -- Compra de 12 unidades del producto con IdProducto 3 a $6.50 cada una
+(4, 5, 9.00, 13.50, 8, 72.00);      -- Compra de 8 unidades del producto con IdProducto 5 a $9 cada una
+
 
 -- Confirmar datos insertados
 SELECT * FROM Categoria;

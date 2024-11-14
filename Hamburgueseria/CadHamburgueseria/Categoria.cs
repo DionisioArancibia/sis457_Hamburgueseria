@@ -21,7 +21,9 @@ namespace CadHamburgueseria
         }
     
         public int IdCategoria { get; set; }
-        public string Descripcion { get; set; }
+        public string descripcion { get; set; }
+        public string UsuarioRegistro { get; set; }
+        public System.DateTime fechaRegistro { get; set; }
         public short estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
