@@ -39,9 +39,7 @@
             this.nudStock = new System.Windows.Forms.NumericUpDown();
             this.dgvListaProducto = new System.Windows.Forms.DataGridView();
             this.txtParametroProducto = new System.Windows.Forms.TextBox();
-            this.cbxCategoria = new System.Windows.Forms.ComboBox();
             this.fondo = new System.Windows.Forms.Label();
-            this.lblCategoria = new System.Windows.Forms.Label();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
@@ -63,6 +61,8 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.txtPrecioVenta = new System.Windows.Forms.TextBox();
             this.txtPrecioCompra = new System.Windows.Forms.TextBox();
+            this.lblCategoria = new System.Windows.Forms.Label();
+            this.cbxCategoria = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.erpStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpPrecioVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpDescripcion)).BeginInit();
@@ -119,7 +119,7 @@
             // 
             this.nudStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudStock.Location = new System.Drawing.Point(719, 473);
-            this.nudStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudStock.Margin = new System.Windows.Forms.Padding(4);
             this.nudStock.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -155,16 +155,6 @@
             this.txtParametroProducto.TabIndex = 107;
             this.txtParametroProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtParametroProducto_KeyPress);
             // 
-            // cbxCategoria
-            // 
-            this.cbxCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxCategoria.FormattingEnabled = true;
-            this.cbxCategoria.Location = new System.Drawing.Point(719, 319);
-            this.cbxCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbxCategoria.Name = "cbxCategoria";
-            this.cbxCategoria.Size = new System.Drawing.Size(227, 25);
-            this.cbxCategoria.TabIndex = 113;
-            // 
             // fondo
             // 
             this.fondo.BackColor = System.Drawing.Color.White;
@@ -176,16 +166,6 @@
             this.fondo.TabIndex = 105;
             this.fondo.Text = "Buscar por Código o Nombre:";
             this.fondo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblCategoria
-            // 
-            this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoria.Location = new System.Drawing.Point(715, 294);
-            this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(88, 21);
-            this.lblCategoria.TabIndex = 111;
-            this.lblCategoria.Text = "Categoria:";
             // 
             // lblDescripcion
             // 
@@ -358,6 +338,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnCerrar
             // 
@@ -423,6 +404,26 @@
             this.txtPrecioCompra.Size = new System.Drawing.Size(227, 20);
             this.txtPrecioCompra.TabIndex = 129;
             // 
+            // lblCategoria
+            // 
+            this.lblCategoria.AutoSize = true;
+            this.lblCategoria.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoria.Location = new System.Drawing.Point(715, 294);
+            this.lblCategoria.Name = "lblCategoria";
+            this.lblCategoria.Size = new System.Drawing.Size(88, 21);
+            this.lblCategoria.TabIndex = 111;
+            this.lblCategoria.Text = "Categoria:";
+            // 
+            // cbxCategoria
+            // 
+            this.cbxCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxCategoria.FormattingEnabled = true;
+            this.cbxCategoria.Location = new System.Drawing.Point(719, 319);
+            this.cbxCategoria.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxCategoria.Name = "cbxCategoria";
+            this.cbxCategoria.Size = new System.Drawing.Size(227, 25);
+            this.cbxCategoria.TabIndex = 113;
+            // 
             // FrmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -455,7 +456,7 @@
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblTitulo);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "::: Hamburgueseria - Productos :::";
@@ -481,9 +482,7 @@
         private System.Windows.Forms.ErrorProvider erpStock;
         private System.Windows.Forms.NumericUpDown nudStock;
         private System.Windows.Forms.TextBox txtParametroProducto;
-        private System.Windows.Forms.ComboBox cbxCategoria;
         private System.Windows.Forms.Label fondo;
-        private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtDescripcion;
@@ -510,6 +509,8 @@
         private System.Windows.Forms.ErrorProvider erpPrecioCompra;
         private System.Windows.Forms.TextBox txtPrecioCompra;
         private System.Windows.Forms.TextBox txtPrecioVenta;
+        private System.Windows.Forms.Label lblCategoria;
+        private System.Windows.Forms.ComboBox cbxCategoria;
     }
 }
 

@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtClave = new System.Windows.Forms.TextBox();
+            this.erpUsuario = new System.Windows.Forms.ErrorProvider(this.components);
+            this.erpClave = new System.Windows.Forms.ErrorProvider(this.components);
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -38,15 +40,13 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.erpUsuario = new System.Windows.Forms.ErrorProvider(this.components);
-            this.erpClave = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.erpUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpClave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpUsuario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpClave)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUsuario
@@ -62,13 +62,22 @@
             // txtClave
             // 
             this.txtClave.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClave.Location = new System.Drawing.Point(374, 269);
+            this.txtClave.Location = new System.Drawing.Point(374, 266);
             this.txtClave.MaxLength = 15;
             this.txtClave.Multiline = true;
             this.txtClave.Name = "txtClave";
             this.txtClave.PasswordChar = '*';
-            this.txtClave.Size = new System.Drawing.Size(236, 26);
+            this.txtClave.Size = new System.Drawing.Size(236, 29);
             this.txtClave.TabIndex = 8;
+            this.txtClave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClave_KeyPress);
+            // 
+            // erpUsuario
+            // 
+            this.erpUsuario.ContainerControl = this;
+            // 
+            // erpClave
+            // 
+            this.erpClave.ContainerControl = this;
             // 
             // pictureBox5
             // 
@@ -100,7 +109,7 @@
             this.btnSalir.Image = global::CpHamburgueseria.Properties.Resources.close;
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalir.Location = new System.Drawing.Point(514, 330);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(84, 47);
             this.btnSalir.TabIndex = 120;
@@ -117,7 +126,7 @@
             this.btnIngresar.Image = global::CpHamburgueseria.Properties.Resources.login_ok;
             this.btnIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnIngresar.Location = new System.Drawing.Point(374, 330);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(88, 47);
             this.btnIngresar.TabIndex = 119;
@@ -157,14 +166,6 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
-            // erpUsuario
-            // 
-            this.erpUsuario.ContainerControl = this;
-            // 
-            // erpClave
-            // 
-            this.erpClave.ContainerControl = this;
-            // 
             // FrmAutenticacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,16 +180,16 @@
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmAutenticacion";
             this.Text = ":::: HAMBURGUESERIA - AUTENTICACIÓN ::::";
+            ((System.ComponentModel.ISupportInitialize)(this.erpUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpClave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpUsuario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpClave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

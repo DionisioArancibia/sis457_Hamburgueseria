@@ -65,7 +65,5 @@ namespace CpHamburgueseria
         {
             if (e.KeyChar == (char)Keys.Enter) btnIngresar.PerformClick();
         }
-
-
     }
 }

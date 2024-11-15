@@ -24,7 +24,7 @@ namespace CpHamburgueseria
         {
             var lista = CategoriaCln.listarPa(txtParametroCategoria.Text);
             dgvListaCategoria.DataSource = lista;
-            dgvListaCategoria.Columns["id"].Visible = false;
+            dgvListaCategoria.Columns["IdCategoria"].Visible = false;
             dgvListaCategoria.Columns["estado"].Visible = false;
             dgvListaCategoria.Columns["descripcion"].HeaderText = "Descripción";
 
@@ -64,12 +64,15 @@ namespace CpHamburgueseria
 
         private void FrmCategoria_Load(object sender, EventArgs e)
         {
+            Size = new Size(731, 638);
             DesactivarCampos();
             listar();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            Size = new Size(1020, 638);
+            
             HabilitarCampos();
             esNuevo = true;
             txtDescripcionCategoria.Focus();
@@ -78,6 +81,7 @@ namespace CpHamburgueseria
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            Size = new Size(731, 638);
             if (validar())
             {
                 var categoria = new Categoria();
@@ -120,9 +124,10 @@ namespace CpHamburgueseria
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            Size = new Size(1020, 638);
             esNuevo = false;
             int index = dgvListaCategoria.CurrentCell.RowIndex;
-            int id = Convert.ToInt32(dgvListaCategoria.Rows[index].Cells["id"].Value);
+            int id = Convert.ToInt32(dgvListaCategoria.Rows[index].Cells["IdCategoria"].Value);
             var categoria = CategoriaCln.obtenerUno(id);
             txtDescripcionCategoria.Text = categoria.descripcion;
             txtDescripcionCategoria.Focus();
@@ -132,8 +137,8 @@ namespace CpHamburgueseria
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             int index = dgvListaCategoria.CurrentCell.RowIndex;
-            int id = Convert.ToInt32(dgvListaCategoria.Rows[index].Cells["id"].Value);
-            string descripcion = dgvListaCategoria.Rows[index].Cells["descripcion"].Value.ToString();
+            int id = Convert.ToInt32(dgvListaCategoria.Rows[index].Cells["IdCategoria"].Value);
+            string descripcion = dgvListaCategoria.Rows[index].Cells["Descripcion"].Value.ToString();
             DialogResult dialog =
                 MessageBox.Show($"¿Está seguro que desea dar de baja la Categoria con descripción {descripcion}?",
                 "::: Broasteria - Mensaje :::", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -160,6 +165,11 @@ namespace CpHamburgueseria
         private void txtParametroCategoria_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter) listar();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Size = new Size(731, 638);
         }
     }
 

@@ -24,9 +24,9 @@ namespace CpHamburgueseria
         {
             var lista = ProductoCln.listarPa(txtParametroProducto.Text);
             dgvListaProducto.DataSource = lista;
-            dgvListaProducto.Columns["idProducto"].Visible = false;
+            dgvListaProducto.Columns["IdProducto"].Visible = false;
             dgvListaProducto.Columns["estado"].Visible = false ;
-            dgvListaProducto.Columns["codigo"].HeaderText = "Código";
+            dgvListaProducto.Columns["Codigo"].HeaderText = "Código";
             dgvListaProducto.Columns["Nombre"].HeaderText = "Nombre";
             dgvListaProducto.Columns["Descripcion"].HeaderText = "Descripción";
             dgvListaProducto.Columns["IdCategoria"].HeaderText = "Categoria";
@@ -35,7 +35,7 @@ namespace CpHamburgueseria
             dgvListaProducto.Columns["PrecioVenta"].HeaderText = "Precio de Venta";
             btnEditar.Enabled = lista.Count > 0;
             btnEliminar.Enabled = lista.Count > 0;
-            if (lista.Count > 0) dgvListaProducto.CurrentCell = dgvListaProducto.Rows[0].Cells["codigo"];
+            if (lista.Count > 0) dgvListaProducto.CurrentCell = dgvListaProducto.Rows[0].Cells["Codigo"];
         }
 
         private void FrmProducto_Load(object sender, EventArgs e)
@@ -44,6 +44,17 @@ namespace CpHamburgueseria
             listar();
             CargarCategorias();
             
+        }
+        private void DesactivarCampos()
+        {
+            txtCodigo.Enabled = false;
+            txtNombre.Enabled = false;
+            txtDescripcion.Enabled = false;
+            txtPrecioVenta.Enabled = false;
+            txtPrecioCompra.Enabled = false;
+            nudStock.Enabled = false;
+            cbxCategoria.Enabled = false;
+
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -55,7 +66,10 @@ namespace CpHamburgueseria
         {
             esNuevo = true;
             Size = new Size(991, 598);
-           txtCodigo.Focus();
+            HabilitarCampos();
+            txtCodigo.Focus();
+            limpiar();
+
         }
 
         private void HabilitarCampos()
@@ -75,7 +89,11 @@ namespace CpHamburgueseria
             txtCodigo.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtDescripcion.Text = string.Empty;
-           
+            cbxCategoria.Text = string.Empty;
+            txtPrecioVenta.Text = string.Empty;
+            txtPrecioCompra.Text = string.Empty;
+            nudStock.Text = string.Empty;
+
 
         }
 
@@ -90,17 +108,19 @@ namespace CpHamburgueseria
             txtCodigo.Text = producto.Codigo;
             txtNombre.Text = producto.Nombre;
             txtDescripcion.Text = producto.Descripcion;
+            
             txtPrecioVenta.Text = producto.PrecioVenta.ToString();
             txtPrecioCompra.Text = producto.PrecioCompra.ToString();
             nudStock.Value = producto.Stock;
             HabilitarCampos();
             txtCodigo.Focus();
+           
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Size = new Size(722, 598);
-            
+            listar();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -182,6 +202,7 @@ namespace CpHamburgueseria
                 producto.PrecioVenta = decimal.Parse(txtPrecioVenta.Text);
                 producto.PrecioCompra = decimal.Parse(txtPrecioCompra.Text);
                 producto.Stock = nudStock.Value;
+                producto.UsuarioRegistro = Util.usuario.usuario1;
 
 
                 if (esNuevo)
@@ -201,6 +222,8 @@ namespace CpHamburgueseria
                 MessageBox.Show("Producto guardado correctamente", "::: Minerva - Mensaje :::",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            limpiar();
+            DesactivarCampos();
         }
 
        
@@ -210,6 +233,23 @@ namespace CpHamburgueseria
             cbxCategoria.DataSource = categorias;
             cbxCategoria.DisplayMember = "descripcion";
             cbxCategoria.ValueMember = "IdCategoria";
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int index = dgvListaProducto.CurrentCell.RowIndex;
+            int id = Convert.ToInt32(dgvListaProducto.Rows[index].Cells["IdProducto"].Value); // Cambia "id" por "idProducto"
+            string codigo = dgvListaProducto.Rows[index].Cells["Codigo"].Value.ToString();
+            DialogResult dialog =
+                MessageBox.Show($"¿Está seguro que desea dar de baja al producto con codigo {codigo}?",
+                "::: Broasteria - Mensaje :::", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialog == DialogResult.OK)
+            {
+                ProductoCln.eliminar(id, Util.usuario.usuario1);
+                listar();
+                MessageBox.Show("Producto dado de baja correctamente", "::: Broasteria - Mensaje :::",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

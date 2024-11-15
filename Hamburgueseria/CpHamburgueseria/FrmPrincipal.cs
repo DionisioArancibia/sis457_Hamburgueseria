@@ -12,9 +12,33 @@ namespace CpHamburgueseria
 {
     public partial class FrmPrincipal : Form
     {
-        public FrmPrincipal()
+        private FrmAutenticacion frmAutenticacion;
+        public FrmPrincipal(FrmAutenticacion frmAutenticacion)
         {
             InitializeComponent();
+            this.frmAutenticacion = frmAutenticacion;   
+        }
+
+        private void btnCaCategoria_Click(object sender, EventArgs e)
+        {
+            new FrmCategoria().ShowDialog();
+        }
+
+        private void btnCaProductos_Click(object sender, EventArgs e)
+        {
+            new FrmProducto().ShowDialog();
+        }
+
+        private void btnVeVenta_Click(object sender, EventArgs e)
+        {
+            new FrmVenta().ShowDialog();
+        }
+
+        private void btnCaCliente_Click(object sender, EventArgs e)
+        {
+
+            var frmVenta = new FrmVenta();
+            new FrmCliente(frmVenta).ShowDialog();
         }
     }
 }

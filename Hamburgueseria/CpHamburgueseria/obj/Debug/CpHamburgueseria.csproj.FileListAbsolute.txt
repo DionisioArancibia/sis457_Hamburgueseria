@@ -110,3 +110,28 @@ C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\
 C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Word.4.5.2.xml
 C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Excel.4.5.2.xml
 C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Command.4.xml
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmAutenticacion.resources
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmCategoria.resources
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmPrincipal.resources
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.exe.licenses
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.4.5.2.dll
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Ribbon.4.5.2.dll
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.Ribbon.4.5.2.dll
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\CadHamburgueseria.dll
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\ClnHamburgueseria.dll
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\EntityFramework.dll
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\CadHamburgueseria.pdb
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\CadHamburgueseria.dll.config
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\ClnHamburgueseria.pdb
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\ClnHamburgueseria.dll.config
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.4.5.2.xml
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Ribbon.4.5.2.xml
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.Ribbon.4.5.2.xml
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\EntityFramework.xml
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\System.Data.SqlClient.xml
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmVenta.resources
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmCliente.resources
+C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmListProductos.resources

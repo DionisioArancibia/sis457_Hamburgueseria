@@ -75,5 +75,14 @@ namespace ClnHamburgueseria
                 return context.paClienteListar(parametro).ToList();
             }
         }
+
+        public static bool ExisteDocumento(string documento)
+        {
+            using (var context = new LabHamburgueseriaEntities())
+            {
+                return context.Cliente.Any(c => c.documento == documento && c.estado != -1);
+            }
+        }
+
     }
 }
