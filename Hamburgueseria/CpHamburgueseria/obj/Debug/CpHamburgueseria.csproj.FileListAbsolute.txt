@@ -38,78 +38,12 @@ C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\
 C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmAutenticacion.resources
 C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmPrincipal.resources
 C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.exe.licenses
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Pdf.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Report.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Zip.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.BarCode.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Document.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1DX.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Report.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Ribbon.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1RibbonPreview.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1SplitContainer.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.ImportServices.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.FlexChart.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.Bitmap.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Word.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Excel.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Pdf.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Report.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Zip.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.BarCode.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Document.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1DX.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Report.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Ribbon.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1RibbonPreview.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1SplitContainer.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.ImportServices.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.FlexChart.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.Bitmap.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Word.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Excel.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Pdf.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Report.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Zip.4.5.2.dll
 C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.BarCode.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Document.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1DX.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Input.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Report.4.5.2.dll
 C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Ribbon.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1RibbonPreview.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1SplitContainer.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.Calendar.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.ImportServices.4.5.2.dll
 C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.Ribbon.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.FlexChart.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.Bitmap.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Word.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Excel.4.5.2.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Command.4.dll
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Pdf.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Report.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Zip.4.5.2.xml
 C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.BarCode.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Document.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1DX.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Input.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Report.4.5.2.xml
 C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Ribbon.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1RibbonPreview.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1SplitContainer.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.Calendar.4.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.ImportServices.4.5.2.xml
 C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.Ribbon.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.FlexChart.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.Bitmap.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Word.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.C1Excel.4.5.2.xml
-C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\bin\Debug\C1.Win.C1Command.4.xml
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmAutenticacion.resources
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmCategoria.resources
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmPrincipal.resources
@@ -135,3 +69,6 @@ C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpH
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmVenta.resources
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmCliente.resources
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmListProductos.resources
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmCliente.resources
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmListProductos.resources
+C:\Users\hp victus\Desktop\Proyecto sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmVenta.resources

@@ -222,7 +222,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__VentaDeta__IdPro__4AB81AF0">
+  <Association Name="FK__Venta__IdUsuario__44FF419A">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VentaDeta__IdPro__4BAC3F29">
     <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
     <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
     <ReferentialConstraint>
@@ -234,7 +246,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__VentaDeta__IdVen__49C3F6B7">
+  <Association Name="FK__VentaDeta__IdVen__4AB81AF0">
     <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
     <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
     <ReferentialConstraint>
@@ -303,11 +315,15 @@
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Venta" EntitySet="Venta" />
     </AssociationSet>
-    <AssociationSet Name="FK__VentaDeta__IdPro__4AB81AF0" Association="Self.FK__VentaDeta__IdPro__4AB81AF0">
+    <AssociationSet Name="FK__Venta__IdUsuario__44FF419A" Association="Self.FK__Venta__IdUsuario__44FF419A">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VentaDeta__IdPro__4BAC3F29" Association="Self.FK__VentaDeta__IdPro__4BAC3F29">
       <End Role="Producto" EntitySet="Producto" />
       <End Role="VentaDetalle" EntitySet="VentaDetalle" />
     </AssociationSet>
-    <AssociationSet Name="FK__VentaDeta__IdVen__49C3F6B7" Association="Self.FK__VentaDeta__IdVen__49C3F6B7">
+    <AssociationSet Name="FK__VentaDeta__IdVen__4AB81AF0" Association="Self.FK__VentaDeta__IdVen__4AB81AF0">
       <End Role="Venta" EntitySet="Venta" />
       <End Role="VentaDetalle" EntitySet="VentaDetalle" />
     </AssociationSet>

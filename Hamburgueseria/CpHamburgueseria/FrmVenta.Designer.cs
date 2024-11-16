@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVenta));
             this.label1 = new System.Windows.Forms.Label();
             this.gbxDatos = new System.Windows.Forms.GroupBox();
             this.cbxTipoDocumento = new System.Windows.Forms.ComboBox();
@@ -623,6 +624,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbxDatos);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "::: HAMBURGUESERIA - VENTA :::";

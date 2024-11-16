@@ -144,6 +144,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.c1Ribbon1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrincipal";
             this.Text = "::: Hamburgueseria - Principal:::";
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();

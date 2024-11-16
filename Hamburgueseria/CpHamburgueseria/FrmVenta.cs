@@ -64,7 +64,7 @@ namespace CpHamburgueseria
         {
             txtdocumento.KeyPress += Util.onlyNumbers;
             txtPagaCon.TextChanged += txtPagaCon_TextChanged;
-            txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            dgvVentas.Columns.Add("IdUsuario", "Id del Usuario");
             dgvVentas.Columns.Add("Codigo", "Código");
             dgvVentas.Columns.Add("Nombre", "Nombre");
             dgvVentas.Columns.Add("TipoDocumento", "Tipo de Documento");
@@ -102,6 +102,7 @@ namespace CpHamburgueseria
         private bool validar(bool RegistroVenta = false)
         {
             bool esValido = true;
+
             erpDocumentoCliente.SetError(txtdocumento, "");
             erpCodigoProducto.SetError(txtCodigoProducto, "");
             erpCantidadVender.SetError(nudCantidadVenta, "");
@@ -113,19 +114,18 @@ namespace CpHamburgueseria
                 erpDocumentoCliente.SetError(txtdocumento, "Este campo no debe estar vacío.");
             }
 
-            // Validación de productos
-            if (!RegistroVenta) // Solo valida cuando no es el registro de la venta
+            if (!RegistroVenta) // Validación para productos
             {
                 if (string.IsNullOrEmpty(txtCodigoProducto.Text))
                 {
                     esValido = false;
-                    erpCodigoProducto.SetError(txtCodigoProducto, "Este campo no debe estar vacío");
+                    erpCodigoProducto.SetError(txtCodigoProducto, "Este campo no debe estar vacío.");
                 }
 
                 if (nudCantidadVenta.Value <= 0)
                 {
                     esValido = false;
-                    erpCantidadVender.SetError(nudCantidadVenta, "El campo Cantidad no debe ser negativo o cero");
+                    erpCantidadVender.SetError(nudCantidadVenta, "La cantidad no debe ser negativa o cero.");
                 }
             }
 
@@ -171,7 +171,6 @@ namespace CpHamburgueseria
                 var precioVenta = producto.PrecioVenta;
                 var stock = producto.Stock;
 
-
                 if (stock <= 0)
                 {
                     MessageBox.Show("El producto no tiene stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -188,24 +187,32 @@ namespace CpHamburgueseria
                     return;
                 }
 
-                // Agregar el producto a la venta
+                // Obtener el IdUsuario (relacionado con el idEmpleado del usuario actual)
+                int idUsuario = Util.usuario.idEmpleado;
+
+                // Validar que el usuario tenga un IdEmpleado asociado
+                if (idUsuario <= 0)
+                {
+                    MessageBox.Show("No se pudo identificar al empleado asociado al usuario actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Agregar el producto al DataGridView
                 var usuarioRegistro = Util.usuario.usuario1; // Usuario actual
                 var fechaRegistro = DateTime.Now.ToString("dd/MM/yyyy HH:mm"); // Fecha actual
 
-                dgvVentas.Rows.Add(codigo, nombre, cbxTipoDocumento.Text, descripcion, precioVenta, cantidad, total, usuarioRegistro, fechaRegistro);
+                dgvVentas.Rows.Add(idUsuario, codigo, nombre, cbxTipoDocumento.Text, descripcion, precioVenta, cantidad, total, usuarioRegistro, fechaRegistro);
                 LimpiarCampos();
                 CalcularTotalPagar();
             }
         }
-
         private void LimpiarCampos()
         {
-             txtCodigoProducto.Text = string.Empty;
-            txtProducto.Text = string.Empty;
-            txtDescripcion.Text = string.Empty;
-            txtStock.Text = string.Empty;
-            cbxTipoDocumento.Text = string.Empty;
-            txtPrecioVenta.Text = string.Empty;
+            txtCodigoProducto.Clear();
+            txtProducto.Clear();
+            txtDescripcion.Clear();
+            txtStock.Clear();
+            txtPrecioVenta.Clear();
             nudCantidadVenta.Value = 1;
         }
 
@@ -215,14 +222,16 @@ namespace CpHamburgueseria
 
             foreach (DataGridViewRow row in dgvVentas.Rows)
             {
-                if (row.Cells["Total"].Value != null)
+                if (row.Cells["Total"].Value != null &&
+                    decimal.TryParse(row.Cells["Total"].Value.ToString(), out decimal total))
                 {
-                    totalPagar += Convert.ToDecimal(row.Cells["Total"].Value);
+                    totalPagar += total;
                 }
             }
 
             txtMontoAPagar.Text = totalPagar.ToString("0.00");
         }
+
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
@@ -267,60 +276,47 @@ namespace CpHamburgueseria
         {
             try
             {
-                // Validar que los campos necesarios estén completos
                 if (string.IsNullOrEmpty(txtdocumento.Text) || string.IsNullOrEmpty(txtNombre.Text) ||
                     string.IsNullOrEmpty(cbxTipoDocumento.Text) || string.IsNullOrEmpty(txtPagaCon.Text) ||
                     string.IsNullOrEmpty(txtMontoAPagar.Text))
                 {
-                    MessageBox.Show("Por favor, complete todos los campos requeridos.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor, complete todos los campos requeridos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Obtener el IdEmpleado del usuario actual
-                int idEmpleado = Util.usuario.IdEmpleado;
+                int idEmpleado = Util.usuario.idEmpleado;
 
-                // Validar que el usuario actual tenga un IdEmpleado asociado
                 if (idEmpleado <= 0)
                 {
                     MessageBox.Show("No se pudo identificar al empleado asociado al usuario actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Crear el objeto Cliente
-                var cliente = new Cliente
-                {
-                    documento = txtdocumento.Text,
-                    nombreCompleto = txtNombre.Text
-                };
-
-                // Crear el objeto Venta
-                var venta = new Venta
-                {
-                    IdUsuario = idEmpleado, // Relacionar IdUsuario con el IdEmpleado del usuario actual
-                    TipoDocumento = cbxTipoDocumento.Text,
-                    DocumentoCliente = txtdocumento.Text,
-                    NombreCliente = txtNombre.Text,
-                    MontoPago = Convert.ToDecimal(txtPagaCon.Text),
-                    MontoCambio = Convert.ToDecimal(txtCambio.Text),
-                    MontoTotal = Convert.ToDecimal(txtMontoAPagar.Text),
-                    UsuarioRegistro = string.IsNullOrEmpty(Util.usuario.usuario1) ? null : Util.usuario.usuario1,
-                    fechaRegistro = DateTime.Now,
-                    estado = 1
-                };
-
-                // Guardar en la base de datos
                 using (var context = new LabHamburgueseriaEntities())
                 {
-                    context.Cliente.Add(cliente); // Agregar cliente
-                    context.Venta.Add(venta);    // Agregar venta
-                    context.SaveChanges();       // Guardar cambios
-                }
+                    var venta = new Venta
+                    {
+                        IdUsuario = idEmpleado,
+                        TipoDocumento = cbxTipoDocumento.Text,
+                        DocumentoCliente = txtdocumento.Text,
+                        NombreCliente = txtNombre.Text,
+                        MontoPago = Convert.ToDecimal(txtPagaCon.Text),
+                        MontoCambio = Convert.ToDecimal(txtCambio.Text),
+                        MontoTotal = Convert.ToDecimal(txtMontoAPagar.Text),
+                        UsuarioRegistro = Util.usuario.usuario1,
+                        fechaRegistro = DateTime.Now,
+                        estado = 1
+                    };
 
-                MessageBox.Show("Venta registrada exitosamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    context.Venta.Add(venta);
+                    context.SaveChanges();
+
+                    MessageBox.Show("Venta registrada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarFormularioVenta();
+                }
             }
             catch (Exception ex)
             {
-                // Manejar errores
                 MessageBox.Show($"Ocurrió un error al registrar la venta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -329,7 +325,7 @@ namespace CpHamburgueseria
             txtdocumento.Clear();
             txtNombre.Clear();
             txtCodigoProducto.Clear();
-            cbxTipoDocumento.SelectedIndex = -1; // Deselecciona cualquier valor en el ComboBox
+            cbxTipoDocumento.SelectedIndex = -1;
             txtProducto.Clear();
             txtDescripcion.Clear();
             txtStock.Clear();

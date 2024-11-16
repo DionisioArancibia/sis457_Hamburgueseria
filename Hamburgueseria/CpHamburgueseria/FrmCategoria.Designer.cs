@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCategoria));
             this.erpDescripcionCategoria = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblCategoria = new System.Windows.Forms.Label();
             this.dgvListaCategoria = new System.Windows.Forms.DataGridView();
@@ -278,8 +279,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.gbxListaCategoria);
             this.Controls.Add(this.lblTitulo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCategoria";
-            this.Text = "FrmCategoria";
+            this.Text = "::: HAMBURGUESERIA - CATEGORIA :::";
             this.Load += new System.EventHandler(this.FrmCategoria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.erpDescripcionCategoria)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaCategoria)).EndInit();

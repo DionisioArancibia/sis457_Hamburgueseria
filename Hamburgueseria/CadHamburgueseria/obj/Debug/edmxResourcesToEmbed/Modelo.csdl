@@ -73,6 +73,7 @@
     <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="estado" Type="Int16" Nullable="false" />
     <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__idEmple__2A4B4B5E" FromRole="Empleado" ToRole="Usuario" />
+    <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__IdUsuario__44FF419A" FromRole="Empleado" ToRole="Venta" />
   </EntityType>
   <EntityType Name="Producto">
     <Key>
@@ -91,7 +92,7 @@
     <Property Name="estado" Type="Int16" Nullable="false" />
     <NavigationProperty Name="Categoria" Relationship="Self.FK__Producto__IdCate__31EC6D26" FromRole="Producto" ToRole="Categoria" />
     <NavigationProperty Name="CompraDetalle" Relationship="Self.FK__CompraDet__IdPro__3E52440B" FromRole="Producto" ToRole="CompraDetalle" />
-    <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__IdPro__4AB81AF0" FromRole="Producto" ToRole="VentaDetalle" />
+    <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__IdPro__4BAC3F29" FromRole="Producto" ToRole="VentaDetalle" />
   </EntityType>
   <EntityType Name="Proveedor">
     <Key>
@@ -137,8 +138,9 @@
     <Property Name="UsuarioRegistro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="estado" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__Venta__IdUsuario__44FF419A" FromRole="Venta" ToRole="Empleado" />
     <NavigationProperty Name="Usuario" Relationship="Self.FK__Venta__IdUsuario__440B1D61" FromRole="Venta" ToRole="Usuario" />
-    <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__IdVen__49C3F6B7" FromRole="Venta" ToRole="VentaDetalle" />
+    <NavigationProperty Name="VentaDetalle" Relationship="Self.FK__VentaDeta__IdVen__4AB81AF0" FromRole="Venta" ToRole="VentaDetalle" />
   </EntityType>
   <EntityType Name="VentaDetalle">
     <Key>
@@ -153,8 +155,8 @@
     <Property Name="UsuarioRegistro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="estado" Type="Int16" Nullable="false" />
-    <NavigationProperty Name="Producto" Relationship="Self.FK__VentaDeta__IdPro__4AB81AF0" FromRole="VentaDetalle" ToRole="Producto" />
-    <NavigationProperty Name="Venta" Relationship="Self.FK__VentaDeta__IdVen__49C3F6B7" FromRole="VentaDetalle" ToRole="Venta" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK__VentaDeta__IdPro__4BAC3F29" FromRole="VentaDetalle" ToRole="Producto" />
+    <NavigationProperty Name="Venta" Relationship="Self.FK__VentaDeta__IdVen__4AB81AF0" FromRole="VentaDetalle" ToRole="Venta" />
   </EntityType>
   <Association Name="FK__Producto__IdCate__31EC6D26">
     <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
@@ -228,7 +230,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__VentaDeta__IdPro__4AB81AF0">
+  <Association Name="FK__Venta__IdUsuario__44FF419A">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VentaDeta__IdPro__4BAC3F29">
     <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
     <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
     <ReferentialConstraint>
@@ -252,7 +266,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__VentaDeta__IdVen__49C3F6B7">
+  <Association Name="FK__VentaDeta__IdVen__4AB81AF0">
     <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
     <End Role="VentaDetalle" Type="Self.VentaDetalle" Multiplicity="*" />
     <ReferentialConstraint>
@@ -299,7 +313,11 @@
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="Usuario" EntitySet="Usuario" />
     </AssociationSet>
-    <AssociationSet Name="FK__VentaDeta__IdPro__4AB81AF0" Association="Self.FK__VentaDeta__IdPro__4AB81AF0">
+    <AssociationSet Name="FK__Venta__IdUsuario__44FF419A" Association="Self.FK__Venta__IdUsuario__44FF419A">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VentaDeta__IdPro__4BAC3F29" Association="Self.FK__VentaDeta__IdPro__4BAC3F29">
       <End Role="Producto" EntitySet="Producto" />
       <End Role="VentaDetalle" EntitySet="VentaDetalle" />
     </AssociationSet>
@@ -307,7 +325,7 @@
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Venta" EntitySet="Venta" />
     </AssociationSet>
-    <AssociationSet Name="FK__VentaDeta__IdVen__49C3F6B7" Association="Self.FK__VentaDeta__IdVen__49C3F6B7">
+    <AssociationSet Name="FK__VentaDeta__IdVen__4AB81AF0" Association="Self.FK__VentaDeta__IdVen__4AB81AF0">
       <End Role="Venta" EntitySet="Venta" />
       <End Role="VentaDetalle" EntitySet="VentaDetalle" />
     </AssociationSet>

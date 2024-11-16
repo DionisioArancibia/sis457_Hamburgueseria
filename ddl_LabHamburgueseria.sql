@@ -111,7 +111,7 @@ CREATE TABLE Venta (
     MontoCambio DECIMAL(18, 2) NOT NULL CHECK (MontoCambio >= 0),
     MontoTotal DECIMAL(18, 2) NOT NULL CHECK (MontoTotal > 0),
     FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
-    FOREIGN KEY (IdUsuario) REFERENCES Empleado(IdEmpleado);
+    FOREIGN KEY (IdUsuario) REFERENCES Empleado(IdEmpleado)
 );
 
 CREATE TABLE VentaDetalle (

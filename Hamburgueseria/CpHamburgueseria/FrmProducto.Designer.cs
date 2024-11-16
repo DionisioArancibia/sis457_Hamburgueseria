@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProducto));
             this.lblPrecioVenta = new System.Windows.Forms.Label();
             this.lblStock = new System.Windows.Forms.Label();
             this.erpStock = new System.Windows.Forms.ErrorProvider(this.components);
@@ -456,6 +457,7 @@
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblTitulo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
