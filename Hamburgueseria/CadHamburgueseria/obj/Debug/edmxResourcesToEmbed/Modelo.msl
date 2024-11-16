@@ -33,7 +33,6 @@
           <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
           <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
           <ScalarProperty Name="tipoDocumento" ColumnName="tipoDocumento" />
-          <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
           <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
           <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
@@ -124,7 +123,6 @@
           <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
           <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
-          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
           <ScalarProperty Name="DocumentoCliente" ColumnName="DocumentoCliente" />
           <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
           <ScalarProperty Name="MontoPago" ColumnName="MontoPago" />
@@ -180,7 +178,6 @@
       <ResultMapping>
         <ComplexTypeMapping TypeName="LabHamburgueseriaModel.paCompraListar_Result">
           <ScalarProperty Name="idCompra" ColumnName="idCompra" />
-          <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
           <ScalarProperty Name="Usuario" ColumnName="Usuario" />
           <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
           <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
@@ -223,7 +220,6 @@
       <ResultMapping>
         <ComplexTypeMapping TypeName="LabHamburgueseriaModel.paVentaListar_Result">
           <ScalarProperty Name="idVenta" ColumnName="idVenta" />
-          <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
           <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
           <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />

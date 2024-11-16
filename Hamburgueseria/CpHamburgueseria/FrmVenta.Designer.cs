@@ -29,23 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.gbxDatos = new System.Windows.Forms.GroupBox();
             this.cbxTipoDocumento = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.gbxCliente = new System.Windows.Forms.GroupBox();
-            this.txtdocumento = new System.Windows.Forms.TextBox();
-            this.lblCedulaIdentidad = new System.Windows.Forms.Label();
+            this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.btnBuscarCliente = new System.Windows.Forms.Button();
+            this.lblCedulaIdentidad = new System.Windows.Forms.Label();
+            this.txtdocumento = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtCodigoProducto = new System.Windows.Forms.TextBox();
-            this.lblCodigo = new System.Windows.Forms.Label();
-            this.lblProcucto = new System.Windows.Forms.Label();
-            this.txtProducto = new System.Windows.Forms.TextBox();
+            this.btnAñadirProducto = new System.Windows.Forms.Button();
+            this.btnQuitar = new System.Windows.Forms.Button();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.btnAgregarProducto = new System.Windows.Forms.Button();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.txtPrecioVenta = new System.Windows.Forms.TextBox();
@@ -53,6 +52,11 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this.nudCantidadVenta = new System.Windows.Forms.NumericUpDown();
             this.lblCantidad = new System.Windows.Forms.Label();
+            this.txtCodigoProducto = new System.Windows.Forms.TextBox();
+            this.lblCodigo = new System.Windows.Forms.Label();
+            this.btnBuscarProducto = new System.Windows.Forms.Button();
+            this.lblProcucto = new System.Windows.Forms.Label();
+            this.txtProducto = new System.Windows.Forms.TextBox();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
             this.txtCambio = new System.Windows.Forms.TextBox();
             this.txtPagaCon = new System.Windows.Forms.TextBox();
@@ -65,13 +69,9 @@
             this.erpCantidadVender = new System.Windows.Forms.ErrorProvider(this.components);
             this.erpPagaCon = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnRegistrarVenta = new System.Windows.Forms.Button();
-            this.btnQuitar = new System.Windows.Forms.Button();
-            this.btnAgregarProducto = new System.Windows.Forms.Button();
-            this.btnBuscarProducto = new System.Windows.Forms.Button();
-            this.btnAgregarCliente = new System.Windows.Forms.Button();
-            this.btnBuscarCliente = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtFecha = new System.Windows.Forms.DateTimePicker();
             this.gbxDatos.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.gbxCliente.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadVenta)).BeginInit();
@@ -80,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.erpCodigoProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpCantidadVender)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpPagaCon)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -92,7 +93,7 @@
             this.label1.Location = new System.Drawing.Point(-3, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(916, 81);
+            this.label1.Size = new System.Drawing.Size(906, 65);
             this.label1.TabIndex = 35;
             this.label1.Text = "Sistema de Ventas";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -111,42 +112,14 @@
             // 
             // cbxTipoDocumento
             // 
-            this.cbxTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipoDocumento.FormattingEnabled = true;
             this.cbxTipoDocumento.Items.AddRange(new object[] {
-            "Caja",
-            "Docena",
-            "Paquete",
-            "Pliego",
-            "Unidad"});
-            this.cbxTipoDocumento.Location = new System.Drawing.Point(6, 19);
+            "Factura",
+            "Boleta"});
+            this.cbxTipoDocumento.Location = new System.Drawing.Point(18, 23);
             this.cbxTipoDocumento.Name = "cbxTipoDocumento";
-            this.cbxTipoDocumento.Size = new System.Drawing.Size(271, 26);
-            this.cbxTipoDocumento.TabIndex = 5;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Controls.Add(this.dtpFecha);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(8, 155);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(289, 55);
-            this.groupBox1.TabIndex = 37;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Fecha Venta";
-            // 
-            // dtpFecha
-            // 
-            this.dtpFecha.Enabled = false;
-            this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFecha.Location = new System.Drawing.Point(5, 22);
-            this.dtpFecha.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpFecha.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(278, 23);
-            this.dtpFecha.TabIndex = 1;
-            this.dtpFecha.Value = new System.DateTime(2024, 6, 7, 21, 24, 35, 0);
+            this.cbxTipoDocumento.Size = new System.Drawing.Size(253, 26);
+            this.cbxTipoDocumento.TabIndex = 0;
             // 
             // gbxCliente
             // 
@@ -165,29 +138,22 @@
             this.gbxCliente.TabStop = false;
             this.gbxCliente.Text = "Cliente";
             // 
-            // txtdocumento
+            // btnAgregarCliente
             // 
-            this.txtdocumento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnAgregarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtdocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdocumento.Location = new System.Drawing.Point(173, 28);
-            this.txtdocumento.Margin = new System.Windows.Forms.Padding(2);
-            this.txtdocumento.Name = "txtdocumento";
-            this.txtdocumento.Size = new System.Drawing.Size(275, 26);
-            this.txtdocumento.TabIndex = 3;
-            // 
-            // lblCedulaIdentidad
-            // 
-            this.lblCedulaIdentidad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCedulaIdentidad.AutoSize = true;
-            this.lblCedulaIdentidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCedulaIdentidad.Location = new System.Drawing.Point(9, 32);
-            this.lblCedulaIdentidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCedulaIdentidad.Name = "lblCedulaIdentidad";
-            this.lblCedulaIdentidad.Size = new System.Drawing.Size(160, 18);
-            this.lblCedulaIdentidad.TabIndex = 4;
-            this.lblCedulaIdentidad.Text = "Cédula de Identidad:";
+            this.btnAgregarCliente.BackColor = System.Drawing.Color.Transparent;
+            this.btnAgregarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarCliente.Image = global::CpHamburgueseria.Properties.Resources.clients;
+            this.btnAgregarCliente.Location = new System.Drawing.Point(465, 66);
+            this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarCliente.Name = "btnAgregarCliente";
+            this.btnAgregarCliente.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnAgregarCliente.Size = new System.Drawing.Size(67, 45);
+            this.btnAgregarCliente.TabIndex = 127;
+            this.btnAgregarCliente.UseVisualStyleBackColor = false;
+            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
             // 
             // txtNombre
             // 
@@ -213,9 +179,50 @@
             this.lblNombre.TabIndex = 125;
             this.lblNombre.Text = "Nombre de Cliente:";
             // 
+            // btnBuscarCliente
+            // 
+            this.btnBuscarCliente.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarCliente.Image = global::CpHamburgueseria.Properties.Resources.search;
+            this.btnBuscarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscarCliente.Location = new System.Drawing.Point(465, 19);
+            this.btnBuscarCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarCliente.Name = "btnBuscarCliente";
+            this.btnBuscarCliente.Size = new System.Drawing.Size(101, 41);
+            this.btnBuscarCliente.TabIndex = 124;
+            this.btnBuscarCliente.Text = "Buscar";
+            this.btnBuscarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBuscarCliente.UseVisualStyleBackColor = true;
+            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
+            // 
+            // lblCedulaIdentidad
+            // 
+            this.lblCedulaIdentidad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCedulaIdentidad.AutoSize = true;
+            this.lblCedulaIdentidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCedulaIdentidad.Location = new System.Drawing.Point(9, 32);
+            this.lblCedulaIdentidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCedulaIdentidad.Name = "lblCedulaIdentidad";
+            this.lblCedulaIdentidad.Size = new System.Drawing.Size(160, 18);
+            this.lblCedulaIdentidad.TabIndex = 4;
+            this.lblCedulaIdentidad.Text = "Cédula de Identidad:";
+            // 
+            // txtdocumento
+            // 
+            this.txtdocumento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtdocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdocumento.Location = new System.Drawing.Point(173, 28);
+            this.txtdocumento.Margin = new System.Windows.Forms.Padding(2);
+            this.txtdocumento.Name = "txtdocumento";
+            this.txtdocumento.Size = new System.Drawing.Size(275, 26);
+            this.txtdocumento.TabIndex = 3;
+            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox2.Controls.Add(this.btnAñadirProducto);
             this.groupBox2.Controls.Add(this.btnQuitar);
             this.groupBox2.Controls.Add(this.txtDescripcion);
             this.groupBox2.Controls.Add(this.btnAgregarProducto);
@@ -239,53 +246,36 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Producto";
             // 
-            // txtCodigoProducto
+            // btnAñadirProducto
             // 
-            this.txtCodigoProducto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodigoProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoProducto.Location = new System.Drawing.Point(96, 73);
-            this.txtCodigoProducto.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCodigoProducto.Name = "txtCodigoProducto";
-            this.txtCodigoProducto.Size = new System.Drawing.Size(92, 26);
-            this.txtCodigoProducto.TabIndex = 126;
+            this.btnAñadirProducto.BackColor = System.Drawing.Color.Transparent;
+            this.btnAñadirProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAñadirProducto.Image = global::CpHamburgueseria.Properties.Resources.new2;
+            this.btnAñadirProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAñadirProducto.Location = new System.Drawing.Point(260, 26);
+            this.btnAñadirProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAñadirProducto.Name = "btnAñadirProducto";
+            this.btnAñadirProducto.Size = new System.Drawing.Size(44, 38);
+            this.btnAñadirProducto.TabIndex = 137;
+            this.btnAñadirProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAñadirProducto.UseVisualStyleBackColor = true;
+            this.btnAñadirProducto.Click += new System.EventHandler(this.btnAñadirProducto_Click);
             // 
-            // lblCodigo
+            // btnQuitar
             // 
-            this.lblCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(20, 79);
-            this.lblCodigo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(72, 18);
-            this.lblCodigo.TabIndex = 125;
-            this.lblCodigo.Text = "Codigo :";
-            // 
-            // lblProcucto
-            // 
-            this.lblProcucto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblProcucto.AutoSize = true;
-            this.lblProcucto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProcucto.Location = new System.Drawing.Point(5, 36);
-            this.lblProcucto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblProcucto.Name = "lblProcucto";
-            this.lblProcucto.Size = new System.Drawing.Size(87, 18);
-            this.lblProcucto.TabIndex = 4;
-            this.lblProcucto.Text = "Producto :";
-            // 
-            // txtProducto
-            // 
-            this.txtProducto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProducto.Location = new System.Drawing.Point(97, 31);
-            this.txtProducto.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProducto.Name = "txtProducto";
-            this.txtProducto.Size = new System.Drawing.Size(192, 26);
-            this.txtProducto.TabIndex = 3;
+            this.btnQuitar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnQuitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitar.Image = global::CpHamburgueseria.Properties.Resources.close1;
+            this.btnQuitar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnQuitar.Location = new System.Drawing.Point(793, 63);
+            this.btnQuitar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.Size = new System.Drawing.Size(68, 50);
+            this.btnQuitar.TabIndex = 136;
+            this.btnQuitar.Text = "Borrar";
+            this.btnQuitar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnQuitar.UseVisualStyleBackColor = true;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
             // txtDescripcion
             // 
@@ -297,6 +287,22 @@
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(183, 26);
             this.txtDescripcion.TabIndex = 134;
+            // 
+            // btnAgregarProducto
+            // 
+            this.btnAgregarProducto.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnAgregarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarProducto.Image = global::CpHamburgueseria.Properties.Resources.new1;
+            this.btnAgregarProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAgregarProducto.Location = new System.Drawing.Point(793, 7);
+            this.btnAgregarProducto.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarProducto.Name = "btnAgregarProducto";
+            this.btnAgregarProducto.Size = new System.Drawing.Size(68, 50);
+            this.btnAgregarProducto.TabIndex = 135;
+            this.btnAgregarProducto.Text = "Agregar";
+            this.btnAgregarProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAgregarProducto.UseVisualStyleBackColor = true;
+            this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
             // 
             // lblDescripcion
             // 
@@ -392,6 +398,70 @@
             this.lblCantidad.TabIndex = 127;
             this.lblCantidad.Text = "Cantidad:";
             // 
+            // txtCodigoProducto
+            // 
+            this.txtCodigoProducto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCodigoProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoProducto.Location = new System.Drawing.Point(96, 73);
+            this.txtCodigoProducto.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCodigoProducto.Name = "txtCodigoProducto";
+            this.txtCodigoProducto.Size = new System.Drawing.Size(92, 26);
+            this.txtCodigoProducto.TabIndex = 126;
+            // 
+            // lblCodigo
+            // 
+            this.lblCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigo.Location = new System.Drawing.Point(20, 79);
+            this.lblCodigo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(72, 18);
+            this.lblCodigo.TabIndex = 125;
+            this.lblCodigo.Text = "Codigo :";
+            // 
+            // btnBuscarProducto
+            // 
+            this.btnBuscarProducto.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarProducto.Image = global::CpHamburgueseria.Properties.Resources.search;
+            this.btnBuscarProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscarProducto.Location = new System.Drawing.Point(194, 67);
+            this.btnBuscarProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarProducto.Name = "btnBuscarProducto";
+            this.btnBuscarProducto.Size = new System.Drawing.Size(94, 38);
+            this.btnBuscarProducto.TabIndex = 124;
+            this.btnBuscarProducto.Text = "Buscar";
+            this.btnBuscarProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBuscarProducto.UseVisualStyleBackColor = true;
+            this.btnBuscarProducto.Click += new System.EventHandler(this.btnBuscarProducto_Click);
+            // 
+            // lblProcucto
+            // 
+            this.lblProcucto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblProcucto.AutoSize = true;
+            this.lblProcucto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProcucto.Location = new System.Drawing.Point(5, 36);
+            this.lblProcucto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblProcucto.Name = "lblProcucto";
+            this.lblProcucto.Size = new System.Drawing.Size(87, 18);
+            this.lblProcucto.TabIndex = 4;
+            this.lblProcucto.Text = "Producto :";
+            // 
+            // txtProducto
+            // 
+            this.txtProducto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProducto.Location = new System.Drawing.Point(97, 31);
+            this.txtProducto.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProducto.Name = "txtProducto";
+            this.txtProducto.Size = new System.Drawing.Size(157, 26);
+            this.txtProducto.TabIndex = 3;
+            // 
             // dgvVentas
             // 
             this.dgvVentas.AllowUserToAddRows = false;
@@ -401,22 +471,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvVentas.BackgroundColor = System.Drawing.Color.Snow;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVentas.Location = new System.Drawing.Point(8, 358);
+            this.dgvVentas.Location = new System.Drawing.Point(8, 348);
             this.dgvVentas.MultiSelect = false;
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.ReadOnly = true;
             this.dgvVentas.RowHeadersWidth = 51;
             this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVentas.Size = new System.Drawing.Size(881, 272);
+            this.dgvVentas.Size = new System.Drawing.Size(881, 277);
             this.dgvVentas.TabIndex = 136;
             // 
             // txtCambio
@@ -500,7 +570,7 @@
             this.btnRegistrarVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarVenta.Image = global::CpHamburgueseria.Properties.Resources.select;
             this.btnRegistrarVenta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRegistrarVenta.Location = new System.Drawing.Point(768, 635);
+            this.btnRegistrarVenta.Location = new System.Drawing.Point(758, 639);
             this.btnRegistrarVenta.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistrarVenta.Name = "btnRegistrarVenta";
             this.btnRegistrarVenta.Size = new System.Drawing.Size(77, 56);
@@ -510,93 +580,36 @@
             this.btnRegistrarVenta.UseVisualStyleBackColor = true;
             this.btnRegistrarVenta.Click += new System.EventHandler(this.btnRegistrarVenta_Click);
             // 
-            // btnQuitar
+            // groupBox1
             // 
-            this.btnQuitar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnQuitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitar.Image = global::CpHamburgueseria.Properties.Resources.close1;
-            this.btnQuitar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnQuitar.Location = new System.Drawing.Point(793, 63);
-            this.btnQuitar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(68, 50);
-            this.btnQuitar.TabIndex = 136;
-            this.btnQuitar.Text = "Borrar";
-            this.btnQuitar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnQuitar.UseVisualStyleBackColor = true;
-            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox1.Controls.Add(this.txtFecha);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(8, 155);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(289, 55);
+            this.groupBox1.TabIndex = 37;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Fecha Venta";
             // 
-            // btnAgregarProducto
+            // txtFecha
             // 
-            this.btnAgregarProducto.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnAgregarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarProducto.Image = global::CpHamburgueseria.Properties.Resources.new1;
-            this.btnAgregarProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAgregarProducto.Location = new System.Drawing.Point(793, 7);
-            this.btnAgregarProducto.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarProducto.Name = "btnAgregarProducto";
-            this.btnAgregarProducto.Size = new System.Drawing.Size(68, 50);
-            this.btnAgregarProducto.TabIndex = 135;
-            this.btnAgregarProducto.Text = "Agregar";
-            this.btnAgregarProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAgregarProducto.UseVisualStyleBackColor = true;
-            this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
-            // 
-            // btnBuscarProducto
-            // 
-            this.btnBuscarProducto.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarProducto.Image = global::CpHamburgueseria.Properties.Resources.search;
-            this.btnBuscarProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarProducto.Location = new System.Drawing.Point(194, 67);
-            this.btnBuscarProducto.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBuscarProducto.Name = "btnBuscarProducto";
-            this.btnBuscarProducto.Size = new System.Drawing.Size(94, 38);
-            this.btnBuscarProducto.TabIndex = 124;
-            this.btnBuscarProducto.Text = "Buscar";
-            this.btnBuscarProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBuscarProducto.UseVisualStyleBackColor = true;
-            this.btnBuscarProducto.Click += new System.EventHandler(this.btnBuscarProducto_Click);
-            // 
-            // btnAgregarCliente
-            // 
-            this.btnAgregarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregarCliente.BackColor = System.Drawing.Color.Transparent;
-            this.btnAgregarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarCliente.Image = global::CpHamburgueseria.Properties.Resources.clients;
-            this.btnAgregarCliente.Location = new System.Drawing.Point(465, 66);
-            this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarCliente.Name = "btnAgregarCliente";
-            this.btnAgregarCliente.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnAgregarCliente.Size = new System.Drawing.Size(67, 45);
-            this.btnAgregarCliente.TabIndex = 127;
-            this.btnAgregarCliente.UseVisualStyleBackColor = false;
-            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
-            // 
-            // btnBuscarCliente
-            // 
-            this.btnBuscarCliente.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarCliente.Image = global::CpHamburgueseria.Properties.Resources.search;
-            this.btnBuscarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(465, 19);
-            this.btnBuscarCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(101, 41);
-            this.btnBuscarCliente.TabIndex = 124;
-            this.btnBuscarCliente.Text = "Buscar";
-            this.btnBuscarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBuscarCliente.UseVisualStyleBackColor = true;
-            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
+            this.txtFecha.Enabled = false;
+            this.txtFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFecha.Location = new System.Drawing.Point(5, 22);
+            this.txtFecha.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFecha.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(278, 23);
+            this.txtFecha.TabIndex = 1;
+            this.txtFecha.Value = new System.DateTime(2024, 6, 7, 21, 24, 35, 0);
             // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(905, 702);
+            this.ClientSize = new System.Drawing.Size(899, 715);
             this.Controls.Add(this.btnRegistrarVenta);
             this.Controls.Add(this.txtCambio);
             this.Controls.Add(this.txtPagaCon);
@@ -612,10 +625,9 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "::: HMBURGUESERIA - VENTA :::";
+            this.Text = "::: HAMBURGUESERIA - VENTA :::";
             this.Load += new System.EventHandler(this.FrmVenta_Load);
             this.gbxDatos.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.gbxCliente.ResumeLayout(false);
             this.gbxCliente.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -626,6 +638,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.erpCodigoProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpCantidadVender)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpPagaCon)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -634,9 +647,6 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbxDatos;
-        private System.Windows.Forms.ComboBox cbxTipoDocumento;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.GroupBox gbxCliente;
         private System.Windows.Forms.Label lblCedulaIdentidad;
         private System.Windows.Forms.TextBox txtdocumento;
@@ -672,5 +682,9 @@
         private System.Windows.Forms.ErrorProvider erpCodigoProducto;
         private System.Windows.Forms.ErrorProvider erpCantidadVender;
         private System.Windows.Forms.ErrorProvider erpPagaCon;
+        private System.Windows.Forms.ComboBox cbxTipoDocumento;
+        private System.Windows.Forms.Button btnAñadirProducto;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker txtFecha;
     }
 }

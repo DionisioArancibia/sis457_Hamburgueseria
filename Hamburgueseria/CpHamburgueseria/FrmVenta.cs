@@ -64,12 +64,17 @@ namespace CpHamburgueseria
         {
             txtdocumento.KeyPress += Util.onlyNumbers;
             txtPagaCon.TextChanged += txtPagaCon_TextChanged;
+            txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             dgvVentas.Columns.Add("Codigo", "Código");
             dgvVentas.Columns.Add("Nombre", "Nombre");
+            dgvVentas.Columns.Add("TipoDocumento", "Tipo de Documento");
             dgvVentas.Columns.Add("Descripcion", "Descripción");
             dgvVentas.Columns.Add("PrecioVenta", "Precio de Venta");
             dgvVentas.Columns.Add("Cantidad", "Cantidad");
             dgvVentas.Columns.Add("Total", "Total");
+            dgvVentas.Columns.Add("UsuarioRegistro", "Usuario de Registro");
+            dgvVentas.Columns.Add("FechaRegistro", "Fecha de Registro"); // Nueva columna
+            
         }
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
@@ -102,36 +107,31 @@ namespace CpHamburgueseria
             erpCantidadVender.SetError(nudCantidadVenta, "");
             erpPagaCon.SetError(txtPagaCon, "");
 
-            // Validación del documento del cliente
             if (string.IsNullOrWhiteSpace(txtdocumento.Text))
             {
                 esValido = false;
                 erpDocumentoCliente.SetError(txtdocumento, "Este campo no debe estar vacío.");
             }
 
-            // Validación de selección de producto
-            if (string.IsNullOrWhiteSpace(txtCodigoProducto.Text))
+            // Validación de productos
+            if (!RegistroVenta) // Solo valida cuando no es el registro de la venta
             {
-                esValido = false;
-                erpCodigoProducto.SetError(txtCodigoProducto, "Este campo no debe estar vacío.");
-            }
-
-            // Validación de cantidad de venta
-            if (nudCantidadVenta.Value <= 0)
-            {
-                esValido = false;
-                erpCantidadVender.SetError(nudCantidadVenta, "La cantidad debe ser mayor a cero.");
-            }
-
-            // Validación de monto de pago
-            if (RegistroVenta)
-            {
-                if (string.IsNullOrWhiteSpace(txtPagaCon.Text) || !decimal.TryParse(txtPagaCon.Text, out decimal pagaCon) || pagaCon <= 0)
+                if (string.IsNullOrEmpty(txtCodigoProducto.Text))
                 {
                     esValido = false;
-                    erpPagaCon.SetError(txtPagaCon, "Ingrese un monto de pago válido.");
+                    erpCodigoProducto.SetError(txtCodigoProducto, "Este campo no debe estar vacío");
                 }
-                else if (pagaCon < Convert.ToDecimal(txtMontoAPagar.Text))
+
+                if (nudCantidadVenta.Value <= 0)
+                {
+                    esValido = false;
+                    erpCantidadVender.SetError(nudCantidadVenta, "El campo Cantidad no debe ser negativo o cero");
+                }
+            }
+
+            if (RegistroVenta)
+            {
+                if (string.IsNullOrWhiteSpace(txtPagaCon.Text) || !decimal.TryParse(txtPagaCon.Text, out decimal pagaCon) || pagaCon < Convert.ToDecimal(txtMontoAPagar.Text))
                 {
                     esValido = false;
                     erpPagaCon.SetError(txtPagaCon, "El monto de pago debe ser suficiente para cubrir el total.");
@@ -149,16 +149,53 @@ namespace CpHamburgueseria
                 return;
             }
 
-            var codigo = txtCodigoProducto.Text;
-            var nombre = txtProducto.Text;
-            var descripcion = txtDescripcion.Text;
-            var precioVenta = decimal.Parse(txtPrecioVenta.Text);
-            var cantidad = int.Parse(nudCantidadVenta.Text);
-            var total = precioVenta * cantidad;
+            if (string.IsNullOrWhiteSpace(txtCodigoProducto.Text))
+            {
+                MessageBox.Show("Por favor, selecciona un producto válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            dgvVentas.Rows.Add(codigo, nombre, descripcion, precioVenta, cantidad, total);
-            LimpiarCampos();
-            CalcularTotalPagar();
+            // Verificar que el producto exista en la base de datos
+            string codigo = txtCodigoProducto.Text;
+            using (var context = new LabHamburgueseriaEntities())
+            {
+                var producto = context.Producto.FirstOrDefault(p => p.Codigo == codigo);
+                if (producto == null)
+                {
+                    MessageBox.Show("Producto no encontrado en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var nombre = producto.Nombre;
+                var descripcion = producto.Descripcion;
+                var precioVenta = producto.PrecioVenta;
+                var stock = producto.Stock;
+
+
+                if (stock <= 0)
+                {
+                    MessageBox.Show("El producto no tiene stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var cantidad = (int)nudCantidadVenta.Value;
+                var total = precioVenta * cantidad;
+
+                // Verificar si la cantidad deseada está disponible en stock
+                if (cantidad > stock)
+                {
+                    MessageBox.Show("La cantidad solicitada excede el stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Agregar el producto a la venta
+                var usuarioRegistro = Util.usuario.usuario1; // Usuario actual
+                var fechaRegistro = DateTime.Now.ToString("dd/MM/yyyy HH:mm"); // Fecha actual
+
+                dgvVentas.Rows.Add(codigo, nombre, cbxTipoDocumento.Text, descripcion, precioVenta, cantidad, total, usuarioRegistro, fechaRegistro);
+                LimpiarCampos();
+                CalcularTotalPagar();
+            }
         }
 
         private void LimpiarCampos()
@@ -167,6 +204,7 @@ namespace CpHamburgueseria
             txtProducto.Text = string.Empty;
             txtDescripcion.Text = string.Empty;
             txtStock.Text = string.Empty;
+            cbxTipoDocumento.Text = string.Empty;
             txtPrecioVenta.Text = string.Empty;
             nudCantidadVenta.Value = 1;
         }
@@ -227,101 +265,82 @@ namespace CpHamburgueseria
 
         private void btnRegistrarVenta_Click(object sender, EventArgs e)
         {
-            if (!validar(RegistroVenta: true))
-            {
-                MessageBox.Show("Por favor, corrige los errores antes de registrar la venta.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(txtdocumento.Text))
-            {
-                MessageBox.Show("El documento del cliente no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (dgvVentas.Rows.Count == 0)
-            {
-                MessageBox.Show("Debe agregar al menos un producto a la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            List<VentaDetalle> detalles = new List<VentaDetalle>();
-
-            foreach (DataGridViewRow row in dgvVentas.Rows)
-            {
-                if (row.Cells["Codigo"].Value != null && row.Cells["PrecioVenta"].Value != null && row.Cells["Cantidad"].Value != null)
-                {
-                    // Get product code and price
-                    string codigoProducto = row.Cells["Codigo"].Value.ToString();
-
-                    if (!decimal.TryParse(row.Cells["PrecioVenta"].Value.ToString(), out decimal precioVenta))
-                    {
-                        MessageBox.Show($"El valor de la columna 'PrecioVenta' en la fila {row.Index + 1} no es un número válido.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        continue;
-                    }
-
-                    if (!int.TryParse(row.Cells["Cantidad"].Value.ToString(), out int cantidad))
-                    {
-                        MessageBox.Show($"El valor de la columna 'Cantidad' en la fila {row.Index + 1} no es un número válido.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        continue;
-                    }
-
-                    var detalle = new VentaDetalle
-                    {
-                        // Assumes you have the product ID available from a previous query
-                        // Use the product ID, not the code, to reference the actual product in the database
-                        IdProducto = GetProductoIdByCodigo(codigoProducto),
-                        PrecioVenta = precioVenta,
-                        Cantidad = cantidad,
-                        SubTotal = precioVenta * cantidad
-                    };
-                    detalles.Add(detalle);
-                }
-            }
-
-            // Create a new Venta (sale) object
-            var cliente = new Cliente
-            {
-                documento = txtdocumento.Text,
-                nombreCompleto = txtNombre.Text
-            };
-
-            var venta = new Venta
-            {
-                DocumentoCliente = cliente.documento,
-                MontoTotal = Convert.ToDecimal(txtMontoAPagar.Text),
-                // Add the sale details to the venta object
-                VentaDetalle = detalles
-            };
-
             try
             {
-                using (var context = new LabHamburgueseriaEntities())
+                // Validar que los campos necesarios estén completos
+                if (string.IsNullOrEmpty(txtdocumento.Text) || string.IsNullOrEmpty(txtNombre.Text) ||
+                    string.IsNullOrEmpty(cbxTipoDocumento.Text) || string.IsNullOrEmpty(txtPagaCon.Text) ||
+                    string.IsNullOrEmpty(txtMontoAPagar.Text))
                 {
-                    context.Venta.Add(venta);  // Add the sale to the context
-                    context.SaveChanges();     // Commit the transaction to the database
+                    MessageBox.Show("Por favor, complete todos los campos requeridos.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
 
-                MessageBox.Show("Venta registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (DbEntityValidationException ex)
-            {
-                // Handle validation errors
-                string errorMessage = "Error al registrar la venta: ";
-                foreach (var validationError in ex.EntityValidationErrors)
+                // Obtener el IdEmpleado del usuario actual
+                int idEmpleado = Util.usuario.IdEmpleado;
+
+                // Validar que el usuario actual tenga un IdEmpleado asociado
+                if (idEmpleado <= 0)
                 {
-                    foreach (var error in validationError.ValidationErrors)
-                    {
-                        errorMessage += $"{error.PropertyName}: {error.ErrorMessage}\n";
-                    }
+                    MessageBox.Show("No se pudo identificar al empleado asociado al usuario actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-                MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Crear el objeto Cliente
+                var cliente = new Cliente
+                {
+                    documento = txtdocumento.Text,
+                    nombreCompleto = txtNombre.Text
+                };
+
+                // Crear el objeto Venta
+                var venta = new Venta
+                {
+                    IdUsuario = idEmpleado, // Relacionar IdUsuario con el IdEmpleado del usuario actual
+                    TipoDocumento = cbxTipoDocumento.Text,
+                    DocumentoCliente = txtdocumento.Text,
+                    NombreCliente = txtNombre.Text,
+                    MontoPago = Convert.ToDecimal(txtPagaCon.Text),
+                    MontoCambio = Convert.ToDecimal(txtCambio.Text),
+                    MontoTotal = Convert.ToDecimal(txtMontoAPagar.Text),
+                    UsuarioRegistro = string.IsNullOrEmpty(Util.usuario.usuario1) ? null : Util.usuario.usuario1,
+                    fechaRegistro = DateTime.Now,
+                    estado = 1
+                };
+
+                // Guardar en la base de datos
+                using (var context = new LabHamburgueseriaEntities())
+                {
+                    context.Cliente.Add(cliente); // Agregar cliente
+                    context.Venta.Add(venta);    // Agregar venta
+                    context.SaveChanges();       // Guardar cambios
+                }
+
+                MessageBox.Show("Venta registrada exitosamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error inesperado al registrar la venta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Manejar errores
+                MessageBox.Show($"Ocurrió un error al registrar la venta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void LimpiarFormularioVenta()
+        {
+            txtdocumento.Clear();
+            txtNombre.Clear();
+            txtCodigoProducto.Clear();
+            cbxTipoDocumento.SelectedIndex = -1; // Deselecciona cualquier valor en el ComboBox
+            txtProducto.Clear();
+            txtDescripcion.Clear();
+            txtStock.Clear();
+            txtPrecioVenta.Clear();
+            nudCantidadVenta.Value = 1;
+            txtMontoAPagar.Clear();
+            txtPagaCon.Clear();
+            txtCambio.Clear();
+            dgvVentas.Rows.Clear();
+        }
+
         private int GetProductoIdByCodigo(string codigoProducto)
         {
             using (var context = new LabHamburgueseriaEntities())
@@ -330,7 +349,16 @@ namespace CpHamburgueseria
                 return producto != null ? producto.IdProducto : 0;
             }
         }
+      
+
+     
 
 
+
+        private void btnAñadirProducto_Click(object sender, EventArgs e)
+        {
+            var frmProducto = new FrmProducto(this);
+            frmProducto.ShowDialog(); ;
+        }
     }
 }

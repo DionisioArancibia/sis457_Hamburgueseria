@@ -28,7 +28,6 @@ namespace ClnHamburgueseria
                 {
                     existente.IdUsuario = venta.IdUsuario;
                     existente.TipoDocumento = venta.TipoDocumento;
-                    existente.NumeroDocumento = venta.NumeroDocumento;
                     existente.DocumentoCliente = venta.DocumentoCliente;
                     existente.NombreCliente = venta.NombreCliente;
                     existente.MontoPago = venta.MontoPago;

@@ -56,7 +56,7 @@ namespace CpHamburgueseria
                     Visible = false;
                     new FrmPrincipal(this).ShowDialog();
                 }
-                else MessageBox.Show("Usuario y/o contraseña incorrecto", "::: Minerva - Mensaje :::",
+                else MessageBox.Show("Usuario y/o contraseña incorrecto", "::: Hamburgueseria - Mensaje :::",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

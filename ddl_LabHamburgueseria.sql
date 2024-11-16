@@ -84,7 +84,6 @@ CREATE TABLE Compra (
     idUsuario INT NOT NULL,
     idProveedor INT NOT NULL,
     tipoDocumento VARCHAR(20) NOT NULL,
-    numeroDocumento VARCHAR(50) NOT NULL,
     montoTotal DECIMAL(18, 2) NOT NULL CHECK (montoTotal > 0),
     FOREIGN KEY (idUsuario) REFERENCES Usuario(IdUsuario),
     FOREIGN KEY (idProveedor) REFERENCES Proveedor(idProveedor)
@@ -106,13 +105,13 @@ CREATE TABLE Venta (
     IdVenta INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     IdUsuario INT NOT NULL,
     TipoDocumento VARCHAR(20) NOT NULL,
-    NumeroDocumento VARCHAR(50) NOT NULL,
     DocumentoCliente VARCHAR(20) NOT NULL,
     NombreCliente VARCHAR(100) NOT NULL,
     MontoPago DECIMAL(18, 2) NOT NULL CHECK (MontoPago >= 0),
     MontoCambio DECIMAL(18, 2) NOT NULL CHECK (MontoCambio >= 0),
     MontoTotal DECIMAL(18, 2) NOT NULL CHECK (MontoTotal > 0),
-    FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
+    FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
+    FOREIGN KEY (IdUsuario) REFERENCES Empleado(IdEmpleado);
 );
 
 CREATE TABLE VentaDetalle (
@@ -158,6 +157,7 @@ ALTER TABLE Compra ADD estado SMALLINT NOT NULL DEFAULT 1;
 ALTER TABLE Venta ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
 ALTER TABLE Venta ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
 ALTER TABLE Venta ADD estado SMALLINT NOT NULL DEFAULT 1;
+
 
 ALTER TABLE CompraDetalle ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
 ALTER TABLE CompraDetalle ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
@@ -232,7 +232,6 @@ CREATE PROC paCompraListar
 AS
 BEGIN
     SELECT c.idCompra, 
-           c.numeroDocumento,
            ISNULL(u.usuario, '') AS Usuario,
            ISNULL(p.razonSocial, '') AS Proveedor,
            c.montoTotal,
@@ -241,8 +240,7 @@ BEGIN
     LEFT JOIN Usuario u ON c.idUsuario = u.IdUsuario
     LEFT JOIN Proveedor p ON c.idProveedor = p.idProveedor
     WHERE c.estado <> -1 
-      AND (c.numeroDocumento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' 
-           OR p.razonSocial LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
+      AND (p.razonSocial LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
     ORDER BY c.fechaRegistro DESC;
 END
 GO
@@ -253,18 +251,15 @@ CREATE PROC paVentaListar
 AS
 BEGIN
     SELECT v.idVenta,
-           v.numeroDocumento,
            v.nombreCliente,
            v.montoTotal,
            v.fechaRegistro 
     FROM Venta v
     WHERE v.estado <> -1 
-      AND (v.numeroDocumento LIKE '%' + REPLACE(@parametro, ' ', '%') + '%' 
-           OR v.nombreCliente LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
+      AND (v.nombreCliente LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
     ORDER BY v.fechaRegistro DESC;
 END
 GO
-
 
 
 -- Insertar datos en la tabla Categoria
@@ -302,10 +297,9 @@ INSERT INTO Producto (Codigo, Nombre, Descripcion, IdCategoria, Stock, PrecioCom
 ('P004', 'Papas Fritas', 'Papas fritas crocantes', 4, 40, 3.00, 5.00);
 
 -- Insertar datos en la tabla Compra
-INSERT INTO Compra (IdUsuario, IdProveedor, TipoDocumento, NumeroDocumento, MontoTotal) VALUES
-(1, 1, 'Factura', 'F001', 1000.00),
-(2, 2, 'Factura', 'F002', 500.00),
-(3, 3, 'Factura', 'F003', 750.00);
+INSERT INTO Compra (IdUsuario, IdProveedor, TipoDocumento, MontoTotal) VALUES
+(1, 1, 'Factura', 1000.00)
+GO
 
 -- Insertar datos en la tabla CompraDetalle
 INSERT INTO CompraDetalle (IdCompra, IdProducto, PrecioCompra, PrecioVenta, Cantidad, MontoTotal) VALUES
@@ -315,9 +309,9 @@ INSERT INTO CompraDetalle (IdCompra, IdProducto, PrecioCompra, PrecioVenta, Cant
 (3, 4, 3.00, 5.00, 40, 120.00);
 
 -- Insertar datos en la tabla Venta
-INSERT INTO VENTA (IdUsuario, TipoDocumento, NumeroDocumento, DocumentoCliente, NombreCliente, MontoPago, MontoCambio, MontoTotal) VALUES
-(1, 'Boleta', 'B001', '20001', 'Juan Perez', 100.00, 10.00, 90.00);
-
+INSERT INTO Venta(IdUsuario, TipoDocumento, DocumentoCliente, NombreCliente, MontoPago, MontoCambio, MontoTotal) VALUES
+(1, 'Boleta', '10386364', 'Juan Perez', 100.00, 10.00, 90.00);
+GO
 
 -- Insertar datos en la tabla VentaDetalle
 INSERT INTO CompraDetalle (IdCompra, IdProducto, PrecioCompra, PrecioVenta, Cantidad, MontoTotal) VALUES

@@ -24,7 +24,6 @@ namespace CadHamburgueseria
         public int idUsuario { get; set; }
         public int idProveedor { get; set; }
         public string tipoDocumento { get; set; }
-        public string numeroDocumento { get; set; }
         public decimal montoTotal { get; set; }
         public string UsuarioRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }

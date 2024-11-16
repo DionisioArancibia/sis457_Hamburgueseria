@@ -14,7 +14,6 @@ namespace CadHamburgueseria
     public partial class paCompraListar_Result
     {
         public int idCompra { get; set; }
-        public string numeroDocumento { get; set; }
         public string Usuario { get; set; }
         public string Proveedor { get; set; }
         public decimal montoTotal { get; set; }

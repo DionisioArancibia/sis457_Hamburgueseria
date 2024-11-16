@@ -366,7 +366,7 @@
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.gbxLista);
             this.Name = "FrmCliente";
-            this.Text = "FrmCliente";
+            this.Text = "::: Hamburgueseria - Clientes:::";
             this.Load += new System.EventHandler(this.FrmCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaCliente)).EndInit();
             this.gbxLista.ResumeLayout(false);

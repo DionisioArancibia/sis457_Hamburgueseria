@@ -36,7 +36,6 @@
           <Property Name="idUsuario" Type="int" Nullable="false" />
           <Property Name="idProveedor" Type="int" Nullable="false" />
           <Property Name="tipoDocumento" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="numeroDocumento" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="montoTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="UsuarioRegistro" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
@@ -121,7 +120,6 @@
           <Property Name="IdVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdUsuario" Type="int" Nullable="false" />
           <Property Name="TipoDocumento" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="NumeroDocumento" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DocumentoCliente" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="NombreCliente" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="MontoPago" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -356,7 +354,6 @@
           <Property Name="idUsuario" Type="Int32" Nullable="false" />
           <Property Name="idProveedor" Type="Int32" Nullable="false" />
           <Property Name="tipoDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="numeroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="montoTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="UsuarioRegistro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
@@ -454,7 +451,6 @@
           <Property Name="IdVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdUsuario" Type="Int32" Nullable="false" />
           <Property Name="TipoDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NumeroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DocumentoCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NombreCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MontoPago" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
@@ -675,7 +671,6 @@
         </ComplexType>
         <ComplexType Name="paCompraListar_Result">
           <Property Type="Int32" Name="idCompra" Nullable="false" />
-          <Property Type="String" Name="numeroDocumento" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="15" />
           <Property Type="String" Name="Proveedor" Nullable="false" MaxLength="100" />
           <Property Type="Decimal" Name="montoTotal" Nullable="false" Precision="18" Scale="2" />
@@ -706,7 +701,6 @@
         </ComplexType>
         <ComplexType Name="paVentaListar_Result">
           <Property Type="Int32" Name="idVenta" Nullable="false" />
-          <Property Type="String" Name="numeroDocumento" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="nombreCliente" Nullable="false" MaxLength="100" />
           <Property Type="Decimal" Name="montoTotal" Nullable="false" Precision="18" Scale="2" />
           <Property Type="DateTime" Name="fechaRegistro" Nullable="false" Precision="23" />
@@ -749,7 +743,6 @@
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
                 <ScalarProperty Name="tipoDocumento" ColumnName="tipoDocumento" />
-                <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
                 <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
                 <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
                 <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
@@ -840,7 +833,6 @@
                 <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
-                <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
                 <ScalarProperty Name="DocumentoCliente" ColumnName="DocumentoCliente" />
                 <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
                 <ScalarProperty Name="MontoPago" ColumnName="MontoPago" />
@@ -896,7 +888,6 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="LabHamburgueseriaModel.paCompraListar_Result">
                 <ScalarProperty Name="idCompra" ColumnName="idCompra" />
-                <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
                 <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
@@ -939,7 +930,6 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="LabHamburgueseriaModel.paVentaListar_Result">
                 <ScalarProperty Name="idVenta" ColumnName="idVenta" />
-                <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
                 <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
                 <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
                 <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />

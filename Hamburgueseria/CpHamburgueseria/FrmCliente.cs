@@ -132,7 +132,7 @@ namespace CpHamburgueseria
                 {
                     if (ClienteCln.ExisteDocumento(cliente.documento))
                     {
-                        MessageBox.Show("NO SE PUEDE AGREGAR, documento ya existente.", ":::Broasteria - Mensaje :::",
+                        MessageBox.Show("NO SE PUEDE AGREGAR, documento ya existente.", ":::Hamburgueseria - Mensaje :::",
                                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
@@ -149,7 +149,7 @@ namespace CpHamburgueseria
 
                     if (cliente.documento != clienteExistente.documento && ClienteCln.ExisteDocumento(cliente.documento))
                     {
-                        MessageBox.Show("NO SE PUEDE ACTUALIZAR, documento ya existente.", ":::Broasteria - Mensaje :::",
+                        MessageBox.Show("NO SE PUEDE ACTUALIZAR, documento ya existente.", ":::Hamburgueseria - Mensaje :::",
                                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
@@ -158,7 +158,7 @@ namespace CpHamburgueseria
                     ClienteCln.actualizar(cliente);
                 }
                 listar();
-                MessageBox.Show("Cliente guardado correctamente", ":::Broasteria - Mensaje :::",
+                MessageBox.Show("Cliente guardado correctamente", ":::Hamburgueseria - Mensaje :::",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Llamar a FrmVenta para actualizar los datos del cliente creado
@@ -191,12 +191,12 @@ namespace CpHamburgueseria
             string documento = dgvListaCliente.Rows[index].Cells["documento"].Value.ToString();
             DialogResult dialog =
                 MessageBox.Show($"¿Está seguro que desea dar de baja al Cliente con N° de documento {documento}?",
-                                "::: Broasteria - Mensaje :::", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                                ":::Hamburgueseria - Mensaje :::", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialog == DialogResult.OK)
             {
                 ClienteCln.eliminar(id, Util.usuario.usuario1);
                 listar();
-                MessageBox.Show("Cliente dado de baja correctamente", "::: Broasteria - Mensaje :::",
+                MessageBox.Show("Cliente dado de baja correctamente", ":::Hamburgueseria - Mensaje :::",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

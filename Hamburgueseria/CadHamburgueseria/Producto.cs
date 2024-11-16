@@ -20,8 +20,6 @@ namespace CadHamburgueseria
             this.CompraDetalle = new HashSet<CompraDetalle>();
             this.VentaDetalle = new HashSet<VentaDetalle>();
         }
-
-
     
         public int IdProducto { get; set; }
         public string Codigo { get; set; }

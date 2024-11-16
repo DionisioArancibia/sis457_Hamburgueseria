@@ -26,7 +26,8 @@ namespace CpHamburgueseria
 
         private void btnCaProductos_Click(object sender, EventArgs e)
         {
-            new FrmProducto().ShowDialog();
+            var frmproducto = new FrmVenta();
+            new FrmProducto(frmproducto).ShowDialog();
         }
 
         private void btnVeVenta_Click(object sender, EventArgs e)

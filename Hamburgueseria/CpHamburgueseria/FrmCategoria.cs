@@ -92,7 +92,7 @@ namespace CpHamburgueseria
 
                     if (CategoriaCln.ExisteDescripcion(categoria.descripcion))
                     {
-                        MessageBox.Show("NO SE PUEDE AGREGAR, descripción ya existente.", ":::Broasteria - Mensaje :::",
+                        MessageBox.Show("NO SE PUEDE AGREGAR, descripción ya existente.", ":::Hamburgueseria - Mensaje :::",
                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
@@ -107,7 +107,7 @@ namespace CpHamburgueseria
                     var categoriaExistente = CategoriaCln.obtenerUno(categoria.IdCategoria);
                     if (categoria.descripcion != categoriaExistente.descripcion && CategoriaCln.ExisteDescripcion(categoria.descripcion))
                     {
-                        MessageBox.Show("NO SE PUEDE ACTUALIZAR, descripción ya existente.", ":::Broasteria - Mensaje :::",
+                        MessageBox.Show("NO SE PUEDE ACTUALIZAR, descripción ya existente.", ":::Hamburgueseria - Mensaje :::",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
@@ -115,7 +115,7 @@ namespace CpHamburgueseria
                     CategoriaCln.actualizar(categoria);
                 }
                 listar();
-                MessageBox.Show("Categoria guardado correctamente", ":::Broasteria - Mensaje :::",
+                MessageBox.Show("Categoria guardado correctamente", ":::Hamburgueseria - Mensaje :::",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             limpiar();
@@ -141,12 +141,12 @@ namespace CpHamburgueseria
             string descripcion = dgvListaCategoria.Rows[index].Cells["Descripcion"].Value.ToString();
             DialogResult dialog =
                 MessageBox.Show($"¿Está seguro que desea dar de baja la Categoria con descripción {descripcion}?",
-                "::: Broasteria - Mensaje :::", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                "::: Hamburgueseria - Mensaje :::", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialog == DialogResult.OK)
             {
                 CategoriaCln.eliminar(id, Util.usuario.usuario1);
                 listar();
-                MessageBox.Show("Categoria dado de baja correctamente", "::: Broasteria - Mensaje :::",
+                MessageBox.Show("Categoria dado de baja correctamente", "::: Hamburgueseria - Mensaje :::",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             limpiar();

@@ -15,7 +15,7 @@ namespace CpHamburgueseria
     public partial class FrmProducto : Form
     {
         private bool esNuevo = false;
-        public FrmProducto()
+        public FrmProducto(FrmVenta frmVenta)
         {
             InitializeComponent();
         }
@@ -192,38 +192,53 @@ namespace CpHamburgueseria
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (validar())
+             if (validar())
+    {
+        try
+        {
+            var producto = new Producto();
+            producto.Codigo = txtCodigo.Text.Trim();
+            producto.Nombre = txtNombre.Text.Trim();
+            producto.Descripcion = txtDescripcion.Text.Trim();
+            producto.IdCategoria = (int)cbxCategoria.SelectedValue;
+            producto.PrecioVenta = decimal.Parse(txtPrecioVenta.Text);
+            producto.PrecioCompra = decimal.Parse(txtPrecioCompra.Text);
+            producto.Stock = nudStock.Value;
+            producto.UsuarioRegistro = Util.usuario.usuario1;
+
+            bool guardado = false; // Variable para verificar si se guardaron los datos
+
+            if (esNuevo)
             {
-                var producto = new Producto();
-                producto.Codigo = txtCodigo.Text.Trim();
-                producto.Nombre = txtNombre.Text.Trim();
-                producto.Descripcion = txtDescripcion.Text.Trim();
-                producto.IdCategoria = (int)cbxCategoria.SelectedValue;
-                producto.PrecioVenta = decimal.Parse(txtPrecioVenta.Text);
-                producto.PrecioCompra = decimal.Parse(txtPrecioCompra.Text);
-                producto.Stock = nudStock.Value;
-                producto.UsuarioRegistro = Util.usuario.usuario1;
+                producto.fechaRegistro = DateTime.Now;
+                producto.estado = 1;
+                ProductoCln.insertar(producto);
+                guardado = true;
+            }
+            else
+            {
+                int index = dgvListaProducto.CurrentCell.RowIndex;
+                producto.IdProducto = Convert.ToInt32(dgvListaProducto.Rows[index].Cells["IdProducto"].Value);
+                ProductoCln.actualizar(producto);
+                guardado = true;
+            }
 
-
-                if (esNuevo)
-                {
-                    producto.fechaRegistro = DateTime.Now;
-                    producto.estado = 1;
-                    ProductoCln.insertar(producto);
-                }
-                else
-                {
-                    int index = dgvListaProducto.CurrentCell.RowIndex;
-                    producto.IdProducto = Convert.ToInt32(dgvListaProducto.Rows[index].Cells["IdProducto"].Value);
-                    ProductoCln.actualizar(producto);
-                }
+            if (guardado)
+            {
                 listar();
                 btnCancelar.PerformClick();
-                MessageBox.Show("Producto guardado correctamente", "::: Minerva - Mensaje :::",
+                MessageBox.Show("Producto guardado correctamente", "::: Hamburgueseria - Mensaje :::",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                limpiar(); // Solo limpia si se guardaron los datos correctamente
+                DesactivarCampos();
             }
-            limpiar();
-            DesactivarCampos();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error al guardar el producto: {ex.Message}", "::: Hamburgueseria - Error :::",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
         }
 
        
@@ -242,12 +257,12 @@ namespace CpHamburgueseria
             string codigo = dgvListaProducto.Rows[index].Cells["Codigo"].Value.ToString();
             DialogResult dialog =
                 MessageBox.Show($"¿Está seguro que desea dar de baja al producto con codigo {codigo}?",
-                "::: Broasteria - Mensaje :::", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                "::: Hamburgueseria - Mensaje :::", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialog == DialogResult.OK)
             {
                 ProductoCln.eliminar(id, Util.usuario.usuario1);
                 listar();
-                MessageBox.Show("Producto dado de baja correctamente", "::: Broasteria - Mensaje :::",
+                MessageBox.Show("Producto dado de baja correctamente", "::: Hamburgueseria - Mensaje :::",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

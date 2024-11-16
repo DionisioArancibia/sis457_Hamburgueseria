@@ -31,7 +31,6 @@
     <Property Name="idUsuario" Type="int" Nullable="false" />
     <Property Name="idProveedor" Type="int" Nullable="false" />
     <Property Name="tipoDocumento" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="numeroDocumento" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="montoTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="UsuarioRegistro" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
@@ -116,7 +115,6 @@
     <Property Name="IdVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdUsuario" Type="int" Nullable="false" />
     <Property Name="TipoDocumento" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="NumeroDocumento" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="DocumentoCliente" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="NombreCliente" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="MontoPago" Type="decimal" Precision="18" Scale="2" Nullable="false" />

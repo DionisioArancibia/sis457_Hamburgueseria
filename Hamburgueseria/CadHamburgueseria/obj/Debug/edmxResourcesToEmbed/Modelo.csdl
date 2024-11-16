@@ -32,7 +32,6 @@
     <Property Name="idUsuario" Type="Int32" Nullable="false" />
     <Property Name="idProveedor" Type="Int32" Nullable="false" />
     <Property Name="tipoDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="numeroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="montoTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="UsuarioRegistro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
@@ -130,7 +129,6 @@
     <Property Name="IdVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdUsuario" Type="Int32" Nullable="false" />
     <Property Name="TipoDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="NumeroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DocumentoCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="NombreCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MontoPago" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
@@ -351,7 +349,6 @@
   </ComplexType>
   <ComplexType Name="paCompraListar_Result">
     <Property Type="Int32" Name="idCompra" Nullable="false" />
-    <Property Type="String" Name="numeroDocumento" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Usuario" Nullable="false" MaxLength="15" />
     <Property Type="String" Name="Proveedor" Nullable="false" MaxLength="100" />
     <Property Type="Decimal" Name="montoTotal" Nullable="false" Precision="18" Scale="2" />
@@ -382,7 +379,6 @@
   </ComplexType>
   <ComplexType Name="paVentaListar_Result">
     <Property Type="Int32" Name="idVenta" Nullable="false" />
-    <Property Type="String" Name="numeroDocumento" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="nombreCliente" Nullable="false" MaxLength="100" />
     <Property Type="Decimal" Name="montoTotal" Nullable="false" Precision="18" Scale="2" />
     <Property Type="DateTime" Name="fechaRegistro" Nullable="false" Precision="23" />
