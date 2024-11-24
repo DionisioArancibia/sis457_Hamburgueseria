@@ -72,8 +72,10 @@ namespace ClnHamburgueseria
         {
             using (var context = new LabHamburgueseriaEntities())
             {
+                // Llamamos al procedimiento almacenado que acepta el parámetro
                 return context.paProductoListar(parametro).ToList();
             }
         }
+
     }
 }

@@ -26,3 +26,17 @@ C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\Cad
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHambu.EAFF5910.Up2Date
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHamburgueseria.dll
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHamburgueseria.pdb
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\CadHamburgueseria.dll.config
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\CadHamburgueseria.dll
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\CadHamburgueseria.pdb
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\EntityFramework.dll
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\EntityFramework.xml
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\bin\Debug\System.Data.SqlClient.xml
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHamburgueseria.csproj.AssemblyReference.cache
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHamburgueseria.csproj.CoreCompileInputs.cache
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHambu.EAFF5910.Up2Date
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHamburgueseria.dll
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CadHamburgueseria\obj\Debug\CadHamburgueseria.pdb

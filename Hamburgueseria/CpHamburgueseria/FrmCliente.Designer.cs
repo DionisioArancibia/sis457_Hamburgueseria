@@ -39,7 +39,6 @@
             this.txtTelefonoCliente = new System.Windows.Forms.TextBox();
             this.txtCorreoCliente = new System.Windows.Forms.TextBox();
             this.txtNombreCompleto = new System.Windows.Forms.TextBox();
-            this.txtDocumentoCliente = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -55,6 +54,7 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtDocumentoCliente = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaCliente)).BeginInit();
             this.gbxLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.erpCorreoCliente)).BeginInit();
@@ -163,15 +163,6 @@
             this.txtNombreCompleto.Name = "txtNombreCompleto";
             this.txtNombreCompleto.Size = new System.Drawing.Size(236, 22);
             this.txtNombreCompleto.TabIndex = 158;
-            // 
-            // txtDocumentoCliente
-            // 
-            this.txtDocumentoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDocumentoCliente.Location = new System.Drawing.Point(747, 205);
-            this.txtDocumentoCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDocumentoCliente.Name = "txtDocumentoCliente";
-            this.txtDocumentoCliente.Size = new System.Drawing.Size(235, 22);
-            this.txtDocumentoCliente.TabIndex = 157;
             // 
             // label7
             // 
@@ -341,16 +332,25 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // txtDocumentoCliente
+            // 
+            this.txtDocumentoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDocumentoCliente.Location = new System.Drawing.Point(747, 201);
+            this.txtDocumentoCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDocumentoCliente.Name = "txtDocumentoCliente";
+            this.txtDocumentoCliente.Size = new System.Drawing.Size(235, 22);
+            this.txtDocumentoCliente.TabIndex = 162;
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 618);
+            this.Controls.Add(this.txtDocumentoCliente);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtTelefonoCliente);
             this.Controls.Add(this.txtCorreoCliente);
             this.Controls.Add(this.txtNombreCompleto);
-            this.Controls.Add(this.txtDocumentoCliente);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -397,7 +397,6 @@
         private System.Windows.Forms.TextBox txtTelefonoCliente;
         private System.Windows.Forms.TextBox txtCorreoCliente;
         private System.Windows.Forms.TextBox txtNombreCompleto;
-        private System.Windows.Forms.TextBox txtDocumentoCliente;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -407,5 +406,6 @@
         private System.Windows.Forms.ErrorProvider erpDocumentoCliente;
         private System.Windows.Forms.ErrorProvider erpTelefonoCliente;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txtDocumentoCliente;
     }
 }

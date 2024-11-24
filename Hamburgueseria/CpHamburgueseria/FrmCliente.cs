@@ -20,6 +20,7 @@ namespace CpHamburgueseria
         {
             InitializeComponent();
             this.frmVenta = frmVenta;
+            txtDocumentoCliente.KeyPress += txtSoloNumeros_KeyPress;
         }
 
         public void listar()
@@ -46,6 +47,15 @@ namespace CpHamburgueseria
             txtTelefonoCliente.KeyPress += Util.onlyNumbers;
             DesactivarCampos();
             listar();
+        }
+
+        private void txtSoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo números y teclas de control como Backspace
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la entrada del carácter no válido
+            }
         }
 
         private void DesactivarCampos()
@@ -80,6 +90,7 @@ namespace CpHamburgueseria
         private bool validar()
         {
             bool esValido = true;
+
             erpDocumentoCliente.SetError(txtDocumentoCliente, "");
             erpNombreCompleto.SetError(txtNombreCompleto, "");
             erpCorreoCliente.SetError(txtCorreoCliente, "");
@@ -88,23 +99,30 @@ namespace CpHamburgueseria
             if (string.IsNullOrEmpty(txtDocumentoCliente.Text))
             {
                 esValido = false;
-                erpDocumentoCliente.SetError(txtDocumentoCliente, "El campo documento es obligatorio");
+                erpDocumentoCliente.SetError(txtDocumentoCliente, "El campo Documento es obligatorio.");
             }
+            else if (!long.TryParse(txtDocumentoCliente.Text, out _))
+            {
+                esValido = false;
+                erpDocumentoCliente.SetError(txtDocumentoCliente, "El campo Documento debe contener solo números.");
+            }
+
             if (string.IsNullOrEmpty(txtNombreCompleto.Text))
             {
                 esValido = false;
-                erpNombreCompleto.SetError(txtNombreCompleto, "El campo razon social es obligatorio");
+                erpNombreCompleto.SetError(txtNombreCompleto, "El campo Nombre Completo es obligatorio.");
             }
             if (string.IsNullOrEmpty(txtCorreoCliente.Text))
             {
                 esValido = false;
-                erpCorreoCliente.SetError(txtCorreoCliente, "El campo correo es obligatorio");
+                erpCorreoCliente.SetError(txtCorreoCliente, "El campo Correo es obligatorio.");
             }
             if (string.IsNullOrEmpty(txtTelefonoCliente.Text))
             {
                 esValido = false;
-                erpTelefonoCliente.SetError(txtTelefonoCliente, "El campo telefono es obligatorio");
+                erpTelefonoCliente.SetError(txtTelefonoCliente, "El campo Teléfono es obligatorio.");
             }
+
             return esValido;
         }
 
@@ -121,12 +139,22 @@ namespace CpHamburgueseria
             Size = new Size(732, 657);
             if (validar())
             {
-                var cliente = new Cliente();
-                cliente.documento = txtDocumentoCliente.Text.Trim();
-                cliente.nombreCompleto = txtNombreCompleto.Text.Trim();
-                cliente.correo = txtCorreoCliente.Text.Trim();
-                cliente.telefono = txtTelefonoCliente.Text.Trim();
-                cliente.UsuarioRegistro = Util.usuario.usuario1;
+                // Validar que el documento contenga solo números
+                if (!long.TryParse(txtDocumentoCliente.Text.Trim(), out _))
+                {
+                    MessageBox.Show("El campo Documento debe contener solo números.", ":::Hamburgueseria - Mensaje :::",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var cliente = new Cliente
+                {
+                    documento = txtDocumentoCliente.Text.Trim(),
+                    nombreCompleto = txtNombreCompleto.Text.Trim(),
+                    correo = txtCorreoCliente.Text.Trim(),
+                    telefono = txtTelefonoCliente.Text.Trim(),
+                    UsuarioRegistro = Util.usuario.usuario1
+                };
 
                 if (esNuevo)
                 {
@@ -157,6 +185,7 @@ namespace CpHamburgueseria
                     cliente.id = id;
                     ClienteCln.actualizar(cliente);
                 }
+
                 listar();
                 MessageBox.Show("Cliente guardado correctamente", ":::Hamburgueseria - Mensaje :::",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);

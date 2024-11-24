@@ -183,18 +183,32 @@ EXEC paCategoriaListar 'Poll';
 GO
 
 -- PROCEDIMIENTO LISTAR PRODUCTOS
-CREATE PROC paProductoListar 
-    @parametro VARCHAR(100)
+CREATE PROCEDURE paProductoListar
+    @parametro NVARCHAR(100)
 AS
 BEGIN
-    SELECT * 
-    FROM Producto
-    WHERE estado <> -1 
-      AND Nombre LIKE '%' + REPLACE(@parametro, ' ', '%') + '%';
-END
-GO
+    SET NOCOUNT ON;
 
-EXEC paProductoListar 'soda';
+    -- Verificar si el parámetro es un código exacto
+    IF EXISTS (
+        SELECT 1 
+        FROM Producto
+        WHERE estado != -1 AND Codigo = @parametro
+    )
+    BEGIN
+        -- Buscar por código exacto
+        SELECT * 
+        FROM Producto
+        WHERE estado != -1 AND Codigo = @parametro;
+    END
+    ELSE
+    BEGIN
+        -- Buscar por coincidencias en el nombre
+        SELECT * 
+        FROM Producto
+        WHERE estado != -1 AND Nombre LIKE '%' + @parametro + '%';
+    END
+END
 GO
 
 -- PROCEDIMIENTO LISTAR CLIENTES
@@ -246,18 +260,20 @@ END
 GO
 
 -- PROCEDIMIENTO LISTAR VENTAS
-CREATE PROC paVentaListar 
-    @parametro VARCHAR(100)
+CREATE PROCEDURE paVentaListar
+    @parametro NVARCHAR(100)
 AS
 BEGIN
-    SELECT v.idVenta,
-           v.nombreCliente,
-           v.montoTotal,
-           v.fechaRegistro 
+    SET NOCOUNT ON;
+
+    SELECT v.IdVenta, v.IdUsuario, v.TipoDocumento, v.DocumentoCliente, 
+           v.NombreCliente, v.MontoPago, v.MontoCambio, v.MontoTotal, 
+           v.fechaRegistro, v.estado
     FROM Venta v
-    WHERE v.estado <> -1 
-      AND (v.nombreCliente LIKE '%' + REPLACE(@parametro, ' ', '%') + '%')
-    ORDER BY v.fechaRegistro DESC;
+    WHERE v.estado != -1
+      AND (v.DocumentoCliente LIKE '%' + @parametro + '%'
+           OR v.NombreCliente LIKE '%' + @parametro + '%'
+           OR v.TipoDocumento LIKE '%' + @parametro + '%');
 END
 GO
 
@@ -287,7 +303,7 @@ VALUES('7246542','Sebastian ','Palacios', 'Cueca', 'Calle oruro', 77364656, 'caj
 
 --DATOS USUARIO
 INSERT INTO Usuario(idEmpleado, usuario, clave)
-VALUES(1, 'Dioni', 'i0hcoO/nssY6WOs9pOp5Xw==');
+VALUES(1, 'dioni', 'i0hcoO/nssY6WOs9pOp5Xw==');
 
 -- Insertar datos en la tabla Producto
 INSERT INTO Producto (Codigo, Nombre, Descripcion, IdCategoria, Stock, PrecioCompra, PrecioVenta) VALUES
@@ -345,3 +361,4 @@ SELECT * FROM VentaDetalle;
 
 EXEC paCategoriaListar 'Bebidas';
 EXEC paVentaListar 'juan';
+EXEC paProductoListar 'P002';

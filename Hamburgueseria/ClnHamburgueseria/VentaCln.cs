@@ -68,5 +68,14 @@ namespace ClnHamburgueseria
                 return context.Venta.Where(x => x.estado != -1).ToList();
             }
         }
+
+        public static List<paVentaListar_Result> listarPa(string parametro)
+        {
+            using (var context = new LabHamburgueseriaEntities())
+            {
+                // Llamamos al procedimiento almacenado que acepta el parámetro
+                return context.paVentaListar(parametro).ToList();
+            }
+        }
     }
 }

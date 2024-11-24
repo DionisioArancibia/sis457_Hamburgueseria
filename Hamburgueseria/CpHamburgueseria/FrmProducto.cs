@@ -25,7 +25,7 @@ namespace CpHamburgueseria
             var lista = ProductoCln.listarPa(txtParametroProducto.Text);
             dgvListaProducto.DataSource = lista;
             dgvListaProducto.Columns["IdProducto"].Visible = false;
-            dgvListaProducto.Columns["estado"].Visible = false ;
+            dgvListaProducto.Columns["estado"].Visible = false;
             dgvListaProducto.Columns["Codigo"].HeaderText = "Código";
             dgvListaProducto.Columns["Nombre"].HeaderText = "Nombre";
             dgvListaProducto.Columns["Descripcion"].HeaderText = "Descripción";
@@ -33,9 +33,14 @@ namespace CpHamburgueseria
             dgvListaProducto.Columns["Stock"].HeaderText = "Stock";
             dgvListaProducto.Columns["PrecioCompra"].HeaderText = "Precio de Compra";
             dgvListaProducto.Columns["PrecioVenta"].HeaderText = "Precio de Venta";
+
+            // Habilitar los botones si se encontró al menos un producto
             btnEditar.Enabled = lista.Count > 0;
             btnEliminar.Enabled = lista.Count > 0;
-            if (lista.Count > 0) dgvListaProducto.CurrentCell = dgvListaProducto.Rows[0].Cells["Codigo"];
+
+            // Seleccionar la primera celda si hay resultados
+            if (lista.Count > 0)
+                dgvListaProducto.CurrentCell = dgvListaProducto.Rows[0].Cells["Codigo"];
         }
 
         private void FrmProducto_Load(object sender, EventArgs e)
@@ -105,16 +110,20 @@ namespace CpHamburgueseria
             int index = dgvListaProducto.CurrentCell.RowIndex;
             int id = Convert.ToInt32(dgvListaProducto.Rows[index].Cells["idProducto"].Value);
             var producto = ProductoCln.obtenerUno(id);
+
             txtCodigo.Text = producto.Codigo;
             txtNombre.Text = producto.Nombre;
             txtDescripcion.Text = producto.Descripcion;
-            
+
+
+            cbxCategoria.SelectedValue = producto.IdCategoria; // Usa SelectedValue si IdCategoria es numérico
+
             txtPrecioVenta.Text = producto.PrecioVenta.ToString();
             txtPrecioCompra.Text = producto.PrecioCompra.ToString();
-            nudStock.Value = producto.Stock;
+            nudStock.Value = producto.Stock;  // Asignar el stock
+
             HabilitarCampos();
             txtCodigo.Focus();
-           
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

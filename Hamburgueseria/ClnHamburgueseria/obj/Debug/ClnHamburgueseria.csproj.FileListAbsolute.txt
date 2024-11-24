@@ -32,3 +32,20 @@ C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\Cln
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\obj\Debug\ClnHambu.607146F3.Up2Date
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\obj\Debug\ClnHamburgueseria.dll
 C:\Users\Dionix\Desktop\sis457 proyetco\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\obj\Debug\ClnHamburgueseria.pdb
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\bin\Debug\ClnHamburgueseria.dll.config
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\bin\Debug\ClnHamburgueseria.dll
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\bin\Debug\ClnHamburgueseria.pdb
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\bin\Debug\CadHamburgueseria.dll
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\bin\Debug\EntityFramework.dll
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\bin\Debug\CadHamburgueseria.pdb
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\bin\Debug\CadHamburgueseria.dll.config
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\bin\Debug\EntityFramework.xml
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\bin\Debug\System.Data.SqlClient.xml
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\obj\Debug\ClnHamburgueseria.csproj.AssemblyReference.cache
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\obj\Debug\ClnHamburgueseria.csproj.CoreCompileInputs.cache
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\obj\Debug\ClnHambu.607146F3.Up2Date
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\obj\Debug\ClnHamburgueseria.dll
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\ClnHamburgueseria\obj\Debug\ClnHamburgueseria.pdb

@@ -396,9 +396,15 @@
     <Property Type="Int16" Name="estado" Nullable="false" />
   </ComplexType>
   <ComplexType Name="paVentaListar_Result">
-    <Property Type="Int32" Name="idVenta" Nullable="false" />
-    <Property Type="String" Name="nombreCliente" Nullable="false" MaxLength="100" />
-    <Property Type="Decimal" Name="montoTotal" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="IdVenta" Nullable="false" />
+    <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+    <Property Type="String" Name="TipoDocumento" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="DocumentoCliente" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="MontoPago" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="MontoCambio" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="MontoTotal" Nullable="false" Precision="18" Scale="2" />
     <Property Type="DateTime" Name="fechaRegistro" Nullable="false" Precision="23" />
+    <Property Type="Int16" Name="estado" Nullable="false" />
   </ComplexType>
 </Schema>

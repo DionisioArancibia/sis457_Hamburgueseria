@@ -1,4 +1,5 @@
 ﻿using CadHamburgueseria;
+using ClnHamburgueseria;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -276,6 +277,7 @@ namespace CpHamburgueseria
         {
             try
             {
+                // Validar campos obligatorios
                 if (string.IsNullOrEmpty(txtdocumento.Text) || string.IsNullOrEmpty(txtNombre.Text) ||
                     string.IsNullOrEmpty(cbxTipoDocumento.Text) || string.IsNullOrEmpty(txtPagaCon.Text) ||
                     string.IsNullOrEmpty(txtMontoAPagar.Text))
@@ -284,6 +286,7 @@ namespace CpHamburgueseria
                     return;
                 }
 
+                // Verificar que el usuario actual esté asociado a un empleado
                 int idEmpleado = Util.usuario.idEmpleado;
 
                 if (idEmpleado <= 0)
@@ -292,6 +295,7 @@ namespace CpHamburgueseria
                     return;
                 }
 
+                // Registrar la venta
                 using (var context = new LabHamburgueseriaEntities())
                 {
                     var venta = new Venta
@@ -311,7 +315,13 @@ namespace CpHamburgueseria
                     context.Venta.Add(venta);
                     context.SaveChanges();
 
+                    // Notificar al usuario
                     MessageBox.Show("Venta registrada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Llamar al método para refrescar la lista de ventas
+                    listarVentas(txtdocumento.Text);
+
+                    // Limpiar formulario
                     LimpiarFormularioVenta();
                 }
             }
@@ -320,6 +330,33 @@ namespace CpHamburgueseria
                 MessageBox.Show($"Ocurrió un error al registrar la venta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void listarVentas(string parametro = "")
+        {
+            try
+            {
+                var listaVentas = VentaCln.listarPa(parametro); // Llama al método estático
+                dataGridView1.DataSource = listaVentas;
+
+                // Configurar columnas del DataGridView
+                dataGridView1.Columns["IdVenta"].Visible = false;
+                dataGridView1.Columns["IdUsuario"].Visible = false;
+                dataGridView1.Columns["estado"].Visible = false;
+
+                dataGridView1.Columns["TipoDocumento"].HeaderText = "Tipo de Documento";
+                dataGridView1.Columns["DocumentoCliente"].HeaderText = "N° Documento Cliente";
+                dataGridView1.Columns["NombreCliente"].HeaderText = "Cliente";
+                dataGridView1.Columns["MontoPago"].HeaderText = "Pago";
+                dataGridView1.Columns["MontoCambio"].HeaderText = "Cambio";
+                dataGridView1.Columns["MontoTotal"].HeaderText = "Total";
+                dataGridView1.Columns["fechaRegistro"].HeaderText = "Fecha";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error al listar las ventas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void LimpiarFormularioVenta()
         {
             txtdocumento.Clear();

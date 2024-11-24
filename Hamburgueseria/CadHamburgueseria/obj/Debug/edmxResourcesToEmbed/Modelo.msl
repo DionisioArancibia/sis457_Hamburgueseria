@@ -219,10 +219,16 @@
     <FunctionImportMapping FunctionImportName="paVentaListar" FunctionName="LabHamburgueseriaModel.Store.paVentaListar">
       <ResultMapping>
         <ComplexTypeMapping TypeName="LabHamburgueseriaModel.paVentaListar_Result">
-          <ScalarProperty Name="idVenta" ColumnName="idVenta" />
-          <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
-          <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="DocumentoCliente" ColumnName="DocumentoCliente" />
+          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+          <ScalarProperty Name="MontoPago" ColumnName="MontoPago" />
+          <ScalarProperty Name="MontoCambio" ColumnName="MontoCambio" />
+          <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
           <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
