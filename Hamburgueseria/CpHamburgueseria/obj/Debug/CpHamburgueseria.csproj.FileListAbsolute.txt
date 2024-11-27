@@ -109,4 +109,4 @@ C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseri
 C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHambur.0DD9DCD4.Up2Date
 C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.exe
 C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.pdb
-C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmListarVenta.resources
+C:\Users\Dionix\Desktop\proecto final sis457\sis457_Hamburgueseria\Hamburgueseria\CpHamburgueseria\obj\Debug\CpHamburgueseria.FrmVentaDetalle.resources

@@ -17,7 +17,6 @@ namespace CadHamburgueseria
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Producto()
         {
-            this.CompraDetalle = new HashSet<CompraDetalle>();
             this.VentaDetalle = new HashSet<VentaDetalle>();
         }
     
@@ -27,15 +26,12 @@ namespace CadHamburgueseria
         public string Descripcion { get; set; }
         public int IdCategoria { get; set; }
         public decimal Stock { get; set; }
-        public decimal PrecioCompra { get; set; }
         public decimal PrecioVenta { get; set; }
         public string UsuarioRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }
         public short estado { get; set; }
     
         public virtual Categoria Categoria { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompraDetalle> CompraDetalle { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VentaDetalle> VentaDetalle { get; set; }
     }

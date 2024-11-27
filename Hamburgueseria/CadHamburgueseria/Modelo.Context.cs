@@ -29,11 +29,7 @@ namespace CadHamburgueseria
     
         public virtual DbSet<Categoria> Categoria { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
-        public virtual DbSet<Compra> Compra { get; set; }
-        public virtual DbSet<CompraDetalle> CompraDetalle { get; set; }
-        public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
-        public virtual DbSet<Proveedor> Proveedor { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Venta> Venta { get; set; }
         public virtual DbSet<VentaDetalle> VentaDetalle { get; set; }
@@ -56,15 +52,6 @@ namespace CadHamburgueseria
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<paClienteListar_Result>("paClienteListar", parametroParameter);
         }
     
-        public virtual ObjectResult<paCompraListar_Result> paCompraListar(string parametro)
-        {
-            var parametroParameter = parametro != null ?
-                new ObjectParameter("parametro", parametro) :
-                new ObjectParameter("parametro", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<paCompraListar_Result>("paCompraListar", parametroParameter);
-        }
-    
         public virtual ObjectResult<paProductoListar_Result> paProductoListar(string parametro)
         {
             var parametroParameter = parametro != null ?
@@ -72,15 +59,6 @@ namespace CadHamburgueseria
                 new ObjectParameter("parametro", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<paProductoListar_Result>("paProductoListar", parametroParameter);
-        }
-    
-        public virtual ObjectResult<paProveedorListar_Result> paProveedorListar(string parametro)
-        {
-            var parametroParameter = parametro != null ?
-                new ObjectParameter("parametro", parametro) :
-                new ObjectParameter("parametro", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<paProveedorListar_Result>("paProveedorListar", parametroParameter);
         }
     
         public virtual ObjectResult<paVentaListar_Result> paVentaListar(string parametro)

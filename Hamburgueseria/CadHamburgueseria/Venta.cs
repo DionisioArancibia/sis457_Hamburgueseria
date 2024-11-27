@@ -32,7 +32,6 @@ namespace CadHamburgueseria
         public System.DateTime fechaRegistro { get; set; }
         public short estado { get; set; }
     
-        public virtual Empleado Empleado { get; set; }
         public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VentaDetalle> VentaDetalle { get; set; }

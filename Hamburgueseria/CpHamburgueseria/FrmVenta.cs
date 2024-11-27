@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -156,8 +157,9 @@ namespace CpHamburgueseria
                 return;
             }
 
-            // Verificar que el producto exista en la base de datos
             string codigo = txtCodigoProducto.Text;
+            int cantidadVenta = (int)nudCantidadVenta.Value;
+
             using (var context = new LabHamburgueseriaEntities())
             {
                 var producto = context.Producto.FirstOrDefault(p => p.Codigo == codigo);
@@ -167,42 +169,63 @@ namespace CpHamburgueseria
                     return;
                 }
 
-                var nombre = producto.Nombre;
-                var descripcion = producto.Descripcion;
-                var precioVenta = producto.PrecioVenta;
-                var stock = producto.Stock;
-
+                decimal stock = producto.Stock;
                 if (stock <= 0)
                 {
                     MessageBox.Show("El producto no tiene stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                var cantidad = (int)nudCantidadVenta.Value;
-                var total = precioVenta * cantidad;
-
-                // Verificar si la cantidad deseada está disponible en stock
-                if (cantidad > stock)
+                // Validar cantidad solicitada
+                if (cantidadVenta > stock)
                 {
                     MessageBox.Show("La cantidad solicitada excede el stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Obtener el IdUsuario (relacionado con el idEmpleado del usuario actual)
-                int idUsuario = Util.usuario.idEmpleado;
+                // Validar si el producto ya existe en el DataGridView
+                foreach (DataGridViewRow row in dgvVentas.Rows)
+                {
+                    if (row.Cells["Codigo"].Value?.ToString() == codigo)
+                    {
+                        int cantidadActual = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                        int nuevaCantidad = cantidadActual + cantidadVenta;
 
-                // Validar que el usuario tenga un IdEmpleado asociado
+                        if (nuevaCantidad > stock)
+                        {
+                            MessageBox.Show("La cantidad total excede el stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        // Actualizar la cantidad y el total
+                        row.Cells["Cantidad"].Value = nuevaCantidad;
+                        row.Cells["Total"].Value = nuevaCantidad * producto.PrecioVenta;
+
+                        // Recalcular el total a pagar
+                        CalcularTotalPagar();
+                        LimpiarCampos();
+                        return;
+                    }
+                }
+
+                // Si no existe en el DataGridView, agregarlo como un nuevo registro
+                var nombre = producto.Nombre;
+                var descripcion = producto.Descripcion;
+                var precioVenta = producto.PrecioVenta;
+                var total = precioVenta * cantidadVenta;
+
+                int idUsuario = Util.usuario.idEmpleado;
                 if (idUsuario <= 0)
                 {
                     MessageBox.Show("No se pudo identificar al empleado asociado al usuario actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Agregar el producto al DataGridView
-                var usuarioRegistro = Util.usuario.usuario1; // Usuario actual
-                var fechaRegistro = DateTime.Now.ToString("dd/MM/yyyy HH:mm"); // Fecha actual
+                var usuarioRegistro = Util.usuario.usuario1;
+                var fechaRegistro = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
 
-                dgvVentas.Rows.Add(idUsuario, codigo, nombre, cbxTipoDocumento.Text, descripcion, precioVenta, cantidad, total, usuarioRegistro, fechaRegistro);
+                dgvVentas.Rows.Add(idUsuario, codigo, nombre, cbxTipoDocumento.Text, descripcion, precioVenta, cantidadVenta, total, usuarioRegistro, fechaRegistro);
+
                 LimpiarCampos();
                 CalcularTotalPagar();
             }
@@ -288,7 +311,6 @@ namespace CpHamburgueseria
 
                 // Verificar que el usuario actual esté asociado a un empleado
                 int idEmpleado = Util.usuario.idEmpleado;
-
                 if (idEmpleado <= 0)
                 {
                     MessageBox.Show("No se pudo identificar al empleado asociado al usuario actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -313,13 +335,56 @@ namespace CpHamburgueseria
                     };
 
                     context.Venta.Add(venta);
+                    context.SaveChanges(); // Guardar para generar el ID de la venta
+
+                    // Obtener el ID de la venta recién registrada
+                    int idVenta = venta.IdVenta;
+
+                    // Registrar los detalles de la venta y actualizar el stock
+                    foreach (DataGridViewRow row in dgvVentas.Rows)
+                    {
+                        if (row.Cells["Codigo"].Value != null && row.Cells["Cantidad"].Value != null)
+                        {
+                            string codigoProducto = row.Cells["Codigo"].Value.ToString();
+                            int cantidadVendida = Convert.ToInt32(row.Cells["Cantidad"].Value);
+
+                            // Obtener producto por código
+                            var producto = context.Producto.FirstOrDefault(p => p.Codigo == codigoProducto);
+
+                            if (producto != null)
+                            {
+                                // Actualizar stock del producto
+                                producto.Stock -= cantidadVendida;
+
+                                if (producto.Stock < 0)
+                                {
+                                    MessageBox.Show($"El stock del producto {producto.Nombre} no puede ser negativo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+
+                                // Registrar el detalle de la venta
+                                var detalleVenta = new VentaDetalle
+                                {
+                                    IdVenta = idVenta,
+                                    IdProducto = producto.IdProducto,
+                                    Cantidad = cantidadVendida,
+                                    PrecioVenta = producto.PrecioVenta,
+                                    SubTotal = producto.PrecioVenta * cantidadVendida,
+                                    UsuarioRegistro = Util.usuario.usuario1,
+                                    fechaRegistro = DateTime.Now,
+                                    estado = 1
+                                };
+
+                                context.VentaDetalle.Add(detalleVenta);
+                            }
+                        }
+                    }
+
+                    // Guardar todos los cambios (venta, detalles, stock)
                     context.SaveChanges();
 
                     // Notificar al usuario
                     MessageBox.Show("Venta registrada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Llamar al método para refrescar la lista de ventas
-                    listarVentas(txtdocumento.Text);
 
                     // Limpiar formulario
                     LimpiarFormularioVenta();
@@ -331,31 +396,9 @@ namespace CpHamburgueseria
             }
         }
 
-        private void listarVentas(string parametro = "")
-        {
-            try
-            {
-                var listaVentas = VentaCln.listarPa(parametro); // Llama al método estático
-                dataGridView1.DataSource = listaVentas;
 
-                // Configurar columnas del DataGridView
-                dataGridView1.Columns["IdVenta"].Visible = false;
-                dataGridView1.Columns["IdUsuario"].Visible = false;
-                dataGridView1.Columns["estado"].Visible = false;
 
-                dataGridView1.Columns["TipoDocumento"].HeaderText = "Tipo de Documento";
-                dataGridView1.Columns["DocumentoCliente"].HeaderText = "N° Documento Cliente";
-                dataGridView1.Columns["NombreCliente"].HeaderText = "Cliente";
-                dataGridView1.Columns["MontoPago"].HeaderText = "Pago";
-                dataGridView1.Columns["MontoCambio"].HeaderText = "Cambio";
-                dataGridView1.Columns["MontoTotal"].HeaderText = "Total";
-                dataGridView1.Columns["fechaRegistro"].HeaderText = "Fecha";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error al listar las ventas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+
 
         private void LimpiarFormularioVenta()
         {

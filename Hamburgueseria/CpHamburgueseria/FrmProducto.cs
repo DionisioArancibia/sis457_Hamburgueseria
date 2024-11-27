@@ -31,7 +31,6 @@ namespace CpHamburgueseria
             dgvListaProducto.Columns["Descripcion"].HeaderText = "Descripción";
             dgvListaProducto.Columns["IdCategoria"].HeaderText = "Categoria";
             dgvListaProducto.Columns["Stock"].HeaderText = "Stock";
-            dgvListaProducto.Columns["PrecioCompra"].HeaderText = "Precio de Compra";
             dgvListaProducto.Columns["PrecioVenta"].HeaderText = "Precio de Venta";
 
             // Habilitar los botones si se encontró al menos un producto
@@ -56,7 +55,7 @@ namespace CpHamburgueseria
             txtNombre.Enabled = false;
             txtDescripcion.Enabled = false;
             txtPrecioVenta.Enabled = false;
-            txtPrecioCompra.Enabled = false;
+          
             nudStock.Enabled = false;
             cbxCategoria.Enabled = false;
 
@@ -84,7 +83,7 @@ namespace CpHamburgueseria
             txtDescripcion.Enabled = true;
             cbxCategoria.Enabled = true;
             txtPrecioVenta.Enabled = true;
-            txtPrecioCompra.Enabled = true;
+           
             nudStock.Enabled = true;
             
 
@@ -96,7 +95,7 @@ namespace CpHamburgueseria
             txtDescripcion.Text = string.Empty;
             cbxCategoria.Text = string.Empty;
             txtPrecioVenta.Text = string.Empty;
-            txtPrecioCompra.Text = string.Empty;
+          
             nudStock.Text = string.Empty;
 
 
@@ -119,7 +118,7 @@ namespace CpHamburgueseria
             cbxCategoria.SelectedValue = producto.IdCategoria; // Usa SelectedValue si IdCategoria es numérico
 
             txtPrecioVenta.Text = producto.PrecioVenta.ToString();
-            txtPrecioCompra.Text = producto.PrecioCompra.ToString();
+           
             nudStock.Value = producto.Stock;  // Asignar el stock
 
             HabilitarCampos();
@@ -150,7 +149,7 @@ namespace CpHamburgueseria
             erpDescripcion.SetError(txtDescripcion, "");
             erpCategoria.SetError(cbxCategoria, "");
             erpPrecioVenta.SetError(txtPrecioVenta, "");
-            erpPrecioCompra.SetError(txtPrecioCompra, "");
+       
 
             if (string.IsNullOrEmpty(txtCodigo.Text))
             {
@@ -183,12 +182,6 @@ namespace CpHamburgueseria
                 erpPrecioVenta.SetError(txtPrecioVenta, "El campo Precio de Venta debe ser un número mayor o igual a 0");
             }
 
-            // Validación para txtPrecioCompra
-            if (!decimal.TryParse(txtPrecioCompra.Text, out decimal precioCompra) || precioCompra < 0)
-            {
-                esValido = false;
-                erpPrecioCompra.SetError(txtPrecioCompra, "El campo Precio de Compra debe ser un número mayor o igual a 0");
-            }
 
             if (nudStock.Value < 0)
             {
@@ -211,7 +204,7 @@ namespace CpHamburgueseria
             producto.Descripcion = txtDescripcion.Text.Trim();
             producto.IdCategoria = (int)cbxCategoria.SelectedValue;
             producto.PrecioVenta = decimal.Parse(txtPrecioVenta.Text);
-            producto.PrecioCompra = decimal.Parse(txtPrecioCompra.Text);
+
             producto.Stock = nudStock.Value;
             producto.UsuarioRegistro = Util.usuario.usuario1;
 

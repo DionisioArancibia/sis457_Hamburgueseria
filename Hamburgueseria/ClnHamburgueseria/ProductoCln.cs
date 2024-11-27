@@ -31,7 +31,7 @@ namespace ClnHamburgueseria
                     existente.Descripcion = producto.Descripcion;
                     existente.IdCategoria = producto.IdCategoria;
                     existente.Stock = producto.Stock;
-                    existente.PrecioCompra = producto.PrecioCompra;
+                  
                     existente.PrecioVenta = producto.PrecioVenta;
                     return context.SaveChanges();
                

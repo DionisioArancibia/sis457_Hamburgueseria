@@ -42,6 +42,7 @@
             this.rbnVentas = new C1.Win.Ribbon.RibbonTab();
             this.descricion = new C1.Win.Ribbon.RibbonGroup();
             this.btnVeVenta = new C1.Win.Ribbon.RibbonButton();
+            this.btnDeVentaDetalle = new C1.Win.Ribbon.RibbonButton();
             this.ribbonTopToolBar1 = new C1.Win.Ribbon.RibbonTopToolBar();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.SuspendLayout();
@@ -53,9 +54,10 @@
             this.c1Ribbon1.BottomToolBarHolder = this.ribbonBottomToolBar1;
             this.c1Ribbon1.ConfigToolBarHolder = this.ribbonConfigToolBar1;
             this.c1Ribbon1.Location = new System.Drawing.Point(0, 0);
+            this.c1Ribbon1.Margin = new System.Windows.Forms.Padding(4);
             this.c1Ribbon1.Name = "c1Ribbon1";
             this.c1Ribbon1.QatHolder = this.ribbonQat1;
-            this.c1Ribbon1.Size = new System.Drawing.Size(800, 161);
+            this.c1Ribbon1.Size = new System.Drawing.Size(1067, 201);
             this.c1Ribbon1.Tabs.Add(this.rbnCategoria);
             this.c1Ribbon1.Tabs.Add(this.rbnVentas);
             this.c1Ribbon1.TopToolBarHolder = this.ribbonTopToolBar1;
@@ -123,6 +125,7 @@
             // descricion
             // 
             this.descricion.Items.Add(this.btnVeVenta);
+            this.descricion.Items.Add(this.btnDeVentaDetalle);
             this.descricion.Name = "descricion";
             this.descricion.Text = "Descripcion venta";
             // 
@@ -134,17 +137,26 @@
             this.btnVeVenta.Text = "Ventas";
             this.btnVeVenta.Click += new System.EventHandler(this.btnVeVenta_Click);
             // 
+            // btnDeVentaDetalle
+            // 
+            this.btnDeVentaDetalle.IconSet.Add(new C1.Framework.C1BitmapIcon("DefaultImage", new System.Drawing.Size(16, 16), System.Drawing.Color.Transparent, "DefaultImage", -1));
+            this.btnDeVentaDetalle.IconSet.Add(new C1.Framework.C1BitmapIcon("Report", new System.Drawing.Size(32, 32), System.Drawing.Color.Transparent, "Preset_LargeImages", 235));
+            this.btnDeVentaDetalle.Name = "btnDeVentaDetalle";
+            this.btnDeVentaDetalle.Text = "Venta Detalle";
+            this.btnDeVentaDetalle.Click += new System.EventHandler(this.btnDeVentaDetalle_Click);
+            // 
             // ribbonTopToolBar1
             // 
             this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
             // 
             // FrmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.c1Ribbon1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPrincipal";
             this.Text = "::: Hamburgueseria - Principal:::";
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
@@ -169,5 +181,6 @@
         private C1.Win.Ribbon.RibbonButton btnCaCategoria;
         private C1.Win.Ribbon.RibbonButton btnCaProductos;
         private C1.Win.Ribbon.RibbonButton btnCaCliente;
+        private C1.Win.Ribbon.RibbonButton btnDeVentaDetalle;
     }
 }

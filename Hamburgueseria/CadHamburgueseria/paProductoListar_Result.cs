@@ -19,7 +19,6 @@ namespace CadHamburgueseria
         public string Descripcion { get; set; }
         public int IdCategoria { get; set; }
         public decimal Stock { get; set; }
-        public decimal PrecioCompra { get; set; }
         public decimal PrecioVenta { get; set; }
         public string UsuarioRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }

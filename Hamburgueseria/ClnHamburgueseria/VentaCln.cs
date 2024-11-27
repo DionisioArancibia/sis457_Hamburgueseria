@@ -53,11 +53,22 @@ namespace ClnHamburgueseria
             }
         }
 
-        public static Venta ObtenerUno(int id)
+        public static Venta ObtenerVentaConDetalle(int idVenta)
         {
             using (var context = new LabHamburgueseriaEntities())
             {
-                return context.Venta.Find(id);
+                var venta = context.Venta.Include("VentaDetalle") // Carga los detalles relacionados
+                                         .FirstOrDefault(v => v.IdVenta == idVenta);
+
+                if (venta != null)
+                {
+                    // Opcional: Puedes cargar manualmente la lista de detalles
+                    venta.VentaDetalle = context.VentaDetalle
+                                                .Where(d => d.IdVenta == idVenta)
+                                                .ToList();
+                }
+
+                return venta;
             }
         }
 
@@ -77,5 +88,18 @@ namespace ClnHamburgueseria
                 return context.paVentaListar(parametro).ToList();
             }
         }
+
+        public static List<VentaDetalle> ObtenerDetalleVenta(int idVenta)
+        {
+            using (var context = new LabHamburgueseriaEntities())
+            {
+                return context.VentaDetalle
+                              .Where(d => d.IdVenta == idVenta)
+                              .ToList();
+            }
+        }
+     
+
+
     }
 }

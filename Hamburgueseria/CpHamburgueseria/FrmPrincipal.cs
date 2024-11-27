@@ -41,5 +41,11 @@ namespace CpHamburgueseria
             var frmVenta = new FrmVenta();
             new FrmCliente(frmVenta).ShowDialog();
         }
+
+        private void btnDeVentaDetalle_Click(object sender, EventArgs e)
+        {
+            var frmVenta = new FrmVenta();
+            new FrmVentaDetalle(frmVenta).ShowDialog();
+        }
     }
 }
