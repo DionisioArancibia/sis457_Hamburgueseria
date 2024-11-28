@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,9 +10,11 @@ using WebHamburgueseria.Models;
 
 namespace WebHamburgueseria.Controllers
 {
+    [Authorize]
     public class ProductosController : Controller
     {
         private readonly LabHamburgueseriaContext _context;
+
 
         public ProductosController(LabHamburgueseriaContext context)
         {
@@ -21,8 +24,8 @@ namespace WebHamburgueseria.Controllers
         // GET: Productos
         public async Task<IActionResult> Index()
         {
-            var labHamburgueseriaContext = _context.Productos.Include(p => p.IdCategoriaNavigation);
-            return View(await _context.Productos.Where(x => x.Estado != -1).ToListAsync());
+            var labHamburgueseriaContext = _context.Productos.Where(x => x.Estado != -1).Include(p => p.IdCategoriaNavigation);
+            return View(await labHamburgueseriaContext.ToListAsync());
         }
 
         // GET: Productos/Details/5
@@ -45,11 +48,9 @@ namespace WebHamburgueseria.Controllers
         }
 
         // GET: Productos/Create
-        [HttpGet]
         public IActionResult Create()
         {
-            // Cargar la lista de categorías con la descripción
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion");
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "IdCategoria");
             return View();
         }
 
@@ -58,22 +59,35 @@ namespace WebHamburgueseria.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProducto,Codigo,Nombre,Descripcion,IdCategoria,Stock,PrecioVenta")] Producto producto)
+        public async Task<IActionResult> Create([Bind("IdProducto,Codigo,Nombre,Descripcion,IdCategoria,Stock,PrecioVenta,UsuarioRegistro,FechaRegistro,Estado")] Producto producto)
         {
-            if (ModelState.IsValid)
+            if (!string.IsNullOrEmpty(producto.Codigo) && !string.IsNullOrEmpty(producto.Descripcion))
             {
-                producto.UsuarioRegistro = "sis457"; // Usuario predeterminado
-                producto.FechaRegistro = DateTime.Now; // Fecha actual
-                producto.Estado = 1; // Estado activo
-
-                // Guardar el producto en la base de datos
+                producto.UsuarioRegistro = User.Identity.Name;
+                producto.FechaRegistro = DateTime.Now;
+                producto.Estado = 1;
                 _context.Add(producto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "IdCategoria", producto.IdCategoria);
+            return View(producto);
+        }
 
-            // Si ocurre un error, recargar la lista de categorías
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion", producto.IdCategoria);
+        // GET: Productos/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var producto = await _context.Productos.FindAsync(id);
+            if (producto == null)
+            {
+                return NotFound();
+            }
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "IdCategoria", producto.IdCategoria);
             return View(producto);
         }
 
@@ -140,7 +154,9 @@ namespace WebHamburgueseria.Controllers
             var producto = await _context.Productos.FindAsync(id);
             if (producto != null)
             {
-                _context.Productos.Remove(producto);
+                producto.UsuarioRegistro = User.Identity.Name; ;
+                producto.Estado = -1;
+                //_context.Productos.Remove(producto);
             }
 
             await _context.SaveChangesAsync();

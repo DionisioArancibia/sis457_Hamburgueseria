@@ -1,9 +1,8 @@
-namespace WebHamburgueseria.Models
-{
-    public class ErrorViewModel
-    {
-        public string? RequestId { get; set; }
+namespace WebHamburgueseria.Models;
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
-    }
+public class ErrorViewModel
+{
+    public string? RequestId { get; set; }
+
+    public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 }

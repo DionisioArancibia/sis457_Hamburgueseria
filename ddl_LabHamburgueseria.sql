@@ -33,15 +33,25 @@ CREATE TABLE Cliente (
     telefono VARCHAR(15) NULL
 );
 
-
+CREATE TABLE Empleado (
+  id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+  cedulaIdentidad VARCHAR(12) NOT NULL,
+  nombres VARCHAR(30) NOT NULL,
+  primerApellido VARCHAR(30) NULL,
+  segundoApellido VARCHAR(30) NULL,
+  direccion VARCHAR(250) NOT NULL,
+  celular BIGINT NOT NULL,
+  cargo VARCHAR(50) NOT NULL
+);
 
 CREATE TABLE Usuario (
   IdUsuario INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-  idEmpleado INT NOT NULL,
   usuario VARCHAR(15) NOT NULL,
   clave VARCHAR(250) NOT NULL,
+  
  
 ); 
+
 
 CREATE TABLE Categoria (
     IdCategoria INT NOT NULL PRIMARY KEY IDENTITY(1,1),
@@ -61,9 +71,11 @@ CREATE TABLE Producto (
 
 
 
+-- Tabla Venta
 CREATE TABLE Venta (
     IdVenta INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     IdUsuario INT NOT NULL,
+    IdEmpleado INT NOT NULL, -- Relación con Empleado
     TipoDocumento VARCHAR(20) NOT NULL,
     DocumentoCliente VARCHAR(20) NOT NULL,
     NombreCliente VARCHAR(100) NOT NULL,
@@ -71,6 +83,7 @@ CREATE TABLE Venta (
     MontoCambio DECIMAL(18, 2) NOT NULL CHECK (MontoCambio >= 0),
     MontoTotal DECIMAL(18, 2) NOT NULL CHECK (MontoTotal > 0),
     FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
+    FOREIGN KEY (IdEmpleado) REFERENCES Empleado(id)
 );
 
 CREATE TABLE VentaDetalle (
@@ -93,6 +106,10 @@ ALTER TABLE Cliente ADD estado SMALLINT NOT NULL DEFAULT 1;
 ALTER TABLE Usuario ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
 ALTER TABLE Usuario ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
 ALTER TABLE Usuario ADD estado SMALLINT NOT NULL DEFAULT 1;
+
+ALTER TABLE Empleado ADD usuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE Empleado ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
+ALTER TABLE Empleado ADD estado SMALLINT NOT NULL DEFAULT 1; -- -1: Eliminado, 0: Inactivo, 1: Activo
 
 ALTER TABLE Categoria ADD UsuarioRegistro VARCHAR(50) NOT NULL DEFAULT SUSER_NAME();
 ALTER TABLE Categoria ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
@@ -170,17 +187,33 @@ END
 GO
 
 
+-- PROCEDIMIENTO LISTAR EMPLEADOS
+CREATE PROC paEmpleadoListar
+    @parametro VARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT *
+    FROM Empleado
+    WHERE cedulaIdentidad LIKE '%' + REPLACE(@parametro, ' ', '%') + '%'
+       OR nombres LIKE '%' + REPLACE(@parametro, ' ', '%') + '%'
+       OR primerApellido LIKE '%' + REPLACE(@parametro, ' ', '%') + '%'
+       OR segundoApellido LIKE '%' + REPLACE(@parametro, ' ', '%') + '%';
+END
+GO
+
 
 
 
 -- PROCEDIMIENTO LISTAR VENTAS
-CREATE PROCEDURE paVentaListar
+CREATE PROC paVentaListar
     @parametro NVARCHAR(100)
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    SELECT v.IdVenta, v.IdUsuario, v.TipoDocumento, v.DocumentoCliente, 
+    SELECT v.IdVenta, v.IdUsuario,v. IdEmpleado, v.TipoDocumento, v.DocumentoCliente, 
            v.NombreCliente, v.MontoPago, v.MontoCambio, v.MontoTotal, 
            v.fechaRegistro, v.estado
     FROM Venta v
@@ -201,6 +234,10 @@ INSERT INTO Categoria (Descripcion) VALUES
 ('Postres'),
 ('Snacks');
 
+--Empleados
+INSERT INTO Empleado (cedulaIdentidad, nombres, primerApellido, segundoApellido, direccion, celular, cargo) VALUES
+('1234567890', 'Pedro', 'Gómez', 'Martínez', 'Calle del Sabor 10, Ciudad', 9876543210, 'Cocinero'),
+('0987654321', 'Lucía', 'Fernández', 'Pérez', 'Avenida del Hambre 20, Ciudad', 9123456789, 'Atención al Cliente');
 
 -- Insertar datos en la tabla Cliente
 INSERT INTO Cliente (Documento, NombreCompleto, Correo, Telefono) VALUES
@@ -210,8 +247,8 @@ INSERT INTO Cliente (Documento, NombreCompleto, Correo, Telefono) VALUES
 
 
 --DATOS USUARIO
-INSERT INTO Usuario(idEmpleado, usuario, clave)
-VALUES(1, 'dioni', 'i0hcoO/nssY6WOs9pOp5Xw==');
+INSERT INTO Usuario( usuario, clave)
+VALUES( 'dioni', 'i0hcoO/nssY6WOs9pOp5Xw==');
 
 -- Insertar datos en la tabla Producto
 INSERT INTO Producto (Codigo, Nombre, Descripcion, IdCategoria, Stock, PrecioVenta) VALUES
@@ -224,8 +261,8 @@ INSERT INTO Producto (Codigo, Nombre, Descripcion, IdCategoria, Stock, PrecioVen
 
 
 -- Insertar datos en la tabla Venta
-INSERT INTO Venta(IdUsuario, TipoDocumento, DocumentoCliente, NombreCliente, MontoPago, MontoCambio, MontoTotal) VALUES
-(1, 'Boleta', '101010', 'Juan Perez', 100.00, 10.00, 90.00);
+INSERT INTO Venta(IdUsuario,IdEmpleado, TipoDocumento, DocumentoCliente, NombreCliente, MontoPago, MontoCambio, MontoTotal) VALUES
+(1,1, 'Boleta', '101010', 'Juan Perez', 100.00, 10.00, 90.00);
 GO
 
 
@@ -233,6 +270,7 @@ GO
 -- Confirmar datos insertados
 SELECT * FROM Categoria;
 SELECT * FROM Cliente;
+SELECT * FROM Empleado;
 SELECT * FROM Usuario;
 SELECT * FROM Producto;
 SELECT * FROM Venta;

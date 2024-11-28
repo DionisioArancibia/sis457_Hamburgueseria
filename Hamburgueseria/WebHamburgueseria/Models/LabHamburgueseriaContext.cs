@@ -19,6 +19,8 @@ public partial class LabHamburgueseriaContext : DbContext
 
     public virtual DbSet<Cliente> Clientes { get; set; }
 
+    public virtual DbSet<Empleado> Empleados { get; set; }
+
     public virtual DbSet<Producto> Productos { get; set; }
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
@@ -35,7 +37,7 @@ public partial class LabHamburgueseriaContext : DbContext
     {
         modelBuilder.Entity<Categorium>(entity =>
         {
-            entity.HasKey(e => e.IdCategoria).HasName("PK__Categori__A3C02A10037D3BD2");
+            entity.HasKey(e => e.IdCategoria).HasName("PK__Categori__A3C02A105CDF2DF0");
 
             entity.Property(e => e.Descripcion)
                 .HasMaxLength(100)
@@ -56,7 +58,7 @@ public partial class LabHamburgueseriaContext : DbContext
 
         modelBuilder.Entity<Cliente>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Cliente__3213E83F19996185");
+            entity.HasKey(e => e.Id).HasName("PK__Cliente__3213E83FA7946A00");
 
             entity.ToTable("Cliente");
 
@@ -90,9 +92,55 @@ public partial class LabHamburgueseriaContext : DbContext
                 .HasDefaultValueSql("(suser_name())");
         });
 
+        modelBuilder.Entity<Empleado>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Empleado__3213E83FC590B44F");
+
+            entity.ToTable("Empleado");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Cargo)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("cargo");
+            entity.Property(e => e.CedulaIdentidad)
+                .HasMaxLength(12)
+                .IsUnicode(false)
+                .HasColumnName("cedulaIdentidad");
+            entity.Property(e => e.Celular).HasColumnName("celular");
+            entity.Property(e => e.Direccion)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("direccion");
+            entity.Property(e => e.Estado)
+                .HasDefaultValue((short)1)
+                .HasColumnName("estado");
+            entity.Property(e => e.FechaRegistro)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fechaRegistro");
+            entity.Property(e => e.Nombres)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("nombres");
+            entity.Property(e => e.PrimerApellido)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("primerApellido");
+            entity.Property(e => e.SegundoApellido)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("segundoApellido");
+            entity.Property(e => e.UsuarioRegistro)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasDefaultValueSql("(suser_name())")
+                .HasColumnName("usuarioRegistro");
+        });
+
         modelBuilder.Entity<Producto>(entity =>
         {
-            entity.HasKey(e => e.IdProducto).HasName("PK__Producto__09889210275F7A96");
+            entity.HasKey(e => e.IdProducto).HasName("PK__Producto__0988921034AA95C6");
 
             entity.ToTable("Producto");
 
@@ -122,12 +170,12 @@ public partial class LabHamburgueseriaContext : DbContext
             entity.HasOne(d => d.IdCategoriaNavigation).WithMany(p => p.Productos)
                 .HasForeignKey(d => d.IdCategoria)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Producto__IdCate__2C3393D0");
+                .HasConstraintName("FK__Producto__IdCate__2E1BDC42");
         });
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.IdUsuario).HasName("PK__Usuario__5B65BF97BA9272D1");
+            entity.HasKey(e => e.IdUsuario).HasName("PK__Usuario__5B65BF97786D4347");
 
             entity.ToTable("Usuario");
 
@@ -142,7 +190,6 @@ public partial class LabHamburgueseriaContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
                 .HasColumnName("fechaRegistro");
-            entity.Property(e => e.IdEmpleado).HasColumnName("idEmpleado");
             entity.Property(e => e.Usuario1)
                 .HasMaxLength(15)
                 .IsUnicode(false)
@@ -155,7 +202,7 @@ public partial class LabHamburgueseriaContext : DbContext
 
         modelBuilder.Entity<VentaDetalle>(entity =>
         {
-            entity.HasKey(e => e.IdDetalleVenta).HasName("PK__VentaDet__AAA5CEC2E413DA1D");
+            entity.HasKey(e => e.IdDetalleVenta).HasName("PK__VentaDet__AAA5CEC2A7DA51A7");
 
             entity.ToTable("VentaDetalle");
 
@@ -177,17 +224,17 @@ public partial class LabHamburgueseriaContext : DbContext
             entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.VentaDetalles)
                 .HasForeignKey(d => d.IdProducto)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__VentaDeta__IdPro__38996AB5");
+                .HasConstraintName("FK__VentaDeta__IdPro__3B75D760");
 
             entity.HasOne(d => d.IdVentaNavigation).WithMany(p => p.VentaDetalles)
                 .HasForeignKey(d => d.IdVenta)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__VentaDeta__IdVen__37A5467C");
+                .HasConstraintName("FK__VentaDeta__IdVen__3A81B327");
         });
 
         modelBuilder.Entity<Ventum>(entity =>
         {
-            entity.HasKey(e => e.IdVenta).HasName("PK__Venta__BC1240BD66A79DCB");
+            entity.HasKey(e => e.IdVenta).HasName("PK__Venta__BC1240BDD82A2022");
 
             entity.Property(e => e.DocumentoCliente)
                 .HasMaxLength(20)
@@ -213,10 +260,15 @@ public partial class LabHamburgueseriaContext : DbContext
                 .IsUnicode(false)
                 .HasDefaultValueSql("(suser_name())");
 
+            entity.HasOne(d => d.IdEmpleadoNavigation).WithMany(p => p.Venta)
+                .HasForeignKey(d => d.IdEmpleado)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Venta__IdEmplead__34C8D9D1");
+
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Venta)
                 .HasForeignKey(d => d.IdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Venta__IdUsuario__31EC6D26");
+                .HasConstraintName("FK__Venta__IdUsuario__33D4B598");
         });
 
         OnModelCreatingPartial(modelBuilder);

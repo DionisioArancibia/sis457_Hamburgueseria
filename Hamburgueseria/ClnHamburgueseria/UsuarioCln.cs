@@ -15,7 +15,7 @@ namespace ClnHamburgueseria
             using (var context = new LabHamburgueseriaEntities())
             {
                 return context.Usuario
-                   
+                  
                     .Where(e => e.IdUsuario == id)
                     .FirstOrDefault();
             }

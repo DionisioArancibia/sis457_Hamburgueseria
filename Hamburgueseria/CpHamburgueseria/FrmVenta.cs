@@ -214,7 +214,7 @@ namespace CpHamburgueseria
                 var precioVenta = producto.PrecioVenta;
                 var total = precioVenta * cantidadVenta;
 
-                int idUsuario = Util.usuario.idEmpleado;
+                int idUsuario = Util.usuario.IdUsuario;
                 if (idUsuario <= 0)
                 {
                     MessageBox.Show("No se pudo identificar al empleado asociado al usuario actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -310,7 +310,7 @@ namespace CpHamburgueseria
                 }
 
                 // Verificar que el usuario actual esté asociado a un empleado
-                int idEmpleado = Util.usuario.idEmpleado;
+                int idEmpleado = Util.usuario.IdUsuario;
                 if (idEmpleado <= 0)
                 {
                     MessageBox.Show("No se pudo identificar al empleado asociado al usuario actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -323,6 +323,7 @@ namespace CpHamburgueseria
                     var venta = new Venta
                     {
                         IdUsuario = idEmpleado,
+                        IdEmpleado = idEmpleado,
                         TipoDocumento = cbxTipoDocumento.Text,
                         DocumentoCliente = txtdocumento.Text,
                         NombreCliente = txtNombre.Text,

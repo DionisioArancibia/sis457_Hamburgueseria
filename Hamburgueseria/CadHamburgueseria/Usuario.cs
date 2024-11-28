@@ -21,7 +21,6 @@ namespace CadHamburgueseria
         }
     
         public int IdUsuario { get; set; }
-        public int idEmpleado { get; set; }
         public string usuario1 { get; set; }
         public string clave { get; set; }
         public string UsuarioRegistro { get; set; }

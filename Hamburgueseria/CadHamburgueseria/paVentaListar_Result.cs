@@ -15,6 +15,7 @@ namespace CadHamburgueseria
     {
         public int IdVenta { get; set; }
         public int IdUsuario { get; set; }
+        public int IdEmpleado { get; set; }
         public string TipoDocumento { get; set; }
         public string DocumentoCliente { get; set; }
         public string NombreCliente { get; set; }
