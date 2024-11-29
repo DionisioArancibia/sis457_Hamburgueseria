@@ -37,9 +37,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Descripcion)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.IdCategoria)
-                </td>
+
+                <td>@Html.DisplayFor(modelItem => item.IdCategoriaNavigation.Descripcion)</td> <!-- Cambiado -->
+                
 
                 <td>
                     @Html.DisplayFor(modelItem => item.Stock)

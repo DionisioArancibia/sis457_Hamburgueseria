@@ -42,12 +42,24 @@
                         @if (User.Identity?.IsAuthenticated == true)
                         {
                 <!-- Show only for authenticated users -->
-                <li class="nav-item">
-                  <a class="nav-link" asp-controller="Productos" asp-action="Index">Productos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" asp-controller="Clientes" asp-action="Index">Clientes</a>
-                </li>
+                            <li class="nav-item active">
+                          <a class="nav-link" asp-controller="Productos" asp-action="Index">Productos</a>
+                        </li>
+                          <li class="nav-item active">
+                          <a class="nav-link" asp-controller="Clientes" asp-action="Index">Clientes</a>
+                             </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-controller="Empleados" asp-action="Index">Empleados</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-controller="Categorias" asp-action="Index">Categorias</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-controller="Ventas" asp-action="Index">Ventas</a>
+                            </li>
+                            <li class="nav-item active" active>
+                                <a class="nav-link" asp-controller="VentaDetalles" asp-action="Index">Detalles de la Venta</a>
+                            </li>
                         }
                         else
                         {
@@ -55,17 +67,17 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="menu.html">Menu</a>
+                            <li class="nav-item active">
+                  <a class="nav-link" href="menu.html">Menu <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.html">About</a>
+                            <li class="nav-item active">
+                  <a class="nav-link" href="about.html">About<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="book.html">Book Table</a>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="book.html">Book Table <span class="sr-only">(current)</span></a>
                 </li>
                 <!-- Dropdown Menu for Tables -->
-                <li class="nav-item dropdown">
+                            <li class="nav-item active">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Tables
                   </a>
@@ -93,25 +105,14 @@
                         else
                         {
                 <!-- Non-authenticated User Options -->
-                <a asp-controller="Account" asp-action="Login" class="user_link" title="Iniciar Sesión">
-                  <i class="fa fa-user" aria-hidden="true"></i> Iniciar Sesión
+                <a asp-controller="Account" asp-action="Login" class="user_link " title="Iniciar Sesión">
+                                <i class="fa fa-user" aria-hidden="true"></i> Iniciar Sesión
+                           
                 </a>
                         }
 
-          <!-- Cart -->
-          <a class="cart_link" href="cart.html" title="View Cart">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-          </a>
-          <!-- Search -->
-          <form class="form-inline d-inline">
-            <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-          </form>
-          <!-- Order Online -->
-          <a href="order_online.html" class="order_online btn btn-primary">
-            Order Online
-          </a>
+        
+       
         </div>
       </div>
     </nav>

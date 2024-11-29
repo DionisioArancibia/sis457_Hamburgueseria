@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebHamburgueseria.Models;
 
 public partial class Empleado
 {
+    [Key]
+    [Column("idEmpleado")] // Asegura que se mapee a "id" en la base de datos
     public int Id { get; set; }
 
     public string CedulaIdentidad { get; set; } = null!;
@@ -27,5 +31,5 @@ public partial class Empleado
 
     public short Estado { get; set; }
 
-    public virtual ICollection<Ventum> Venta { get; set; } = new List<Ventum>();
+
 }

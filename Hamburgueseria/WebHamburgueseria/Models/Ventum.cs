@@ -9,8 +9,6 @@ public partial class Ventum
 
     public int IdUsuario { get; set; }
 
-    public int IdEmpleado { get; set; }
-
     public string TipoDocumento { get; set; } = null!;
 
     public string DocumentoCliente { get; set; } = null!;
@@ -29,7 +27,6 @@ public partial class Ventum
 
     public short Estado { get; set; }
 
-    public virtual Empleado IdEmpleadoNavigation { get; set; } = null!;
 
     public virtual Usuario IdUsuarioNavigation { get; set; } = null!;
 

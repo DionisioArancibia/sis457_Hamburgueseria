@@ -98,7 +98,7 @@ public partial class LabHamburgueseriaContext : DbContext
 
             entity.ToTable("Empleado");
 
-            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("idEmpleado");
             entity.Property(e => e.Cargo)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -260,11 +260,7 @@ public partial class LabHamburgueseriaContext : DbContext
                 .IsUnicode(false)
                 .HasDefaultValueSql("(suser_name())");
 
-            entity.HasOne(d => d.IdEmpleadoNavigation).WithMany(p => p.Venta)
-                .HasForeignKey(d => d.IdEmpleado)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Venta__IdEmplead__34C8D9D1");
-
+       
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Venta)
                 .HasForeignKey(d => d.IdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)

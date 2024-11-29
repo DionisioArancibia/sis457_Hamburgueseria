@@ -57,7 +57,7 @@ namespace WebHamburgueseria.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Documento,NombreCompleto,Correo,Telefono")] Cliente cliente)
         {
-            if (ModelState.IsValid)
+            if (!string.IsNullOrEmpty(cliente.Documento) && !string.IsNullOrEmpty(cliente.NombreCompleto))
             {
                 cliente.UsuarioRegistro = User.Identity.Name;
                 cliente.FechaRegistro = DateTime.Now;

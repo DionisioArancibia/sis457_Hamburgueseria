@@ -50,7 +50,7 @@ namespace WebHamburgueseria.Controllers
         // GET: Productos/Create
         public IActionResult Create()
         {
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "IdCategoria");
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion");
             return View();
         }
 
@@ -70,7 +70,7 @@ namespace WebHamburgueseria.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "IdCategoria", producto.IdCategoria);
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion", producto.IdCategoria);
             return View(producto);
         }
 
@@ -82,18 +82,19 @@ namespace WebHamburgueseria.Controllers
                 return NotFound();
             }
 
+            // Solo recuperamos el producto sin incluir la navegación
             var producto = await _context.Productos.FindAsync(id);
             if (producto == null)
             {
                 return NotFound();
             }
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "IdCategoria", producto.IdCategoria);
+
+            // Cargamos la lista de categorías, si es necesario
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria.Select(c => new { c.IdCategoria, c.Descripcion }), "IdCategoria", "Descripcion", producto.IdCategoria);
             return View(producto);
         }
 
         // POST: Productos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdProducto,Codigo,Nombre,Descripcion,IdCategoria,Stock,PrecioVenta,UsuarioRegistro,FechaRegistro,Estado")] Producto producto)
@@ -107,25 +108,36 @@ namespace WebHamburgueseria.Controllers
             {
                 try
                 {
-                    _context.Update(producto);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductoExists(producto.IdProducto))
+                    // Obtenemos el producto actual de la base de datos
+                    var productoDb = await _context.Productos.FindAsync(id);
+                    if (productoDb == null)
                     {
                         return NotFound();
                     }
-                    else
-                    {
-                        throw;
-                    }
+
+                    // Actualizamos solo los campos relevantes del producto
+                    productoDb.Codigo = producto.Codigo;
+                    productoDb.Nombre = producto.Nombre;
+                    productoDb.Descripcion = producto.Descripcion;
+                    productoDb.IdCategoria = producto.IdCategoria;
+                    productoDb.Stock = producto.Stock;
+                    productoDb.PrecioVenta = producto.PrecioVenta;
+
+                    // Guardamos los cambios en la base de datos
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
-                return RedirectToAction(nameof(Index));
+                catch (DbUpdateException ex)
+                {
+                    ModelState.AddModelError("", $"Error al actualizar el producto: {ex.Message}");
+                }
             }
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "IdCategoria", producto.IdCategoria);
+
+            // Recargamos las categorías si hay un error
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria.Select(c => new { c.IdCategoria, c.Descripcion }), "IdCategoria", "Descripcion", producto.IdCategoria);
             return View(producto);
         }
+
 
         // GET: Productos/Delete/5
         public async Task<IActionResult> Delete(int? id)

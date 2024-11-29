@@ -34,7 +34,7 @@ CREATE TABLE Cliente (
 );
 
 CREATE TABLE Empleado (
-  id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+  idEmpleado INT NOT NULL PRIMARY KEY IDENTITY(1,1),
   cedulaIdentidad VARCHAR(12) NOT NULL,
   nombres VARCHAR(30) NOT NULL,
   primerApellido VARCHAR(30) NULL,
@@ -83,7 +83,7 @@ CREATE TABLE Venta (
     MontoCambio DECIMAL(18, 2) NOT NULL CHECK (MontoCambio >= 0),
     MontoTotal DECIMAL(18, 2) NOT NULL CHECK (MontoTotal > 0),
     FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
-    FOREIGN KEY (IdEmpleado) REFERENCES Empleado(id)
+    FOREIGN KEY (IdEmpleado) REFERENCES Empleado(idEmpleado)
 );
 
 CREATE TABLE VentaDetalle (
@@ -279,3 +279,9 @@ SELECT * FROM VentaDetalle;
 EXEC paCategoriaListar 'Bebidas';
 EXEC paVentaListar 'juan';
 EXEC paProductoListar 'P002';
+
+EXEC sp_help 'Empleado';
+go
+
+CREATE VIEW VistaEmpleado AS
+SELECT id AS idEmpleado, nombres, cedulaIdentidad FROM Empleado;
