@@ -1,34 +1,52 @@
 ﻿@model LoginViewModel
 
 @{
-	ViewData["Title"] = "Login !";
-	Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Login!";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Login</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-2"></div>
+        <div class="col-lg-6 col-md-8 login-box">
+            <div class="col-lg-12 login-key">
+                <i class="fa fa-key" aria-hidden="true"></i>
+            </div>
+        ¿
 
-<form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" role="form">
-	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-	<div class="form-group">
-		<label asp-for="usuario" class="control-label"></label>
-		<input asp-for="usuario" class="form-control" placeholder="Usuario" required />
-		<span asp-validation-for="usuario" class="text-danger"></span>
-	</div>
-	<div class="form-group">
-		<label asp-for="clave" class="control-label"></label>
-		<input asp-for="clave" type="password" class="form-control" placeholder="Contraseña" required />
-		<span asp-validation-for="clave" class="text-danger"></span>
-	</div>
-	<div class="row">
-		<div class="col-xs-7">
-			<input type="checkbox" name="recordarme" id="recordarme" />
-			<span for="recordarme">Recordarme</span>
-		</div>
-		<div class="col-xs-5">
-			<input type="submit" value="Iniciar Sesión" class="btn btn-primary" />
-		</div>
-	</div>
-	<div class="col-xs-12 text-center">
-		<a asp-controller="Account" asp-action="ResetPassword">¿Se te olvidó la contraseña?</a>
-	</div>
-</form>
+            <div class="col-lg-12 login-form">
+                <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" role="form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="usuario" class="form-control-label">Usuario</label>
+                        <input asp-for="usuario" class="form-control" placeholder="Usuario" required />
+                        <span asp-validation-for="usuario" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="clave" class="form-control-label">Contraseña</label>
+                        <input asp-for="clave" type="password" class="form-control" placeholder="Contraseña" required />
+                        <span asp-validation-for="clave" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-lg-12 loginbttm">
+                        <div class="col-lg-6 login-btm login-text">
+                            <!-- Error Message -->
+                        </div>
+                        <div class="col-lg-6 login-btm login-button">
+                            <input type="checkbox" name="recordarme" id="recordarme" />
+                            <label for="recordarme">Recordarme</label>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 login-btm login-button">
+                        <button type="submit" class="btn btn-outline-primary">Iniciar Secion</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-2"></div>
+    </div>
+</div>

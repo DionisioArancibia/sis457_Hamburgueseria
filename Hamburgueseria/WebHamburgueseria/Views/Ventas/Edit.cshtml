@@ -1,13 +1,12 @@
 ﻿@model WebHamburgueseria.Models.Ventum
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Venta";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<h1>Editar Venta</h1>
 
-<h4>Ventum</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,7 +18,6 @@
                 <select asp-for="IdUsuario" class="form-control" asp-items="ViewBag.IdUsuario"></select>
                 <span asp-validation-for="IdUsuario" class="text-danger"></span>
             </div>
-          
             <div class="form-group">
                 <label asp-for="TipoDocumento" class="control-label"></label>
                 <input asp-for="TipoDocumento" class="form-control" />
@@ -50,29 +48,21 @@
                 <input asp-for="MontoTotal" class="form-control" />
                 <span asp-validation-for="MontoTotal" class="text-danger"></span>
             </div>
+            <!-- Campos ocultos para valores automáticos -->
+            @* Si estos valores no son modificables, asegúrate de asignarlos correctamente en el controlador *@
+            <input type="hidden" asp-for="UsuarioRegistro" />
+            <input type="hidden" asp-for="FechaRegistro" />
+            <input type="hidden" asp-for="Estado" />
             <div class="form-group">
-                <label asp-for="UsuarioRegistro" class="control-label"></label>
-                <input asp-for="UsuarioRegistro" class="form-control" />
-                <span asp-validation-for="UsuarioRegistro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaRegistro" class="control-label"></label>
-                <input asp-for="FechaRegistro" class="form-control" />
-                <span asp-validation-for="FechaRegistro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label>
-                <input asp-for="Estado" class="form-control" />
-                <span asp-validation-for="Estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-save"></i> Guardar
+                </button>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index"><i class="fa fa-arrow-left"></i> Volver a la lista</a>
 </div>
 

@@ -17,6 +17,7 @@
         <AssociationConnector Association="LabHamburgueseriaModel.FK__VentaDeta__IdPro__3B75D760" ManuallyRouted="false" />
         <AssociationConnector Association="LabHamburgueseriaModel.FK__Venta__IdUsuario__33D4B598" ManuallyRouted="false" />
         <AssociationConnector Association="LabHamburgueseriaModel.FK__VentaDeta__IdVen__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="LabHamburgueseriaModel.FK__Usuario__idEmple__35BCFE0A" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

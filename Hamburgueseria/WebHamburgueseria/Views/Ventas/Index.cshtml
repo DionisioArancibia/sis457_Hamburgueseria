@@ -1,19 +1,24 @@
 ﻿@model IEnumerable<WebHamburgueseria.Models.Ventum>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Ventas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Ventas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <!-- Cambiamos 'asp-action' a 'NuevaVenta' -->
+    <a asp-action="NuevaVenta">Nueva Venta</a>
 </p>
+
+<p>
+    <a asp-action="Create"><i class="fa fa-plus"></i>Crear nuevo</a>
+</p>
+
 <table class="table">
     <thead>
         <tr>
-       
             <th>
                 @Html.DisplayNameFor(model => model.TipoDocumento)
             </th>
@@ -38,55 +43,45 @@
             <th>
                 @Html.DisplayNameFor(model => model.FechaRegistro)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdUsuarioNavigation)
-            </th>
+         
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-          
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoDocumento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DocumentoCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MontoPago)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MontoCambio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MontoTotal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsuarioRegistro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaRegistro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdUsuario)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdVenta">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdVenta">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdVenta">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoDocumento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DocumentoCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MontoPago)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MontoCambio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MontoTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuarioRegistro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaRegistro)
+                </td>
+               
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdVenta" title="Editar"><i class="fa fa-edit"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.IdVenta" title="Listar"><i class="fa fa-list"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdVenta" title="Eliminar"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

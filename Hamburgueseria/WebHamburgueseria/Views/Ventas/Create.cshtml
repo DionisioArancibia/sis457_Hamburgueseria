@@ -1,13 +1,12 @@
 ﻿@model WebHamburgueseria.Models.Ventum
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear Venta";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1>Crear Venta</h1>
 
-<h4>Ventum</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -17,45 +16,44 @@
                 <label asp-for="IdUsuario" class="control-label"></label>
                 <select asp-for="IdUsuario" class ="form-control" asp-items="ViewBag.IdUsuario"></select>
             </div>
-           
             <div class="form-group">
-                <label asp-for="TipoDocumento" class="control-label"></label>
+                <label class="control-label">Tipo Documento</label>
                 <input asp-for="TipoDocumento" class="form-control" />
                 <span asp-validation-for="TipoDocumento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DocumentoCliente" class="control-label"></label>
+                <label class="control-label">Documento Cliente</label>
                 <input asp-for="DocumentoCliente" class="form-control" />
                 <span asp-validation-for="DocumentoCliente" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NombreCliente" class="control-label"></label>
+                <label class="control-label">Nombre Cliente</label>
                 <input asp-for="NombreCliente" class="form-control" />
                 <span asp-validation-for="NombreCliente" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MontoPago" class="control-label"></label>
+                <label class="control-label">Monto Pago</label>
                 <input asp-for="MontoPago" class="form-control" />
                 <span asp-validation-for="MontoPago" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MontoCambio" class="control-label"></label>
+                <label class="control-label">Monto Cambio</label>
                 <input asp-for="MontoCambio" class="form-control" />
                 <span asp-validation-for="MontoCambio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MontoTotal" class="control-label"></label>
+                <label class="control-label">Monto Total</label>
                 <input asp-for="MontoTotal" class="form-control" />
                 <span asp-validation-for="MontoTotal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>Crear</button>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index"><i class="fa fa-arrow-left"></i>Volver a la lista</a>
 </div>
 

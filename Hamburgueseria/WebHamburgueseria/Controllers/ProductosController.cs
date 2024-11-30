@@ -36,6 +36,9 @@ namespace WebHamburgueseria.Controllers
                 return NotFound();
             }
 
+          
+
+
             var producto = await _context.Productos
                 .Include(p => p.IdCategoriaNavigation)
                 .FirstOrDefaultAsync(m => m.IdProducto == id);

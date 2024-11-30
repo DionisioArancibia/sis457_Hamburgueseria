@@ -1,83 +1,63 @@
 ﻿@model WebHamburgueseria.Models.Ventum
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Eliminar Venta";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Delete</h1>
+<h1>Eliminar Venta</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Está seguro que desea eliminar el registro?</h3>
 <div>
     <h4>Ventum</h4>
     <hr />
     <dl class="row">
-      
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TipoDocumento)
+        <dt class = "col-sm-2">Tipo de Documento
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TipoDocumento)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DocumentoCliente)
+        <dt class = "col-sm-2">Cédula de Identidad
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DocumentoCliente)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NombreCliente)
+        <dt class = "col-sm-2">Nombre de Cliente
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.NombreCliente)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MontoPago)
+        <dt class = "col-sm-2">Monto de Pago
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.MontoPago)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MontoCambio)
+        <dt class = "col-sm-2">Monto de Cambio
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.MontoCambio)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MontoTotal)
+        <dt class = "col-sm-2">Monto Total
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.MontoTotal)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UsuarioRegistro)
+        <dt class = "col-sm-2">Usuario Registro
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.UsuarioRegistro)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaRegistro)
+        <dt class = "col-sm-2">Fecha Registro
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.FechaRegistro)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdUsuarioNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdUsuarioNavigation.IdUsuario)
-        </dd>
+
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="IdVenta" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</button> |
+        <a asp-action="Index"><i class="fa fa-arrow-left"></i> Volver a la lista</a>
     </form>
 </div>

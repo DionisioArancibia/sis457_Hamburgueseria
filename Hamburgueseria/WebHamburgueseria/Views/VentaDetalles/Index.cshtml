@@ -1,42 +1,26 @@
 ﻿@model IEnumerable<WebHamburgueseria.Models.VentaDetalle>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Venta Detalle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Venta Detalle</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PrecioVenta)
+            <th>Precio de Venta
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cantidad)
+            <th>Cantidad
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SubTotal)
+            <th>SubTotal
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsuarioRegistro)
+            <th>Usuario Registro
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaRegistro)
+            <th>Fecha Registro
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdProductoNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdVentaNavigation)
-            </th>
+    
             <th></th>
         </tr>
     </thead>
@@ -58,19 +42,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FechaRegistro)
             </td>
+    
             <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdProductoNavigation.IdProducto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdVentaNavigation.IdVenta)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdDetalleVenta">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdDetalleVenta">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdDetalleVenta">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.IdDetalleVenta" title="Editar"><i class="fa fa-edit"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.IdDetalleVenta" title="Listar"><i class="fa fa-list"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdDetalleVenta" title="Eliminar"><i class="fa fa-trash"></i></a>
             </td>
         </tr>
 }

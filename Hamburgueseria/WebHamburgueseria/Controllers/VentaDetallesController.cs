@@ -33,16 +33,18 @@ namespace WebHamburgueseria.Controllers
                 return NotFound();
             }
 
-            var ventaDetalle = await _context.VentaDetalles
-                .Include(v => v.IdProductoNavigation)
-                .Include(v => v.IdVentaNavigation)
-                .FirstOrDefaultAsync(m => m.IdDetalleVenta == id);
-            if (ventaDetalle == null)
+            var ventum = await _context.Venta
+                .Include(v => v.IdUsuarioNavigation)
+                .Include(v => v.VentaDetalles) // Incluir detalles de la venta
+                .ThenInclude(d => d.IdProductoNavigation) // Incluir información del producto
+                .FirstOrDefaultAsync(m => m.IdVenta == id);
+
+            if (ventum == null)
             {
                 return NotFound();
             }
 
-            return View(ventaDetalle);
+            return View(ventum);
         }
 
         // GET: VentaDetalles/Create

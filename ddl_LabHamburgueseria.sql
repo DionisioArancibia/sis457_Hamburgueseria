@@ -75,7 +75,6 @@ CREATE TABLE Producto (
 CREATE TABLE Venta (
     IdVenta INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     IdUsuario INT NOT NULL,
-    IdEmpleado INT NOT NULL, -- Relación con Empleado
     TipoDocumento VARCHAR(20) NOT NULL,
     DocumentoCliente VARCHAR(20) NOT NULL,
     NombreCliente VARCHAR(100) NOT NULL,
@@ -83,7 +82,7 @@ CREATE TABLE Venta (
     MontoCambio DECIMAL(18, 2) NOT NULL CHECK (MontoCambio >= 0),
     MontoTotal DECIMAL(18, 2) NOT NULL CHECK (MontoTotal > 0),
     FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
-    FOREIGN KEY (IdEmpleado) REFERENCES Empleado(idEmpleado)
+   
 );
 
 CREATE TABLE VentaDetalle (
@@ -261,10 +260,12 @@ INSERT INTO Producto (Codigo, Nombre, Descripcion, IdCategoria, Stock, PrecioVen
 
 
 -- Insertar datos en la tabla Venta
-INSERT INTO Venta(IdUsuario,IdEmpleado, TipoDocumento, DocumentoCliente, NombreCliente, MontoPago, MontoCambio, MontoTotal) VALUES
-(1,1, 'Boleta', '101010', 'Juan Perez', 100.00, 10.00, 90.00);
+INSERT INTO Venta(IdUsuario, TipoDocumento, DocumentoCliente, NombreCliente, MontoPago, MontoCambio, MontoTotal) VALUES
+(1, 'Boleta', '101010', 'Juan Perez', 100.00, 10.00, 90.00);
 GO
 
+INSERT INTO Producto (Codigo, Nombre, Descripcion, IdCategoria, Stock, PrecioVenta) 
+VALUES ('P001', 'Hamburguesa Simple', 'Hamburguesa de res con pan', 1, 50, 5.50);
 
 
 -- Confirmar datos insertados
@@ -285,3 +286,16 @@ go
 
 CREATE VIEW VistaEmpleado AS
 SELECT id AS idEmpleado, nombres, cedulaIdentidad FROM Empleado;
+go
+
+SELECT * 
+FROM VentaDetalle vd
+LEFT JOIN Venta v ON vd.IdVenta = v.IdVenta
+WHERE v.IdVenta IS NULL; -- Verifica que todas las IdVenta en VentaDetalle existen en Venta
+
+SELECT * 
+FROM VentaDetalle vd
+LEFT JOIN Producto p ON vd.IdProducto = p.IdProducto
+WHERE p.IdProducto IS NULL; -- Verifica que todas las IdProducto en VentaDetalle existen en Producto
+
+SELECT * FROM Producto WHERE Codigo = 'P001';
